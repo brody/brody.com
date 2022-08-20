@@ -6,12 +6,11 @@ meta:
     '11st-Starter-Kit is a minimal starting point for building static websites
     with 11ty, powered by Vite with Tailwind CSS and Alpine.js.'
 intro:
-  title: 'Welcome to Your Eleventy App'
+  title: 'Welcome to Brody'
   desc:
     'For a guide and recipes on how to configure / customize this project, check
-    out the <a href="https://www.11ty.dev/docs/" class="text-gray-900
-    font-medium underline">Eleventy</a> and <a href="https://vitejs.dev/"
-    class="text-gray-900 font-medium underline">Vite</a> documentation.'
+    out the <a href="https://www.11ty.dev/docs/" class="font-medium text-gray-900 underline">Eleventy</a> and <a href="https://vitejs.dev/"
+    class="font-medium text-gray-900 underline">Vite</a> documentation.'
 ---
 
 ## Community

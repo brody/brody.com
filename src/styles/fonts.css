@@ -1,0 +1,35 @@
+@font-face {
+  font-display: swap;
+  font-family: Wotfard;
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/wotfard-regular-webfont.eot');
+  src: url('/fonts/wotfard-regular-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/wotfard-regular-webfont.woff2') format('woff2'),
+    url('/fonts/wotfard-regular-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Wotfard;
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/wotfard-medium-webfont.eot');
+  src: url('/fonts/wotfard-medium-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/wotfard-medium-webfont.woff2') format('woff2'),
+    url('/fonts/wotfard-medium-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Wotfard;
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/wotfard-semibold-webfont.eot');
+  src: url('/fonts/wotfard-semibold-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/wotfard-semibold-webfont.woff2') format('woff2'),
+    url('/fonts/wotfard-semibold-webfont.ttf') format('truetype');
+}

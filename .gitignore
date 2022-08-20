@@ -18,3 +18,8 @@ report.html
 
 # Local Netlify folder
 .netlify
+
+# MacOS trash
+*.DS_Store
+*.tgz
+.cache

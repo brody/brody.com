@@ -8,13 +8,13 @@ meta:
 intro:
   title: 'Get Yours'
   desc:
-    'Clone and deploy your own <span class="text-gray-900 font-semibold">11st
+    'Clone and deploy your own <span class="font-semibold text-neutral-100">11st
     Starter-Kit</span> starter template.'
 ---
 
 ## Hosting
 
-This site is deployed by, and hosted by [Netlify](https://www.netlify.com/). 
+This site is deployed by, and hosted by [Netlify](https://www.netlify.com/).
 
 <p class="flex items-center m-0">
   Latest deploy status:
@@ -28,9 +28,9 @@ This site is deployed by, and hosted by [Netlify](https://www.netlify.com/).
 </p>
 
 ## One-click deploy
+
 To get your own instance of this [Eleventy](https://11ty.io) starter project
 cloned and deploying to [Netlify](https://www.netlify.com) very quickly, just
 click the button below and follow the instructions.
 
 [![Deploy to Netlify](/images/deploy-to-netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/stefanfrede/11st-starter-kit)
-

@@ -8,9 +8,9 @@ module.exports = function (config) {
   // Static assets to pass through
   config.addPassthroughCopy('./src/images');
   config.addPassthroughCopy('./src/public');
-  config.addPassthroughCopy('./fonts');
   config.addPassthroughCopy('./src/styles');
   config.addPassthroughCopy('./src/main.js');
+  config.addPassthroughCopy('./src/fonts');
 
   return {
     dir: {

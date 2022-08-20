@@ -4,14 +4,16 @@
     {% include "partials/site-head.html" %}
   </head>
   <body
-    class="min-h-screen bg-white font-wotfard"
+    class="flex h-full min-h-screen w-full flex-col bg-neutral-900 font-wotfard text-neutral-300 lg:relative lg:flex-row"
     data-env="{{ node.env }}"
     x-data="{ open: false }"
     x-init="() => { setTimeout(() => { open = true }, 1500); }"
   >
-    {% include "partials/site-header.html" %}
+    {% include "partials/site-nav.html" %}
 
-    <div class="py-10">{% block content %}{% endblock %}</div>
+    <div class="flex flex-1 flex-col px-5 pt-12 pb-12 lg:px-8 lg:pt-32">
+      <div class="mx-auto max-w-2xl">{% block content %}{% endblock %}</div>
+    </div>
 
     {% include "partials/banner.html" %}
 

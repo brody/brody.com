@@ -1,49 +1,59 @@
 <nav
   class="sticky top-0 z-10 flex justify-between border-b border-neutral-800 bg-neutral-900 px-5 text-sm font-medium leading-6 lg:bottom-0 lg:h-screen lg:w-48 lg:flex-col lg:border-r lg:border-b-0 lg:px-4 lg:pt-8 lg:pb-5"
 >
-  <!-- <div class="flex items-center justify-between h-16">
-    <figure class="flex items-center flex-shrink-0 space-x-1">
+  <div class="flex h-16 items-center justify-between">
+    <figure class="flex flex-shrink-0 items-center space-x-1">
       <img
-          alt="11st starter-kit logo"
-          class="w-auto h-8"
-          src="/images/11st-logo.svg"
-          height="32"
-          width="32"/>
+        alt="11st starter-kit logo"
+        class="h-8 w-auto"
+        src="/images/11st-logo.svg"
+        height="32"
+        width="32"
+      />
       <figcaption>Starter-Kit</figcaption>
     </figure>
     <ul class="flex space-x-4">
-      {% for item in navigation.items %}
-        {% if item.url == page.url %}
-          {%
-        assign highlight = 'cursor-default' %}
-          {% assign current =
-        'aria-current="page"' %}
-        {% else %}
-          {% assign highlight = 'underline' %}
-          {% assign current = '' %}
-        {% endif %}
-        <li>
-          <a
-            href="{{ item.url }}"
-            class="text-base font-bold {{ highlight }}"
-            {{
-            current
-            }}
-          >
-            {{ item.text }}
-          </a>
-        </li>
+      {% for item in navigation.items.top %} {% if item.url == page.url %} {%
+      assign highlight = 'cursor-default' %} {% assign current =
+      'aria-current="page"' %} {% else %} {% assign highlight = 'underline' %}
+      {% assign current = '' %} {% endif %}
+      <li>
+        <a
+          href="{{ item.url }}"
+          class="text-base font-bold {{ highlight }}"
+          {{
+          current
+          }}
+        >
+          {{ item.text }}
+        </a>
+      </li>
+      {% endfor %} {% for item in navigation.items.bottom %} {% if item.url ==
+      page.url %} {% assign highlight = 'cursor-default' %} {% assign current =
+      'aria-current="page"' %} {% else %} {% assign highlight = 'underline' %}
+      {% assign current = '' %} {% endif %}
+      <li>
+        <a
+          href="{{ item.url }}"
+          class="text-base font-bold {{ highlight }}"
+          {{
+          current
+          }}
+        >
+          {{ item.text }}
+        </a>
+      </li>
       {% endfor %}
       <li>
         <a
-            href="https://github.com/stefanfrede/11st-starter-kit/"
-            class="text-base font-bold underline hover:text-green-900"
-          >
-            GitHub
-          </a>
+          href="https://github.com/stefanfrede/11st-starter-kit/"
+          class="text-base font-bold underline hover:text-green-900"
+        >
+          GitHub
+        </a>
       </li>
     </ul>
-  </div> -->
+  </div>
 
   <div class="flex w-full justify-between lg:flex-col">
     <a href="#" class="-ml-6 px-5 py-4 lg:ml-0 lg:mb-4 lg:px-4">

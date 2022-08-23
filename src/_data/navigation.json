@@ -1,12 +1,24 @@
 {
-  "items": [
-    {
-      "text": "Home",
-      "url": "/"
-    },
-    {
-      "text": "About",
-      "url": "/about/"
-    }
-  ]
+  "items": {
+    "top": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "About",
+        "url": "/about/"
+      }
+    ],
+    "bottom": [
+      {
+        "text": "bot",
+        "url": "/"
+      },
+      {
+        "text": "box",
+        "url": "/about/"
+      }
+    ]
+  }
 }

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html class="antialiased leading-tight text-neutral-400" lang="en">
+  <head>
+    {% include "partials/site-head.njk" %}
+  </head>
+  <body class="min-h-screen bg-white">
+
+    {{ content | safe }}
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

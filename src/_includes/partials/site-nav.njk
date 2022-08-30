@@ -1,0 +1,185 @@
+<nav
+  class="sticky top-0 z-10 flex justify-between px-5 text-sm font-medium leading-6 border-b border-neutral-800 bg-neutral-900 lg:bottom-0 lg:h-screen lg:w-48 lg:flex-col lg:border-r lg:border-b-0 lg:px-4 lg:pt-8 lg:pb-5">
+  {# <div class="flex items-center justify-between h-16">
+    <figure class="flex items-center flex-shrink-0 space-x-1">
+      <img alt="11st starter-kit logo" class="w-auto h-8" src="/images/11st-logo.svg" height="32" width="32"/>
+      <figcaption>Starter-Kit</figcaption>
+    </figure>
+    <ul class="flex space-x-4">
+      {% for item in navigation.items.top %}
+        {% if item.url == page.url %}
+          {%
+      set highlight = 'cursor-default' %}
+          {% set current =
+      'aria-current="page"' %}
+        {% else %}
+          {% set highlight = 'underline' %}
+          {% set current = '' %}
+        {% endif %}
+        <li>
+          <a href="{{ item.url }}" class="text-base font-bold {{ highlight }}" {{ current }}>
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+      {% for item in navigation.items.bottom %}
+        {% if item.url == page.url %}
+          {% set highlight = 'cursor-default bg-neutral-800' %}
+          {% set current =
+      'aria-current="page"' %}
+        {% else %}
+          {% set highlight = 'underline' %}
+          {% set current = '' %}
+        {% endif %}
+        <li>
+          <a href="{{ item.url }}" class="text-base font-bold {{ highlight }}" {{ current }}>
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+      <li>
+        <a href="https://github.com/stefanfrede/11st-starter-kit/" class="text-base font-bold underline hover:text-green-900">
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </div> #}
+
+  <div class="flex justify-between w-full lg:flex-col">
+    <a href="#" class="px-5 py-4 -ml-6 lg:ml-0 lg:mb-4 lg:px-4">
+      <img src="https://placekeanu.com/80/80" alt="" class="w-8 h-8 rounded-full ring-blue-500 hover:ring-2 lg:h-12 lg:w-12" />
+    </a>
+
+    <ul class="flex items-center flex-hori lg:flex-col lg:items-stretch">
+      {% for item in navigation.items.top %}
+        {% if item.url == page.url %}
+          {%
+      set highlight = 'cursor-default bg-neutral-800 text-neutral-50' %}
+          {% set current =      'aria-current="page"' %}
+        {% else %}
+          {% set highlight = 'bg-neutral-900' %}
+          {% set current = '' %}
+        {% endif %}
+        <li>
+          <a href="{{ item.url }}"
+          class="items-center hidden px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 md:flex lg:px-4 {{ highlight }}" {{ current }}>
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+
+      <li>
+        <a href="#" class="items-center hidden px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 md:flex lg:px-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <polyline points="5 12 3 12 12 3 21 12 19 12" />
+            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+          </svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert bg-neutral-800 text-neutral-50 hover:bg-neutral-800 lg:px-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-100 sm:block" width="16" height="16" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />
+            <line x1="13" y1="8" x2="15" y2="8" />
+            <line x1="13" y1="12" x2="15" y2="12" />
+          </svg>
+
+          <!--             Journal -->
+          Notebook
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 lg:px-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z" />
+            <path d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6" />
+          </svg>
+          Bookmarks
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 lg:px-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21v-4a4 4 0 1 1 4 4h-4" />
+            <path d="M21 3a16 16 0 0 0 -12.8 10.2" />
+            <path d="M21 3a16 16 0 0 1 -10.2 12.8" />
+            <path d="M10.6 9a9 9 0 0 1 4.4 4.4" />
+          </svg>
+          Work
+        </a>
+      </li>
+    </ul>
+  </div>
+  <ul class="items-center hidden flex-hori lg:flex lg:flex-col lg:items-stretch">
+    {% for item in navigation.items.bottom %}
+      {% if item.url == page.url %}
+        {%
+      set highlight = 'cursor-default bg-neutral-800 text-neutral-50' %}
+        {% set current =
+      'aria-current="page"' %}
+      {% else %}
+        {% set highlight = 'bg-neutral-900' %}
+        {% set current = '' %}
+      {% endif %}
+      <li>
+        <a href="{{ item.url }}"
+          class="items-center hidden px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 md:flex lg:px-4 {{ highlight }}" {{ current }}>
+          {{ item.text }}
+        </a>
+      </li>
+    {% endfor %}
+    <li>
+      <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 lg:px-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+        </svg>
+        About
+      </a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 lg:px-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <rect x="3" y="4" width="18" height="12" rx="1" />
+          <path d="M7 20h10" />
+          <path d="M9 16v4" />
+          <path d="M15 16v4" />
+          <path d="M9 12v-4" />
+          <path d="M12 12v-1" />
+          <path d="M15 12v-2" />
+          <path d="M12 12v-1" />
+        </svg>
+        Uses
+      </a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center px-3 py-1 rounded-lg flex-vert hover:bg-neutral-800 lg:px-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden mr-3 text-neutral-400 sm:block" width="16" height="16" viewBox="0 0 24 24"
+          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <rect x="4" y="5" width="16" height="16" rx="2" />
+          <line x1="16" y1="3" x2="16" y2="7" />
+          <line x1="8" y1="3" x2="8" y2="7" />
+          <line x1="4" y1="11" x2="20" y2="11" />
+          <rect x="8" y="15" width="2" height="2" />
+        </svg>
+        Now
+      </a>
+    </li>
+  </ul>
+</nav>

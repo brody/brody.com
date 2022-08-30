@@ -1,12 +1,12 @@
 ---
-layout: 'layouts/home.html'
+layout: 'layouts/home.njk'
 title: 'Home'
 meta:
   desc:
     '11st-Starter-Kit is a minimal starting point for building static websites
     with 11ty, powered by Vite with Tailwind CSS and Alpine.js.'
 intro:
-  title: 'Welcome to Brody'
+  title: 'Welcome to hello'
   desc:
     'For a guide and recipes on how to configure / customize this project, check
     out the <a href="https://www.11ty.dev/docs/" class="font-medium underline text-neutral-100">Eleventy</a> and <a href="https://vitejs.dev/"
@@ -31,7 +31,7 @@ CSS](https://github.com/aniftyco/awesome-tailwindcss) -
 [Eleventy](https://www.11ty.dev/) - [Vite](https://vitejs.dev/) -
 [Tailwind CSS](https://tailwindcss.com/) - [Alpine.js](https://github.com/alpinejs/alpine/)
 
-# h1 Heading 8-)
+<!-- # h1 Heading 8-) -->
 
 ## h2 Heading
 
@@ -65,13 +65,13 @@ test.. test... test..... test?..... test!....
 
 ## Emphasis
 
-**This is bold text**
+<!-- **This is bold text** -->
 
-**This is bold text**
+<!-- **This is bold text** -->
 
-_This is italic text_
+<!-- _This is italic text_ -->
 
-_This is italic text_
+<!-- _This is italic text_ -->
 
 ~~Strikethrough~~
 
@@ -91,7 +91,7 @@ Unordered
 - Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
     - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
+    - Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
 - Very easy!
 
@@ -106,8 +106,8 @@ Ordered
 
 Start numbering with offset:
 
-57. foo
-1. bar
+1. foo
+2. bar
 
 ## Code
 
@@ -124,6 +124,7 @@ Block code "fences"
 
 ```
 Sample text here...
+More text
 ```
 
 Syntax highlighting
@@ -158,7 +159,7 @@ Right aligned columns
 
 [link with title](http://nodeca.github.io/pica/demo/ 'title text!')
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+Autoconverted link <https://github.com/nodeca/pica> (enable linkify to see)
 
 ## Images
 

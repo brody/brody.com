@@ -1,6 +1,6 @@
 ---
-layout: 'layouts/home.html'
-title: 'Home'
+layout: 'layouts/home.njk'
+title: 'About'
 meta:
   desc:
     '11st-Starter-Kit is a minimal starting point for building static websites
@@ -16,7 +16,7 @@ intro:
 
 This site is deployed by, and hosted by [Netlify](https://www.netlify.com/).
 
-<p class="flex items-center m-0">
+<!-- <p class="flex items-center m-0">
   Latest deploy status:
   <a href="https://app.netlify.com/sites/11st-starter-kit/deploys" class="ml-2">
     <img
@@ -25,7 +25,7 @@ This site is deployed by, and hosted by [Netlify](https://www.netlify.com/).
       alt="Netlify Status"
     />
   </a>
-</p>
+</p> -->
 
 ## One-click deploy
 

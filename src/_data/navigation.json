@@ -6,18 +6,30 @@
         "url": "/"
       },
       {
-        "text": "About",
-        "url": "/about/"
+        "text": "Journal",
+        "url": "/journal/"
+      },
+      {
+        "text": "Bookmarks",
+        "url": "/bookmarks/"
+      },
+      {
+        "text": "Work",
+        "url": "/work/"
       }
     ],
     "bottom": [
       {
-        "text": "bot",
-        "url": "/"
+        "text": "About",
+        "url": "/about/"
       },
       {
-        "text": "box",
-        "url": "/about/"
+        "text": "Uses",
+        "url": "/uses/"
+      },
+      {
+        "text": "Now",
+        "url": "/now/"
       }
     ]
   }

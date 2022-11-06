@@ -6,32 +6,38 @@ meta:
     '11st-Starter-Kit is a minimal starting point for building static websites
     with 11ty, powered by Vite with Tailwind CSS and Alpine.js.'
 intro:
-  title: 'Welcome to hello'
-  desc:
-    'For a guide and recipes on how to configure / customize this project, check
-    out the <a href="https://www.11ty.dev/docs/" class="font-medium underline text-neutral-100">Eleventy</a> and <a href="https://vitejs.dev/"
-    class="font-medium underline text-neutral-100">Vite</a> documentation.'
+  title: "G'day, I'm Brody MacLean, a multi-disciplinary designer working remotely from Sydney, Australia."
+  # desc: '<span class="mr-2">Currently, I am Design System Lead at</span><a href="https://www.prospa.com/" class="link" target="_blank" rel="noreferrer">{% svg "prospa", "h-4 w-20 inline-block fill-current text-emerald-500 hover:text-emerald-400" %}</a>, giving our designers and developers the tools to help small businesses keep moving.'
 ---
+
+<p class="mb-8 text-lg text-neutral-400">
+<span class="mr-2">Currently, I am Design System Lead at</span><a href='https://www.prospa.com/' class='link' target='_blank' rel='noreferrer'>{% svg "prospa", "-mx-0.5 h-4 w-20 inline-block fill-current text-emerald-500 hover:text-emerald-400" %}</a>, giving our designers and developers the tools to help small businesses keep moving.</p>
+
+Previously I built design systems for [Deputy](https://www.deputy.com/){target="\_blank" rel="noreferrer" .decoration-orange-500 .decoration-2 .decoration-dotted} & [Jobadder](https://jobadder.com/){target="\_blank" rel="noreferrer" .decoration-blue-500 .decoration-2 .decoration-dotted}, as well as designed products for [SafetyCulture](https://safetyculture.com/){target="\_blank" rel="noreferrer" .decoration-purple-500 .decoration-2 .decoration-dotted}, [Hudl](https://www.hudl.com/){target="\_blank" rel="noreferrer" .decoration-orange-600 .decoration-2 .decoration-dotted} and [Fairfax Media](https://www.fairfaxmedia.com.au/){target="\_blank" rel="noreferrer" .decoration-blue-700 .decoration-2 .decoration-dotted}.
+{.mb-8}
+
+#### Get in touch {.mb-4 .text-xs .font-semibold .uppercase .text-neutral-450}
+
+<div class="flex flex-wrap gap-2">
+<a target="_blank" class="inline-flex items-center h-8 px-3 no-underline rounded-md text-sky-400 bg-neutral-800 hover:bg-neutral-750 hover:text-sky-300" href="https://twitter.com/BrodyMaclean">
+{% icon "brand-twitter", "w-4 h-4 inline-block mr-2" %}Twitter</a>
+<a target="_blank" class="inline-flex items-center h-8 px-3 text-pink-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-pink-300" href="https://www.instagram.com/brody/">{% icon "brand-instagram", "w-4 h-4 inline-block mr-2" %}Instagram</a>
+<a target="_blank" class="inline-flex items-center h-8 px-3 text-yellow-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-yellow-300" href="mailto:hello@brody.com">{% icon "at", "w-4 h-4 inline-block mr-2" %}Email</a></div>
 
 ## Community
 
-[Eleventy](https://www.11ty.dev/news/discord/) -
-[Vite](https://chat.vitejs.dev/) - [Tailwind
-CSS](https://tailwindcss.com/discord) - [Alpine.js](https://discord.gg/CGmj5nq)
+[Eleventy](https://www.11ty.dev/news/discord/) - [Vite](https://chat.vitejs.dev/) - [Tailwind CSS](https://tailwindcss.com/discord) - [Alpine.js](https://discord.gg/CGmj5nq)
 
 ## Awesome
 
-[Eleventy](https://github.com/scottishstoater/awesome-eleventy) -
-[Vite](https://github.com/vitejs/awesome-vite) - [Tailwind
-CSS](https://github.com/aniftyco/awesome-tailwindcss) -
-[Alpine.js](https://github.com/alpine-collective/awesome)
+[Eleventy](https://github.com/scottishstoater/awesome-eleventy) - [Vite](https://github.com/vitejs/awesome-vite) - [Tailwind CSS](https://github.com/aniftyco/awesome-tailwindcss) - [Alpine.js](https://github.com/alpine-collective/awesome)
 
 ## Ecosystem
 
 [Eleventy](https://www.11ty.dev/) - [Vite](https://vitejs.dev/) -
 [Tailwind CSS](https://tailwindcss.com/) - [Alpine.js](https://github.com/alpinejs/alpine/)
 
-<!-- # h1 Heading 8-) -->
+<!-- # h1 Heading -->
 
 ## h2 Heading
 

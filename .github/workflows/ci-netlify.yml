@@ -29,7 +29,7 @@ jobs:
         uses: jakepartusch/wait-for-netlify-action@v1.3
         id: waitFor200
         with:
-          site_name: '11st-starter-kit'
+          site_name: 'Brody.com'
           max_timeout: 60
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v8

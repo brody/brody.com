@@ -3,33 +3,40 @@
     "top": [
       {
         "text": "Home",
-        "url": "/"
+        "url": "/",
+        "icon": "home-2"
       },
       {
         "text": "Journal",
-        "url": "/journal/"
+        "url": "/journal/",
+        "icon": "notebook"
       },
       {
         "text": "Bookmarks",
-        "url": "/bookmarks/"
+        "url": "/bookmarks/",
+        "icon": "bookmarks"
       },
       {
         "text": "Work",
-        "url": "/work/"
+        "url": "/work/",
+        "icon": "brush"
       }
     ],
     "bottom": [
       {
         "text": "About",
-        "url": "/about/"
+        "url": "/about/",
+        "icon": "user-circle"
       },
       {
         "text": "Uses",
-        "url": "/uses/"
+        "url": "/uses/",
+        "icon": "device-desktop-analytics"
       },
       {
         "text": "Now",
-        "url": "/now/"
+        "url": "/now/",
+        "icon": "calendar"
       }
     ]
   }

@@ -1,5 +1,64 @@
-@import '/styles/fonts.css';
+@import url('/styles/fonts.css');
+@import url('/styles/syntax-highlighting.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* html,
+body {
+  @apply antialiased bg-neutral-900 font-wotfard;
+} */
+
+.prose {
+  @apply prose-h1:text-2xl prose-h1:font-semibold prose-h1:leading-snug prose-h1:text-neutral-50 prose-h2:text-xl prose-h2:font-semibold prose-h2:leading-snug prose-h2:text-neutral-200 prose-h3:text-neutral-200 prose-h4:text-xs prose-h4:font-semibold prose-h4:uppercase prose-h4:text-neutral-450;
+}
+
+h1 {
+  @apply text-2xl font-semibold leading-snug text-neutral-50;
+
+  letter-spacing: -0.005em;
+
+  /* line-height: 140%; */
+}
+
+h2 {
+  @apply text-xl font-semibold leading-snug text-neutral-200;
+}
+
+h3 {
+  @apply text-neutral-200;
+}
+
+h4 {
+  @apply text-xs font-semibold uppercase text-neutral-450;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  @apply max-w-xl;
+}
+
+.small {
+  @apply text-sm;
+
+  letter-spacing: -0.01em;
+}
+
+#prose p {
+  @apply mb-8;
+
+  line-height: 162.5%;
+}
+
+#prose a,
+a.link {
+  /* @apply underline text-neutral-300 decoration-neutral-600 decoration-2 hover:text-neutral-300 hover:decoration-amber-400; */
+}
+
+* {
+  box-sizing: border-box;
+}

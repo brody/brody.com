@@ -1,4 +1,18 @@
 const fs = require('fs');
+const Image = require('@11ty/eleventy-img');
+const path = require('path');
+const svgSprite = require('eleventy-plugin-svg-sprite');
+const markdownIt = require('markdown-it');
+const markdownItAttrs = require('markdown-it-attrs');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+
+const markdownItOptions = {
+  html: true,
+  breaks: true,
+  linkify: true,
+};
+
+const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
 
 module.exports = function (config) {
   config.setLiquidOptions({
@@ -11,6 +25,23 @@ module.exports = function (config) {
   config.addPassthroughCopy('./src/styles');
   config.addPassthroughCopy('./src/main.js');
   config.addPassthroughCopy('./src/fonts');
+
+  config.addPlugin(syntaxHighlight);
+
+  config.addPlugin(svgSprite, [
+    {
+      path: './src/images/icons', // relative path to SVG directory
+      svgSpriteShortcode: 'svgspriteIcon',
+      svgShortcode: 'icon',
+    },
+    {
+      path: './src/images/svg', // relative path to SVG directory
+      svgSpriteShortcode: 'svgspriteSvg',
+      svgShortcode: 'svg',
+    },
+  ]);
+
+  config.setLibrary('md', markdownLib);
 
   return {
     dir: {

@@ -24,6 +24,12 @@ Previously I built design systems for [Deputy](https://www.deputy.com/){target="
 <a target="_blank" class="inline-flex items-center h-8 px-3 text-pink-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-pink-300" href="https://www.instagram.com/brody/">{% icon "brand-instagram", "w-4 h-4 inline-block mr-2" %}Instagram</a>
 <a target="_blank" class="inline-flex items-center h-8 px-3 text-yellow-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-yellow-300" href="mailto:hello@brody.com">{% icon "at", "w-4 h-4 inline-block mr-2" %}Email</a></div>
 
+## Recent activity
+
+### Recent tracks
+
+{% include "partials/reading.njk" %}
+
 ## Community
 
 [Eleventy](https://www.11ty.dev/news/discord/) - [Vite](https://chat.vitejs.dev/) - [Tailwind CSS](https://tailwindcss.com/discord) - [Alpine.js](https://discord.gg/CGmj5nq)

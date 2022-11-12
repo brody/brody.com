@@ -1,0 +1,43 @@
+---
+layout: 'layouts/home.njk'
+title: 'Home'
+meta:
+  desc:
+    '11st-Starter-Kit is a minimal starting point for building static websites
+    with 11ty, powered by Vite with Tailwind CSS and Alpine.js.'
+intro:
+  title: "G'day, I'm Brody MacLean, a multi-disciplinary designer working remotely from Sydney, Australia."
+  # desc: 
+---
+<section class="mb-20 no-prose">
+  <p class="mb-8 text-lg text-neutral-400"> Foo is {{ env.LASTFM_KEY }}
+    <span class="mr-0.5">Currently, I am Design System Lead at</span>
+    <a href='https://www.prospa.com/' class='-mx-0.5 underline link' target='_blank' rel='noreferrer'>{% svg "prospa", " h-4 w-20 inline-block fill-current text-emerald-500 hover:text-emerald-400" %}</a>, giving our designers and developers the tools to help small businesses keep moving.
+  </p>
+
+  <p class='mb-8'>
+    Previously I built design systems for
+    <a href='https://www.deputy.com/' class='underline link hover:decoration-[#FD6C63] decoration-neutral-500 decoration-2 decorationdotted' target='_blank' rel='noreferrer'>Deputy</a> &
+    <a href='https://jobadder.com/' class='underline link hover:decoration-[#0069B2] decoration-neutral-500 decoration-2 decorationdotted' target='_blank' rel='noreferrer'>JobAdder</a>, as well as designed products for
+    <a href='https://safetyculture.com/' class='underline link hover:decoration-[#4740d4] decoration-neutral-500 decoration-2 decorationdotted' target='_blank' rel='noreferrer'>SafetyCulture</a>,
+    <a href='https://www.hudl.com/' class='underline link hover:decoration-[#FF6300] decoration-neutral-500 decoration-2 decorationdotted' target='_blank' rel='noreferrer'>Hudl</a> and
+    <a href='https://www.fairfaxmedia.com.au/' class='underline link hover:decoration-blue-700 decoration-neutral-500 decoration-2 decorationdotted' target='_blank' rel='noreferrer'>Fairfax Media</a>.
+  </p>
+
+  <h4 class="mb-4 text-xs font-semibold uppercase text-neutral-450">Get in touch</h4>
+
+  <div class="flex flex-wrap gap-2">
+    <a target="_blank" class="inline-flex items-center h-8 px-3 no-underline rounded-md text-sky-400 bg-neutral-800 hover:bg-neutral-750 hover:text-sky-300" href="https://twitter.com/BrodyMaclean">{% icon "brand-twitter", "w-4 h-4 inline-block mr-2" %}Twitter</a>
+    <a target="_blank" class="inline-flex items-center h-8 px-3 text-pink-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-pink-300" href="https://www.instagram.com/brody/">{% icon "brand-instagram", "w-4 h-4 inline-block mr-2" %}Instagram</a>
+    <a target="_blank" class="inline-flex items-center h-8 px-3 text-yellow-400 no-underline rounded-md bg-neutral-800 hover:bg-neutral-750 hover:text-yellow-300" href="mailto:hello@brody.com">{% icon "at", "w-4 h-4 inline-block mr-2" %}Email</a>
+  </div>
+
+</section>
+
+{# {% include "partials/recently-played.njk" %} #}
+
+<section>
+  <h2 class="mb-10">Recent activity</h2>
+  <h4 class="mb-5">Currently reading</h4>
+  {% include "partials/reading.njk" %}
+</section>

@@ -19,6 +19,12 @@ module.exports = function (config) {
     dynamicPartials: true,
   });
 
+  config.setBrowserSyncConfig({
+    open: true,
+    // reloadDelay: 5000,
+    injectChanges: true,
+  });
+
   // Static assets to pass through
   config.addPassthroughCopy('./src/images');
   config.addPassthroughCopy('./src/public');

@@ -5,11 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html,
-body {
-  @apply antialiased bg-neutral-900 font-wotfard;
-} */
-
 .prose {
   @apply prose-h1:text-2xl prose-h1:font-semibold prose-h1:leading-snug prose-h1:text-neutral-50 prose-h2:text-xl prose-h2:font-semibold prose-h2:leading-snug prose-h2:text-neutral-200 prose-h3:text-neutral-200 prose-h4:text-xs prose-h4:font-semibold prose-h4:uppercase prose-h4:text-neutral-450;
 }
@@ -62,3 +57,64 @@ a.link {
 * {
   box-sizing: border-box;
 }
+
+/*! purgecss start ignore */
+
+/* Goodreads */
+
+.gr_custom_container_1532863785 br,
+.gr_custom_container_1532863785 center,
+.gr_custom_header_1532863785 {
+  display: none;
+}
+
+/* .gr_custom_container_1532863785 img {
+  min-width: 80px;
+} */
+
+#gr_custom_widget_1532863785 {
+  margin-top: 1.25rem;
+}
+
+.gr_custom_each_container_1532863785 {
+  column-gap: 1rem;
+  column-gap: 1rem;
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: 5rem auto;
+  grid-template-rows: auto 1fr;
+  margin-bottom: 1rem;
+}
+
+.gr_custom_book_container_1532863785 {
+  grid-column: span 1 / span 1;
+  grid-column-start: 1;
+  grid-row: span 2 / span 2;
+  grid-row-start: 1;
+  @apply overflow-hidden rounded-md;
+}
+
+.gr_custom_title_1532863785 {
+  align-self: flex-start;
+  grid-column: span 1 / span 1;
+  grid-column-start: 2;
+  grid-row: span 1 / span 1;
+  grid-row-start: 1;
+  padding-top: 0.25rem;
+  @apply font-medium text-neutral-250;
+}
+
+.gr_custom_author_1532863785 {
+  align-self: flex-start;
+  grid-column: span 1 / span 1;
+  grid-column-start: 2;
+  grid-row: span 1 / span 1;
+  grid-row-start: 2;
+  @apply text-neutral-450;
+}
+
+.gr_custom_author_1532863785 a {
+  @apply border-b border-neutral-800 text-neutral-450;
+}
+
+/*! purgecss end ignore */

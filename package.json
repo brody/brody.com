@@ -22,8 +22,8 @@
     "vite"
   ],
   "author": {
-    "name": "Stefan Frede",
-    "email": "stefan@frede.dev"
+    "name": "Brody MacLean",
+    "email": "hello@brody.com"
   },
   "license": "MIT",
   "private": true,
@@ -73,6 +73,7 @@
     "autoprefixer": "^10.2.4",
     "browserslist": "^4.16.6",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "eleventy-plugin-svg-sprite": "^2.0.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
@@ -98,6 +99,7 @@
     "vite-plugin-pwa": "^0.13.2"
   },
   "dependencies": {
+    "@11ty/eleventy-cache-assets": "^2.3.0",
     "alpinejs": "^3.0.1",
     "core-js": "^3.20.2",
     "markdown-it-attrs": "^4.1.4",

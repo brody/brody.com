@@ -1,0 +1,17 @@
+<!-- _includes/partials/recently-played.html -->
+{% set recentlyPlayed = lastfm.recenttracks.track %}
+{% if recentlyPlayed.length %}
+  <ul class="recently-played">
+    {% for item in recentlyPlayed %}
+      <li class="recently-played__track">
+        <a href="{{ item.url }}" class="track__url">
+          <div class="track__media">
+            <img src="{{ item.image[3]['#text'] }}" alt="Album artwork for {{ item.name }} by {{ item.artist['#text'] }}" loading="lazy" />
+          </div>
+          <span class="track__name">{{ item.name }}</span>
+          <span class="track__artist">{{ item.artist['#text'] }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

@@ -1,21 +1,17 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier"
-  ],
-  "plugins": [
-    "stylelint-no-unsupported-browser-features",
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-no-unsupported-browser-features", "stylelint-order"],
   "rules": {
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
     "no-descending-specificity": null,
-    "plugin/no-unsupported-browser-features": [true, {
-      "severity": "warning"
-    }],
-    "order/order": [
-      "custom-properties",
-      "declarations"
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning"
+      }
     ],
+    "order/order": ["custom-properties", "declarations"],
     "order/properties-alphabetical-order": true,
     "at-rule-no-unknown": [
       true,

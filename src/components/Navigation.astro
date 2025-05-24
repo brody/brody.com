@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import avatarImage from '/public/assets/images/brody.png'
+
+/** Main menu items */
+const navLinks: { label: string; href: string; icon: string }[] = [
+  { label: 'Home', href: '/', icon: 'tabler:home-2' },
+  { label: 'Notes', href: '/notes/', icon: 'tabler:note' },
+  { label: 'Articles', href: '/blog/', icon: 'tabler:notebook' },
+  { label: 'Projects', href: '/projects/', icon: 'tabler:rocket' },
+  { label: 'About', href: '/about/', icon: 'tabler:user' },
+]
+
+/** Icon links to social media — edit these with links to your profiles! */
+const libraryLinks: { label: string; href: string; icon: string }[] = [
+  { label: 'Bookmarks', href: 'https://twitter.com/me', icon: 'tabler:bookmarks' },
+  { label: 'Movies', href: 'https://twitter.com/me', icon: 'tabler:movie' },
+  { label: 'TV Shows', href: 'https://twitter.com/me', icon: 'tabler:device-tv-old' },
+  { label: 'Games', href: 'https://twitter.com/me', icon: 'tabler:device-gamepad-2' },
+  { label: 'Live Music', href: 'https://twitter.com/me', icon: 'tabler:music' },
+  { label: 'Uses', href: 'https://twitter.com/me', icon: 'tabler:devices-2' },
+]
+
+/** Test if a link is pointing to the current page. */
+const isCurrentPage = (href: string) => {
+  let pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
+  if (pathname.at(0) !== '/') pathname = '/' + pathname
+  if (pathname.at(-1) !== '/') pathname += '/'
+  return pathname === href || (href !== '/' && pathname.startsWith(href))
+}
+---
+
+<nav class='flex flex-col gap-4 px-6 pt-12 pb-10'>
+  <a href='/' class='p-4'>
+    <Image
+      src={avatarImage}
+      alt='Brody Maclean'
+      width={96}
+      height={96}
+      quality={90}
+      class='w-12 h-12 rounded-full'
+    />
+  </a>
+  <div>
+    <ul class='nav-items'>
+      {
+        navLinks.map(({ label, href, icon }) => (
+          <li>
+            <a
+              aria-current={isCurrentPage(href) ? 'page' : null}
+              class={
+                isCurrentPage(href)
+                  ? 'link inline-flex rounded-xl text-sm gap-3 border border-border-default bg-bg-weak text-fg-strong py-1.5 pl-4 pr-5  items-center'
+                  : 'link inline-flex rounded-xl text-sm gap-3 border border-transparent py-1.5 pl-4 pr-5 items-center hover:bg-bg-weak'
+              }
+              href={href}
+            >
+              <Icon size={16} name={icon} class='' />
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div>
+    <span class='flex px-4 mb-2 text-sm text-fg-weakest'>Library</span>
+    <ul class='library-nav'>
+      {
+        libraryLinks.map(({ href, icon, label }) => (
+          <li>
+            <a
+              aria-current={isCurrentPage(href) ? 'page' : null}
+              class={
+                isCurrentPage(href)
+                  ? 'link inline-flex rounded-xl text-sm gap-3 border border-border-default bg-bg-weak text-fg-strong py-1.5 pl-4 pr-5  items-center'
+                  : 'link inline-flex rounded-xl text-sm gap-3 border border-transparent py-1.5 pl-4 pr-5 items-center hover:bg-bg-weak'
+              }
+              href={href}
+            >
+              <Icon size={16} name={icon} class='' />
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,351 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fg-strong: var(--color-neutral-900);
+  --color-fg-default: var(--color-neutral-800);
+  --color-fg-weak: var(--color-neutral-700);
+  --color-fg-weaker: var(--color-neutral-600);
+  --color-fg-weakest: var(--color-neutral-500);
+  --color-border-default: var(--color-neutral-400);
+  --color-bg-default: var(--color-neutral-0);
+  --color-bg-weak: var(--color-neutral-25);
+
+  --color-lavender-50: rgba(238, 241, 255, 1);
+  --color-lavender-100: rgba(223, 230, 255, 1);
+  --color-lavender-200: rgba(198, 207, 255, 1);
+  --color-lavender-300: rgba(180, 190, 254, 1);
+  --color-lavender-400: rgba(127, 133, 250, 1);
+  --color-lavender-500: rgba(99, 96, 244, 1);
+  --color-lavender-600: rgba(82, 67, 232, 1);
+  --color-lavender-700: rgba(70, 53, 205, 1);
+  --color-lavender-800: rgba(57, 46, 165, 1);
+  --color-lavender-900: rgba(50, 44, 131, 1);
+  --color-lavender-950: rgba(31, 26, 76, 1);
+  --color-blue-50: rgba(239, 245, 255, 1);
+  --color-blue-100: rgba(220, 231, 253, 1);
+  --color-blue-200: rgba(192, 213, 253, 1);
+  --color-blue-300: rgba(137, 180, 250, 1);
+  --color-blue-400: rgba(100, 152, 246, 1);
+  --color-blue-500: rgba(63, 115, 242, 1);
+  --color-blue-600: rgba(42, 84, 230, 1);
+  --color-blue-700: rgba(33, 64, 212, 1);
+  --color-blue-800: rgba(33, 53, 172, 1);
+  --color-blue-900: rgba(33, 50, 135, 1);
+  --color-blue-950: rgba(24, 33, 83, 1);
+  --color-sapphire-50: rgba(242, 249, 253, 1);
+  --color-sapphire-100: rgba(227, 241, 251, 1);
+  --color-sapphire-200: rgba(193, 229, 246, 1);
+  --color-sapphire-300: rgba(116, 199, 236, 1);
+  --color-sapphire-400: rgba(76, 183, 228, 1);
+  --color-sapphire-500: rgba(36, 160, 211, 1);
+  --color-sapphire-600: rgba(22, 128, 179, 1);
+  --color-sapphire-700: rgba(19, 102, 145, 1);
+  --color-sapphire-800: rgba(20, 86, 120, 1);
+  --color-sapphire-900: rgba(22, 72, 100, 1);
+  --color-sapphire-950: rgba(15, 47, 66, 1);
+  --color-sky-50: rgba(238, 251, 253, 1);
+  --color-sky-100: rgba(212, 244, 249, 1);
+  --color-sky-200: rgba(175, 233, 242, 1);
+  --color-sky-300: rgba(137, 220, 235, 1);
+  --color-sky-400: rgba(58, 188, 214, 1);
+  --color-sky-500: rgba(30, 159, 188, 1);
+  --color-sky-600: rgba(28, 128, 158, 1);
+  --color-sky-700: rgba(29, 103, 129, 1);
+  --color-sky-800: rgba(32, 85, 106, 1);
+  --color-sky-900: rgba(31, 72, 90, 1);
+  --color-sky-950: rgba(15, 46, 61, 1);
+  --color-teal-50: rgba(242, 251, 249, 1);
+  --color-teal-100: rgba(211, 244, 238, 1);
+  --color-teal-200: rgba(148, 226, 213, 1);
+  --color-teal-300: rgba(116, 212, 200, 1);
+  --color-teal-400: rgba(71, 186, 174, 1);
+  --color-teal-500: rgba(46, 158, 149, 1);
+  --color-teal-600: rgba(34, 127, 120, 1);
+  --color-teal-700: rgba(31, 102, 98, 1);
+  --color-teal-800: rgba(29, 82, 79, 1);
+  --color-teal-900: rgba(28, 69, 67, 1);
+  --color-teal-950: rgba(11, 39, 40, 1);
+  --color-green-50: rgba(243, 251, 242, 1);
+  --color-green-100: rgba(228, 247, 225, 1);
+  --color-green-200: rgba(199, 238, 196, 1);
+  --color-green-300: rgba(166, 227, 161, 1);
+  --color-green-400: rgba(104, 200, 96, 1);
+  --color-green-500: rgba(66, 173, 58, 1);
+  --color-green-600: rgba(50, 142, 43, 1);
+  --color-green-700: rgba(42, 112, 37, 1);
+  --color-green-800: rgba(37, 89, 34, 1);
+  --color-green-900: rgba(31, 74, 29, 1);
+  --color-green-950: rgba(12, 40, 11, 1);
+  --color-yellow-50: rgba(254, 248, 236, 1);
+  --color-yellow-100: rgba(249, 226, 175, 1);
+  --color-yellow-200: rgba(247, 215, 144, 1);
+  --color-yellow-300: rgba(243, 189, 86, 1);
+  --color-yellow-400: rgba(239, 165, 48, 1);
+  --color-yellow-500: rgba(232, 132, 24, 1);
+  --color-yellow-600: rgba(206, 97, 17, 1);
+  --color-yellow-700: rgba(171, 67, 18, 1);
+  --color-yellow-800: rgba(139, 53, 21, 1);
+  --color-yellow-900: rgba(114, 45, 21, 1);
+  --color-yellow-950: rgba(65, 21, 7, 1);
+  --color-peach-50: rgba(255, 245, 237, 1);
+  --color-peach-100: rgba(254, 232, 214, 1);
+  --color-peach-200: rgba(252, 205, 172, 1);
+  --color-peach-300: rgba(250, 179, 135, 1);
+  --color-peach-400: rgba(246, 124, 65, 1);
+  --color-peach-500: rgba(243, 88, 28, 1);
+  --color-peach-600: rgba(228, 63, 18, 1);
+  --color-peach-700: rgba(189, 45, 17, 1);
+  --color-peach-800: rgba(150, 38, 22, 1);
+  --color-peach-900: rgba(121, 33, 21, 1);
+  --color-peach-950: rgba(65, 14, 9, 1);
+  --color-maroon-50: rgba(253, 243, 244, 1);
+  --color-maroon-100: rgba(251, 232, 235, 1);
+  --color-maroon-200: rgba(246, 213, 218, 1);
+  --color-maroon-300: rgba(235, 160, 172, 1);
+  --color-maroon-400: rgba(229, 135, 152, 1);
+  --color-maroon-500: rgba(215, 92, 117, 1);
+  --color-maroon-600: rgba(194, 60, 95, 1);
+  --color-maroon-700: rgba(163, 45, 78, 1);
+  --color-maroon-800: rgba(137, 40, 71, 1);
+  --color-maroon-900: rgba(117, 38, 65, 1);
+  --color-maroon-950: rgba(65, 16, 32, 1);
+  --color-red-50: rgba(254, 242, 245, 1);
+  --color-red-100: rgba(253, 230, 235, 1);
+  --color-red-200: rgba(251, 208, 220, 1);
+  --color-red-300: rgba(247, 170, 190, 1);
+  --color-red-400: rgba(243, 139, 168, 1);
+  --color-red-500: rgba(231, 76, 123, 1);
+  --color-red-600: rgba(211, 43, 102, 1);
+  --color-red-700: rgba(178, 30, 86, 1);
+  --color-red-800: rgba(149, 28, 77, 1);
+  --color-red-900: rgba(128, 27, 72, 1);
+  --color-red-950: rgba(71, 10, 35, 1);
+
+  --color-mauve-50: rgba(250, 246, 254, 1);
+  --color-mauve-100: rgba(242, 234, 253, 1);
+  --color-mauve-200: rgba(232, 216, 252, 1);
+  --color-mauve-300: rgba(203, 166, 247, 1);
+  --color-mauve-400: rgba(189, 141, 243, 1);
+  --color-mauve-500: rgba(164, 97, 235, 1);
+  --color-mauve-600: rgba(141, 64, 221, 1);
+  --color-mauve-700: rgba(121, 46, 194, 1);
+  --color-mauve-800: rgba(103, 43, 158, 1);
+  --color-mauve-900: rgba(84, 36, 127, 1);
+  --color-mauve-950: rgba(56, 14, 93, 1);
+  --color-pink-50: rgba(252, 243, 249, 1);
+  --color-pink-100: rgba(250, 233, 246, 1);
+  --color-pink-200: rgba(245, 194, 231, 1);
+  --color-pink-300: rgba(243, 174, 222, 1);
+  --color-pink-400: rgba(234, 124, 199, 1);
+  --color-pink-500: rgba(224, 84, 175, 1);
+  --color-pink-600: rgba(205, 53, 145, 1);
+  --color-pink-700: rgba(177, 37, 117, 1);
+  --color-pink-800: rgba(147, 33, 97, 1);
+  --color-pink-900: rgba(123, 32, 83, 1);
+  --color-pink-950: rgba(74, 13, 47, 1);
+  --color-flamingo-50: rgba(252, 244, 244, 1);
+  --color-flamingo-100: rgba(249, 231, 231, 1);
+  --color-flamingo-200: rgba(242, 205, 205, 1);
+  --color-flamingo-300: rgba(235, 182, 182, 1);
+  --color-flamingo-400: rgba(222, 139, 139, 1);
+  --color-flamingo-500: rgba(206, 101, 101, 1);
+  --color-flamingo-600: rgba(184, 74, 74, 1);
+  --color-flamingo-700: rgba(154, 59, 59, 1);
+  --color-flamingo-800: rgba(128, 52, 52, 1);
+  --color-flamingo-900: rgba(108, 48, 48, 1);
+  --color-flamingo-950: rgba(57, 22, 22, 1);
+  --color-rosewater-50: rgba(251, 246, 245, 1);
+  --color-rosewater-100: rgba(248, 235, 232, 1);
+  --color-rosewater-200: rgba(245, 224, 220, 1);
+  --color-rosewater-300: rgba(234, 191, 183, 1);
+  --color-rosewater-400: rgba(219, 154, 142, 1);
+  --color-rosewater-500: rgba(203, 120, 104, 1);
+  --color-rosewater-600: rgba(182, 93, 76, 1);
+  --color-rosewater-700: rgba(152, 76, 61, 1);
+  --color-rosewater-800: rgba(126, 66, 54, 1);
+  --color-rosewater-900: rgba(106, 59, 50, 1);
+  --color-rosewater-950: rgba(57, 28, 22, 1);
+  --color-neutral-0: rgba(243, 245, 251, 1);
+  --color-neutral-25: rgba(205, 214, 244, 1);
+  --color-neutral-50: rgba(186, 194, 222, 1);
+  --color-neutral-100: rgba(166, 173, 200, 1);
+  --color-neutral-200: rgba(147, 153, 178, 1);
+  --color-neutral-300: rgba(127, 132, 156, 1);
+  --color-neutral-400: rgba(108, 112, 134, 1);
+  --color-neutral-500: rgba(88, 91, 112, 1);
+  --color-neutral-600: rgba(69, 71, 90, 1);
+  --color-neutral-700: rgba(49, 50, 68, 1);
+  --color-neutral-800: rgba(30, 30, 46, 1);
+  --color-neutral-900: rgba(24, 24, 37, 1);
+  --color-neutral-950: rgba(17, 17, 27, 1);
+
+  --content-width: 663px;
+  --layout-padding: 16px
+  --sidebar-width: 247px;
+
+}
+
+@layer base {
+	@font-face {
+		font-family: 'Wotfard';
+		src: url('/assets/fonts/wotfard-regular-webfont.eot');
+		src:
+			url('/assets/fonts/wotfard-regular-webfont.eot?#iefix') format('embedded-opentype'),
+			url('/assets/fonts/wotfard-regular-webfont.woff2') format('woff2'),
+			url('/assets/fonts/wotfard-regular-webfont.ttf') format('truetype');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Wotfard';
+		src: url('/assets/fonts/wotfard-regularitalic-webfont.eot');
+		src:
+			url('/assets/fonts/wotfard-regularitalic-webfont.eot?#iefix') format('embedded-opentype'),
+			url('/assets/fonts/wotfard-regularitalic-webfont.woff2') format('woff2'),
+			url('/assets/fonts/wotfard-regularitalic-webfont.ttf') format('truetype');
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Wotfard';
+		src: url('/assets/fonts/wotfard-medium-webfont.eot');
+		src:
+			url('/assets/fonts/wotfard-medium-webfont.eot?#iefix') format('embedded-opentype'),
+			url('/assets/fonts/wotfard-medium-webfont.woff2') format('woff2'),
+			url('/assets/fonts/wotfard-medium-webfont.ttf') format('truetype');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Wotfard';
+		src: url('/assets/fonts/wotfard-semibold-webfont.eot');
+		src:
+			url('/assets/fonts/wotfard-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+			url('/assets/fonts/wotfard-semibold-webfont.woff2') format('woff2'),
+			url('/assets/fonts/wotfard-semibold-webfont.ttf') format('truetype');
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'AcidGrotesk';
+		src: url('/assets/fonts/AcidGrotesk-Bold.otf') format('opentype');
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'MonoLisa';
+		src: url('/assets/fonts/MonoLisa-Regular.otf') format('opentype');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+}
+
+
+
+html.dark {
+  --color-fg-strong: var(--color-neutral-0);
+  --color-fg-default: var(--color-neutral-25);
+  --color-fg-weak: var(--color-neutral-100);
+  --color-fg-weaker: var(--color-neutral-200);
+  --color-fg-weakest: var(--color-neutral-300);
+  --color-border-default: var(--color-neutral-700);
+  --color-bg-default: var(--color-neutral-950);
+  --color-bg-weak: var(--color-neutral-900);
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
+.dot-pattern {
+  --dot-color: var(--color-border-default);
+  --dot-size: .9px;
+  --dot-step: 24px;
+  --device-pixel-ratio: 2;
+  --dot-stop: calc(var(--dot-size) - min(.5px, 1px / var(--device-pixel-ratio)));
+  background-size: var(--dot-step) var(--dot-step);
+  background-position: calc(50% + var(--dot-step) / 2) 0;
+  background-image: radial-gradient(var(--dot-step) circle, var(--dot-color) var(--dot-stop), transparent var(--dot-size));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+/* nav styles */
+
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: #ff9776;
+}
+
+.nav-links {
+  width: 100%;
+  top: 5rem;
+  left: 48px;
+  background-color: #ff9776;
+  display: none;
+  margin: 0;
+}
+
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: #ff9776;
+}
+
+.expanded {
+  display: unset;
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

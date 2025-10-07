@@ -1,16 +1,118 @@
 ---
 import BaseLayout from './BaseLayout.astro'
+import { Image } from 'astro:assets'
 const { frontmatter } = Astro.props
+
+// Function to format date as relative time or formatted date
+function formatDate(pubDate: Date | string): string {
+  // Convert string to Date if needed
+  const dateObj = typeof pubDate === 'string' ? new Date(pubDate) : pubDate
+
+  // Get current time
+  const now = new Date()
+
+  // Calculate time difference in milliseconds
+  const diffTime = now.getTime() - dateObj.getTime()
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+  const diffHours = Math.floor(diffTime / (1000 * 60 * 60))
+  const diffMinutes = Math.floor(diffTime / (1000 * 60))
+
+  // If the date is in the future, just show the formatted date
+  if (diffTime < 0) {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ]
+    const month = months[dateObj.getMonth()]
+    const day = dateObj.getDate()
+    return `${month} ${day}`
+  }
+
+  // If less than an hour, show minutes
+  if (diffMinutes < 60 && diffMinutes > 0) {
+    return `${diffMinutes}m ago`
+  }
+
+  // If less than a day, show hours
+  if (diffHours < 24 && diffHours > 0) {
+    return `${diffHours}h ago`
+  }
+
+  // If within the past week, show relative time
+  if (diffDays <= 7 && diffDays > 0) {
+    if (diffDays === 1) return '1d ago'
+    if (diffDays === 2) return '2d ago'
+    if (diffDays === 3) return '3d ago'
+    if (diffDays === 4) return '4d ago'
+    if (diffDays === 5) return '5d ago'
+    if (diffDays === 6) return '6d ago'
+    if (diffDays === 7) return '7d ago'
+  }
+
+  // For older dates, format as "Sep 16"
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  const month = months[dateObj.getMonth()]
+  const day = dateObj.getDate()
+
+  return `${month} ${day}`
+}
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
+<BaseLayout pageTitle={frontmatter.title || 'no title'}>
+  {
+    frontmatter.pubDate && (
+      <p class='mb-3 text-sm text-tx-3'>Posted {formatDate(frontmatter.pubDate)}</p>
+    )
+  }
+  <h1 class='text-tx-0 text-h1 font-heading'>{frontmatter.title}</h1>
+  {
+    frontmatter.datePublished && !frontmatter.pubDate && (
+      <p>{new Date(frontmatter.datePublished).toLocaleDateString()}</p>
+    )
+  }
 
-  {frontmatter.image && <img src={frontmatter.image.url} width='300' alt={frontmatter.image.alt} />}
+  <!-- {
+    frontmatter.description && (
+      <p>
+        <em>{frontmatter.description}</em>
+      </p>
+    )
+  }
+  {frontmatter.author && <p>Written by: {frontmatter.author}</p>} -->
 
   {
+    frontmatter.image && (
+      <Image src={frontmatter.image.url} width={300} alt={frontmatter.image.alt} />
+    )
+  }
+
+  <div class='max-w-none prose prose-slate'>
+    <slot />
+  </div>
+  <!-- {
     frontmatter.tags && (
       <div class='tags'>
         {frontmatter.tags.map((tag: string) => (
@@ -20,9 +122,7 @@ const { frontmatter } = Astro.props
         ))}
       </div>
     )
-  }
-
-  <slot />
+  } -->
 </BaseLayout>
 <style>
   a {

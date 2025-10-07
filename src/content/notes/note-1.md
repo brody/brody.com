@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My First Note'
-pubDate: 2022-07-03
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
+title:
+pubDate: 2022-07-02
+description: This is the first post of my new Astro blog.
+author: Astro Learner
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+  url: https://docs.astro.build/assets/rose.webp
+  alt: The Astro logo on a dark background with a pink glow.
+tags: [tags]
 ---
 
 

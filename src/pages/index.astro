@@ -1,11 +1,202 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
-const pageTitle = 'Home Page';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Greeting from '../components/Greeting'
+const pageTitle = 'Home Page'
+import { getCollection, render } from 'astro:content'
+import LibraryItem from '../components/LibraryItem.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+import BookmarkPost from '../components/BookmarkPost.astro'
+
+// const allNotes = Object.values(import.meta.glob('./notes/*.md', { eager: true }));
+const allPosts = await Promise.all(
+  (await getCollection('journal')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'journal', renderedContent: { Content } }
+  })
+)
+const allNotes = (await getCollection('notes')).map((item) => ({ ...item, source: 'notes' }))
+const allMovies = (await getCollection('movies')).map((item) => ({ ...item, source: 'movies' }))
+const allTvShows = (await getCollection('tvShows')).map((item) => ({ ...item, source: 'tvShows' }))
+const allGames = (await getCollection('games')).map((item) => ({ ...item, source: 'games' }))
+const allBooks = (await getCollection('books')).map((item) => ({
+  ...item,
+  source: 'books',
+  data: {
+    ...item.data,
+    pubDate: item.data.datePublished || item.data.pubDate,
+    imageUrl: item.data.imageUrl || item.data.imageUrl,
+    imageAlt: item.data.title,
+    year: item.data.year,
+    rating: item.data.rating,
+  },
+}))
+const allBookmarks = await Promise.all(
+  (await getCollection('bookmarks')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'bookmarks', renderedContent: { Content } }
+  })
+)
+const allThings = [
+  ...allPosts,
+  ...allNotes,
+  ...allMovies,
+  ...allTvShows,
+  ...allGames,
+  ...allBooks,
+  ...allBookmarks,
+]
+  .filter((item) => item.data.pubDate) // Filter out items without dates
+  .sort((a, b) => {
+    const dateA = typeof a.data.pubDate === 'string' ? new Date(a.data.pubDate) : a.data.pubDate
+    const dateB = typeof b.data.pubDate === 'string' ? new Date(b.data.pubDate) : b.data.pubDate
+    if (!dateA || !dateB) return 0
+    return dateB.getTime() - dateA.getTime()
+  })
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h2 class='text-mint'>My awesome blog subtitle c cxoz</h2>
+<BaseLayout>
+  <section class='mb-8'>
+    <h1 class='max-w-xl text-tx-0 text-h1 font-heading'>
+      G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design lead
+      from Sydney, Australia. :-)
+    </h1>
+    <p class='mt-4 prose'>
+      Currently, I am Design Lead at <a href='https://atlassian.com/' target='_blank'>Atlassian</a>,
+      focusing on design quality & visual integration of our AI Design Kit.
+    </p>
+  </section>
 
-  <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} />
+  <!-- <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} /> -->
+
+  <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
+  <ul>
+    <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
+    <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
+    {
+      allThings.map((post, index) => {
+        // Use eager loading for first 3 items (above the fold), lazy for the rest
+        const loading = index < 3 ? 'eager' : 'lazy'
+
+        return (
+          <div>
+            {post.source === 'notes' && (
+              <ArticlePost
+                url={`/notes/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+              />
+            )}
+            {post.source === 'journal' && (
+              <ArticlePost
+                url={`/posts/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                content={'renderedContent' in post ? post.renderedContent : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'movies' && (
+              <LibraryItem
+                url={`/movies/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'tvShows' && (
+              <LibraryItem
+                url={`/tv-shows/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'games' && (
+              <LibraryItem
+                url={`/games/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'books' && (
+              <LibraryItem
+                url={`/books/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                author={'author' in post.data ? post.data.author : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'bookmarks' && (
+              <ArticlePost
+                url={`/bookmarks/${post.id}/`}
+                title={post.data.title}
+                sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
+                pubDate={post.data.pubDate}
+                source={post.source}
+                loading={loading}
+                sourceUrl={'source' in post.data ? post.data.source : undefined}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                faviconUrl={'faviconUrl' in post.data ? post.data.faviconUrl : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                content={'renderedContent' in post ? post.renderedContent : undefined}
+              />
+            )}
+
+            {/* {post.source === 'notes' ? <p>I am happy to be learning notes!</p> : <p>I am happy to be learning posts</p>} */}
+          </div>
+        )
+      })
+    }
+  </ul>
 </BaseLayout>
+
+<style>
+  .text-gradient {
+    background-image: var(--color-tx-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: textclip 1.5s linear infinite;
+
+    @apply bg-left;
+  }
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+</style>

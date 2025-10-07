@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+
+const pageTitle = 'Journal'
+const allJournalPosts = await Promise.all(
+  (await getCollection('journal')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'journal', renderedContent: { Content } }
+  })
+)
+
+// Sort journal posts by publication date (newest first)
+const sortedJournalPosts = allJournalPosts
+  .filter((item) => item.data.pubDate) // Filter out items without dates
+  .sort((a, b) => {
+    const dateA = a.data.pubDate
+      ? typeof a.data.pubDate === 'string'
+        ? new Date(a.data.pubDate)
+        : a.data.pubDate
+      : new Date(0)
+    const dateB = b.data.pubDate
+      ? typeof b.data.pubDate === 'string'
+        ? new Date(b.data.pubDate)
+        : b.data.pubDate
+      : new Date(0)
+    return dateB.getTime() - dateA.getTime()
+  })
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
+  <p class='mb-8 text-tx-2'>
+    Personal thoughts, experiences, and reflections from my journey.
+  </p>
+
+  <ul class='space-y-0'>
+    {
+      sortedJournalPosts.map((post, index) => {
+        // Use eager loading for first 3 items (above the fold), lazy for the rest
+        const loading = index < 3 ? 'eager' : 'lazy'
+
+        return (
+          <ArticlePost
+            url={`/posts/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            content={'renderedContent' in post ? post.renderedContent : undefined}
+            loading={loading}
+          />
+        )
+      })
+    }
+  </ul>
+</BaseLayout>

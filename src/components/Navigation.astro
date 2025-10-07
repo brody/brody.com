@@ -7,19 +7,20 @@ import avatarImage from '/public/assets/images/brody.png'
 const navLinks: { label: string; href: string; icon: string }[] = [
   { label: 'Home', href: '/', icon: 'tabler:home-2' },
   { label: 'Notes', href: '/notes/', icon: 'tabler:note' },
-  { label: 'Articles', href: '/blog/', icon: 'tabler:notebook' },
-  { label: 'Projects', href: '/projects/', icon: 'tabler:rocket' },
+  { label: 'Journal', href: '/journal/', icon: 'tabler:notebook' },
+  // { label: 'Projects', href: '/projects/', icon: 'tabler:rocket' },
   { label: 'About', href: '/about/', icon: 'tabler:user' },
 ]
 
-/** Icon links to social media — edit these with links to your profiles! */
+/** Library links to content collections */
 const libraryLinks: { label: string; href: string; icon: string }[] = [
-  { label: 'Bookmarks', href: 'https://twitter.com/me', icon: 'tabler:bookmarks' },
-  { label: 'Movies', href: 'https://twitter.com/me', icon: 'tabler:movie' },
-  { label: 'TV Shows', href: 'https://twitter.com/me', icon: 'tabler:device-tv-old' },
-  { label: 'Games', href: 'https://twitter.com/me', icon: 'tabler:device-gamepad-2' },
-  { label: 'Live Music', href: 'https://twitter.com/me', icon: 'tabler:music' },
-  { label: 'Uses', href: 'https://twitter.com/me', icon: 'tabler:devices-2' },
+  { label: 'Bookmarks', href: '/bookmarks', icon: 'tabler:bookmarks' },
+  { label: 'Books', href: '/books', icon: 'tabler:book' },
+  { label: 'Movies', href: '/movies', icon: 'tabler:movie' },
+  { label: 'TV Shows', href: '/tv-shows', icon: 'tabler:device-tv-old' },
+  { label: 'Games', href: '/games', icon: 'tabler:device-gamepad-2' },
+  // { label: 'Events', href: '/events', icon: 'tabler:ticket' },
+  // { label: 'Uses', href: '/uses', icon: 'tabler:devices-2' },
 ]
 
 /** Test if a link is pointing to the current page. */
@@ -31,8 +32,10 @@ const isCurrentPage = (href: string) => {
 }
 ---
 
-<nav class='flex flex-col gap-4 px-6 pt-12 pb-10'>
-  <a href='/' class='p-4'>
+<nav
+  class='flex sticky top-0 flex-col gap-4 px-4 pt-16 pb-8 md:px-8 md:pt-20 md:pb-10 min-h-dvh dashed-border'
+>
+  <a href='/' class='hidden p-4 md:block'>
     <Image
       src={avatarImage}
       alt='Brody Maclean'
@@ -51,8 +54,8 @@ const isCurrentPage = (href: string) => {
               aria-current={isCurrentPage(href) ? 'page' : null}
               class={
                 isCurrentPage(href)
-                  ? 'link inline-flex rounded-xl text-sm gap-3 border border-border-default bg-bg-weak text-fg-strong py-1.5 pl-4 pr-5  items-center'
-                  : 'link inline-flex rounded-xl text-sm gap-3 border border-transparent py-1.5 pl-4 pr-5 items-center hover:bg-bg-weak'
+                  ? 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute after:bg-tx-3 text-tx-0 py-1.5 pl-4 pr-5 items-center'
+                  : 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 py-1.5 pl-4 pr-5 items-center '
               }
               href={href}
             >
@@ -65,7 +68,7 @@ const isCurrentPage = (href: string) => {
     </ul>
   </div>
   <div>
-    <span class='flex px-4 mb-2 text-sm text-fg-weakest'>Library</span>
+    <span class='flex px-4 mb-2 text-base md:text-sm text-tx-3'>Library</span>
     <ul class='library-nav'>
       {
         libraryLinks.map(({ href, icon, label }) => (
@@ -74,8 +77,8 @@ const isCurrentPage = (href: string) => {
               aria-current={isCurrentPage(href) ? 'page' : null}
               class={
                 isCurrentPage(href)
-                  ? 'link inline-flex rounded-xl text-sm gap-3 border border-border-default bg-bg-weak text-fg-strong py-1.5 pl-4 pr-5  items-center'
-                  : 'link inline-flex rounded-xl text-sm gap-3 border border-transparent py-1.5 pl-4 pr-5 items-center hover:bg-bg-weak'
+                  ? 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute after:bg-tx-3 text-tx-0 py-1.5 pl-4 pr-5 items-center'
+                  : 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 py-1.5 pl-4 pr-5 items-center '
               }
               href={href}
             >
@@ -88,3 +91,21 @@ const isCurrentPage = (href: string) => {
     </ul>
   </div>
 </nav>
+
+<style>
+  .dashed-border::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      0deg,
+      transparent 4px,
+      var(--color-ui-1) 4px,
+      var(--color-ui-1) 8px
+    );
+    background-size: 1px 8px;
+  }
+</style>

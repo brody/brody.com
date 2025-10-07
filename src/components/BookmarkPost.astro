@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+
+const {
+  url,
+  title,
+  pubDate,
+  imageAlt,
+  imageUrl,
+  source,
+  description,
+  author,
+  loading = 'lazy',
+} = Astro.props
+
+// Function to format date as relative time or formatted date
+function formatDate(pubDate: Date | string): string {
+  // Convert string to Date if needed
+  const dateObj = typeof pubDate === 'string' ? new Date(pubDate) : pubDate
+
+  // Get current time
+  const now = new Date()
+
+  // Calculate time difference in milliseconds
+  const diffTime = now.getTime() - dateObj.getTime()
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
+  const diffMinutes = Math.ceil(diffTime / (1000 * 60))
+
+  // If the date is in the future, just show the formatted date
+  if (diffTime < 0) {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ]
+    const month = months[dateObj.getMonth()]
+    const day = dateObj.getDate()
+    return `${month} ${day}`
+  }
+
+  // If less than an hour, show minutes
+  if (diffMinutes < 60 && diffMinutes > 0) {
+    return `${diffMinutes}m ago`
+  }
+
+  // If less than a day, show hours
+  if (diffHours < 24 && diffHours > 0) {
+    return `${diffHours}h ago`
+  }
+
+  // If within the past week, show relative time
+  if (diffDays <= 7 && diffDays > 0) {
+    if (diffDays === 1) return '1d ago'
+    if (diffDays === 2) return '2d ago'
+    if (diffDays === 3) return '3d ago'
+    if (diffDays === 4) return '4d ago'
+    if (diffDays === 5) return '5d ago'
+    if (diffDays === 6) return '6d ago'
+    if (diffDays === 7) return '7d ago'
+  }
+
+  // For older dates, format as "Sep 16"
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  const month = months[dateObj.getMonth()]
+  const day = dateObj.getDate()
+
+  return `${month} ${day}`
+}
+---
+
+<li class='py-8 dashed-border'>
+  <p class='mb-3 text-sm text-tx-3'>
+    {source === 'journal' ? 'Posted' : 'Read'}
+
+    {formatDate(pubDate)}
+  </p>
+  <div class='flex flex-row gap-6'>
+    <div>
+      <a href={url}>
+        {
+          imageUrl && (
+            <Image src={imageUrl} alt={imageAlt} width={100} height={100} loading={loading} />
+          )
+        }
+        <h2 class='text-h2 font-heading hover:text-tx-1 text-tx-0'>{title}</h2>
+      </a>
+    </div>
+  </div>
+</li>
+
+<style>
+  .dashed-border {
+    position: relative;
+  }
+
+  .dashed-border::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 4px,
+      var(--color-ui-1) 4px,
+      var(--color-ui-1) 8px
+    );
+    background-size: 8px 1px;
+  }
+</style>

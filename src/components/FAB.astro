@@ -1,0 +1,21 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<button
+  id='nav-toggle'
+  class='fixed right-4 bottom-4 p-4 w-16 h-16 rounded-full bg-white/[5%] transition hover:bg-white/[10%] md:hidden z-50'
+  style='backdrop-filter: blur(20px); box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px inset;'
+  aria-label='Toggle navigation menu'
+>
+  <Icon
+    id='nav-toggle-menu-icon'
+    name='tabler:menu-deep'
+    class='absolute top-1/2 left-1/2 w-8 h-8 transition-opacity duration-200 -translate-x-1/2 -translate-y-1/2 text-tx-0'
+  />
+  <Icon
+    id='nav-toggle-close-icon'
+    name='tabler:x'
+    class='absolute top-1/2 left-1/2 w-8 h-8 opacity-0 transition-opacity duration-200 -translate-x-1/2 -translate-y-1/2 text-tx-0'
+  />
+</button>

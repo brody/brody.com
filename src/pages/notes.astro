@@ -1,0 +1,57 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+
+const pageTitle = 'Notes'
+const allNotes = await Promise.all(
+  (await getCollection('notes')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'notes', renderedContent: { Content } }
+  })
+)
+
+// Sort notes by publication date (newest first)
+const sortedNotes = allNotes
+  .filter((item) => item.data.pubDate) // Filter out items without dates
+  .sort((a, b) => {
+    const dateA = a.data.pubDate
+      ? typeof a.data.pubDate === 'string'
+        ? new Date(a.data.pubDate)
+        : a.data.pubDate
+      : new Date(0)
+    const dateB = b.data.pubDate
+      ? typeof b.data.pubDate === 'string'
+        ? new Date(b.data.pubDate)
+        : b.data.pubDate
+      : new Date(0)
+    return dateB.getTime() - dateA.getTime()
+  })
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
+  <p class='mb-8 text-tx-2'>Personal notes, thoughts, and observations I've written down.</p>
+
+  <ul class='space-y-0'>
+    {
+      sortedNotes.map((note, index) => {
+        // Use eager loading for first 3 items (above the fold), lazy for the rest
+        const loading = index < 3 ? 'eager' : 'lazy'
+
+        return (
+          <ArticlePost
+            url={`/notes/${note.id}/`}
+            title={note.data.title || note.id}
+            pubDate={note.data.pubDate}
+            source={note.source}
+            loading={loading}
+            imageUrl={'imageUrl' in note.data ? note.data.imageUrl : undefined}
+            description={'description' in note.data ? note.data.description : undefined}
+            content={'renderedContent' in note ? note.renderedContent : undefined}
+          />
+        )
+      })
+    }
+  </ul>
+</BaseLayout>

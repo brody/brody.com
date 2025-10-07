@@ -1,0 +1,37 @@
+{
+  "appleinsider.com": {
+    "originalUrl": "https://photos5.appleinsider.com/v11/favicon.ico",
+    "localPath": "/favicons/appleinsider.com.ico",
+    "sourceUrl": "https://appleinsider.com/articles/25/09/26/apples-secret-veritas-chatbot-could-be-the-key-to-fixing-siri?utm_source=feedly"
+  },
+  "leerob.com": {
+    "originalUrl": "/favicon.ico?7b2b24376ea43ec8",
+    "localPath": "/favicons/leerob.com.ico",
+    "sourceUrl": "https://leerob.com/docs"
+  },
+  "bigthink.com": {
+    "originalUrl": "https://bigthink.com/wp-content/uploads/2023/06/cropped-bt-icon-512x512-1-1.png?w=32",
+    "localPath": "/favicons/bigthink.com.png",
+    "sourceUrl": "https://bigthink.com/smart-skills/how-to-escape-the-dopamine-crash-loop-and-rewire-your-curiosity/"
+  },
+  "writing.nikunjk.com": {
+    "originalUrl": "https://substackcdn.com/image/fetch/$s_!tAKj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79b1a390-5c05-4cd0-ae74-f86153c30367%2Ffavicon-16x16.png",
+    "localPath": "/favicons/writing.nikunjk.com.png",
+    "sourceUrl": "https://writing.nikunjk.com/p/the-quiet-ones"
+  },
+  "newyorker.com": {
+    "originalUrl": "https://www.newyorker.com/verso/static/thenewyorker-us/assets/favicon.ico",
+    "localPath": "/favicons/newyorker.com.ico",
+    "sourceUrl": "https://www.newyorker.com/magazine/2025/10/06/tim-berners-lee-invented-the-world-wide-web-now-he-wants-to-save-it"
+  },
+  "theverge.com": {
+    "originalUrl": "/static-assets/icons/favicon-32x32.png",
+    "localPath": "/favicons/theverge.com.png",
+    "sourceUrl": "https://www.theverge.com/news/786697/youtube-labs-ai-experiment-music-radio-hosts"
+  },
+  "linear.app": {
+    "originalUrl": "/favicon.ico",
+    "localPath": "/favicons/linear.app.ico",
+    "sourceUrl": "https://linear.app/now/why-is-quality-so-rare"
+  }
+}

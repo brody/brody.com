@@ -1,0 +1,105 @@
+---
+import smartypants from 'smartypants'
+import siteInfo from '~/data/site-info'
+import '~/styles/fonts.css'
+import Favicon from './Favicon.astro'
+import SEO from './SEO.astro'
+
+export type Props = {
+  title?: string
+  rawTitle?: string
+  description?: string
+  image?: { src: string; alt: string }
+  canonicalURL?: URL | null
+  pageType?: 'website' | 'article'
+}
+
+const twitterHandle = 'astrodotbuild'
+
+const {
+  rawTitle,
+  description = siteInfo.description,
+  image = siteInfo.image,
+  canonicalURL = Astro.site ? new URL(Astro.request.url, Astro.site) : null,
+  pageType = 'website',
+} = Astro.props
+
+const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(' | ')
+const resolvedImage = {
+  src: Astro.site ? new URL(image.src, Astro.site).toString() : image.src,
+  alt: image.alt,
+}
+---
+
+<!-- High Priority Global Metadata -->
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width' />
+<title set:html={smartypants(title, 1)} />
+<meta name='generator' content={Astro.generator} />
+<meta name='theme-color' content='#11111B' />
+
+<!-- Umami - beautiful, simple website analytics -->
+<script
+  defer
+  src='https://cloud.umami.is/script.js'
+  data-website-id='90de7717-0d55-4444-af46-5f0e396836de'></script>
+
+<!-- Font preloads, omit MDIO to improve initial load -->
+<link
+  rel='preload'
+  href='/assets/fonts/wotfard-medium-webfont.woff2'
+  as='font'
+  type='font/woff2'
+  crossorigin
+/>
+<link
+  rel='preload'
+  href='/assets/fonts/wotfard-regular-webfont.woff2'
+  as='font'
+  type='font/woff2'
+  crossorigin
+/>
+<link
+  rel='preload'
+  href='/assets/fonts/wotfard-regularitalic-webfont.woff2'
+  as='font'
+  type='font/woff2'
+  crossorigin
+/>
+<link
+  rel='preload'
+  href='/assets/fonts/wotfard-semibold-webfont.woff2'
+  as='font'
+  type='font/woff2'
+  crossorigin
+/>
+<link
+  rel='preload'
+  href='/assets/fonts/MonoLisa-Regular.otf'
+  as='font'
+  type='font/otf'
+  crossorigin
+/>
+<link
+  rel='preload'
+  href='/assets/fonts/AcidGrotesk-Bold.otf'
+  as='font'
+  type='font/otf'
+  crossorigin
+/>
+
+<!-- Low Priority Global Metadata -->
+<Favicon />
+<link rel='mask-icon' href='/favicon.svg' color='#11111B' />
+<link rel='sitemap' href='/sitemap-index.xml' />
+<link rel='alternate' type='application/rss+xml' href='/rss.xml' title='RSS' />
+
+<SEO
+  name={siteInfo.name}
+  title={title}
+  description={description}
+  image={resolvedImage}
+  twitter={{ handle: twitterHandle }}
+  og={{ type: pageType }}
+  canonicalURL={canonicalURL}
+/>

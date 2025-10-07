@@ -1,75 +1,41 @@
 ---
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import BaseHead, { type Props as HeadProps } from '~/components/BaseHead.astro'
+import FAB from '../components/FAB.astro'
+// import Header from '../components/Header.astro'
+// import Footer from '../components/Footer.astro'
 import Navigation from '../components/Navigation.astro'
 import '../styles/global.css'
-const { pageTitle } = Astro.props
+const { ...head } = Astro.props
 ---
 
-<html lang='en' class='border-red-100 bg-bg-default text-fg-default'>
+<html lang='en' class='text-[15px] antialiased bg-bg-1 text-tx-1 md:text-base'>
   <head>
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <!-- Fonts -->
-    <link
-      rel='preload'
-      href='/assets/fonts/AcidGrotesk-Bold.otf'
-      as='font'
-      type='font/otf'
-      crossorigin
-    />
-    <link
-      rel='preload'
-      href='/assets/fonts/MonoLisa-Regular.otf'
-      as='font'
-      type='font/otf'
-      crossorigin
-    />
-    <link
-      rel='preload'
-      href='/assets/fonts/wotfard-regular-webfont.woff2'
-      as='font'
-      type='font/woff2'
-      crossorigin
-    />
-    <link
-      rel='preload'
-      href='/assets/fonts/wotfard-regularitalic-webfont.woff2'
-      as='font'
-      type='font/woff2'
-      crossorigin
-    />
-    <link
-      rel='preload'
-      href='/assets/fonts/wotfard-medium-webfont.woff2'
-      as='font'
-      type='font/woff2'
-      crossorigin
-    />
-    <link
-      rel='preload'
-      href='/assets/fonts/wotfard-semibold-webfont.woff2'
-      as='font'
-      type='font/woff2'
-      crossorigin
-    />
+    <BaseHead {...head} />
   </head>
-  <body class='grid font-body place-items-center dot-pattern'>
+  <body class='grid place-items-center font-body'>
     <div
-      class='grid min-h-dvh min-w-full md:min-w-auto grid-cols-1 md:grid-cols-[minmax(0,var(--container-2xl))_minmax(0,var(--container-2xs))] max-w-fit w-full'
+      class='grid min-h-dvh min-w-full md:min-w-auto grid-cols-1 md:grid-cols-[minmax(0,var(--container-2xl))_minmax(0,var(--container-3xs))] max-w-fit w-full'
     >
       <!-- grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto_1px_auto] pt-26.25 lg:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem] -->
       <!-- [content-start] minmax(0, calc(var(--content-width) + 2 * var(--layout-padding))) [content-end sidebar-start] minmax(0, var(--sidebar-width)) [sidebar-end] -->
-      <main>
-        <Header class='w-full' />
-        <h1 class='text-fg-strong'>{pageTitle}</h1>
+      <main class='px-4 pt-16 pb-8 md:pt-24 md:pb-10 md:px-8 bg-bg-1'>
+        <!-- <Header class='w-full' /> -->
         <slot />
-        <Footer />
+        <FAB />
+        <!-- <Footer /> -->
       </main>
-      <aside>
+      <!-- Mobile overlay -->
+      <div
+        id='nav-overlay'
+        class='fixed inset-0 z-40 opacity-0 transition-all pointer-events-none duration-800 bg-black/20 backdrop-blur-xs md:hidden'
+      >
+      </div>
+
+      <!-- Navigation aside -->
+      <aside
+        id='mobile-nav'
+        class='fixed top-0 right-0 z-40 w-64 h-full transition-transform ease-in-out transform translate-x-full duration-400 bg-bg-1 md:static md:translate-x-0 md:w-auto md:bg-transparent'
+      >
         <Navigation />
       </aside>
     </div>

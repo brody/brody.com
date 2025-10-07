@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const { rating } = Astro.props
+
+// Don't render if rating is 0, null, or undefined
+if (!rating || rating === 0) return null
+
+// Calculate full stars and half stars
+const fullStars = Math.floor(rating)
+const hasHalfStar = rating % 1 !== 0
+const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
+---
+
+<div class='flex items-center mt-2 text-yellow-300 fill-current'>
+  {/* Full stars */}
+  {Array.from({ length: fullStars }, (_, i) => <Icon size={16} name='prime:star-fill' />)}
+
+  {/* Half star */}
+  {hasHalfStar && <Icon size={16} name='prime:star-half-fill' />}
+
+  <!-- {/* Empty stars */}
+  {
+    Array.from({ length: emptyStars }, (_, i) => (
+      <Icon size={16} name='tabler:star' class='text-yellow-400' />
+    ))
+  } -->
+</div>

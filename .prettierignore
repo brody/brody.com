@@ -1,0 +1,3 @@
+# Ignore MDX files due to JSX comment formatting issues
+*.mdx
+

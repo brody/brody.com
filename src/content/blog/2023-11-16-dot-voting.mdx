@@ -1,0 +1,74 @@
+---
+title: The problem with dot voting
+pubDate: 2023-11-16
+draft: false
+entrySlug: dot-voting
+description: Dot voting has a few serious weaknesses that can cause false or misleading results.
+ogImage: /assets/journal/dot-voting/og.png
+tags:
+  - career
+---
+
+import { Image } from 'astro:assets'
+import voteSplit from '/src/content/blog/_images/dot-voting/voteSplit.svg'
+import choiceOverload from '/src/content/blog/_images/dot-voting/choiceOverload.svg'
+import groupThink from '/src/content/blog/_images/dot-voting/groupThink.svg'
+
+Dot voting is a simple group activity for recognising preferences among limited options:
+
+1. Participants are each given a set number of dot stickers.
+2. They place dot stickers next to options presented that they like.
+3. Options with the most dots “win”.
+
+Technically this methodology is known as [cumulative voting](http://en.wikipedia.org/wiki/Cumulative_voting). It's a one question multiple-choice survey done with stickers.
+
+Unfortunately, it has a few serious weaknesses, like vote-splitting, bandwagon effect/group think and option overload, that can cause false or misleading results.
+
+## Vote splitting
+
+<Image src={voteSplit} alt="Dot voting example" />
+
+As you can see in the example above, vote-splitting causes related ideas to lose unfairly.
+
+To prevent this, it's best to avoid similar or related options. This may require you to combine options to be less specific, or potentially group options & create an overarching voting option.
+
+## Bandwagon effect
+
+<Image
+  src={groupThink}
+  alt="The bandwagon effect is a psychological phenomenon"
+  className="w-full"
+/>
+
+The bandwagon effect is a psychological phenomenon whereby people do something primarily because other people are doing it, regardless of their own beliefs, which they may ignore or override.
+
+Call it group-think, conformity, or peer pressure—it’s part of human social nature to follow the crowd. We can’t help but notice where others have already placed their dots, and give these options more credence. Where the first dots land, others are sure to follow.
+
+A few options to mitigate this would be to conduct the process more than once with the options presented in a different order, to see if the resulting pattern persists. Or, to have participants vote in private, so they are not influenced by others.
+
+[Figjam](https://help.figma.com/hc/en-us/articles/9359912208663-Run-voting-sessions-in-FigJam) does private voting very well, only allowing participants to see how the other participants voted once the voting session is ended.
+
+## Choice overload
+
+<Image src={choiceOverload} alt="Dot voting example" />
+
+Overloading participants with too many options can cause them to give up and not vote at all. This is especially true if the options are not well understood or explained.
+
+In addition, the votes can easily be spead so thin that there is no clear winner, partically defeating the purpose of the exercise.
+
+Keep the number of options to about a dozen or less. Participants should be expected to review, consider and compare all options before sticking their dots, and too many can be overwhelming.
+New options shouldn't be added once dotting has started, as this would not be fair to the new additions.
+
+## Bonus 1: Sticker cheating
+
+Have someone monitor the process to ensure no one cheats by adding extra dots, peeling off dots or moving dots (I’ve seen it happen!). This makes the balloting less secret, but more reliable.
+
+## Bonus 2: Positive and negative dots
+
+Provide dots in two colours for both positive and negative e.g. green and red. This will allow you to see which ideas have opposition.
+
+---
+
+Dot voting is a simple and effective way to get a group to make a decision, but it's not without its flaws.
+
+Be aware of these issues and you'll be able to get the most out of the process.

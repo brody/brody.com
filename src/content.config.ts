@@ -3,34 +3,32 @@ import { glob } from 'astro/loaders'
 // Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content'
 // Define a `loader` and `schema` for each collection
-const journal = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/journal' }),
+const blog = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.union([z.string(), z.null()]).optional(),
     pubDate: z.union([z.date(), z.string()]),
     updatedDate: z.union([z.date(), z.string(), z.null()]).optional(),
     description: z.union([z.string(), z.null()]).optional(),
-    author: z.union([z.string(), z.null()]).optional(),
     imageUrl: z.string().optional(),
     imageAlt: z.string().optional(),
     tags: z.array(z.string()),
   }),
 })
 const notes = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/notes' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/notes' }),
   schema: z.object({
     title: z.union([z.string(), z.null()]).optional(),
     pubDate: z.union([z.date(), z.string()]),
     updatedDate: z.union([z.date(), z.string(), z.null()]).optional(),
     description: z.union([z.string(), z.null()]).optional(),
-    author: z.string(),
     imageUrl: z.string().optional(),
     imageAlt: z.string().optional(),
     tags: z.array(z.string()),
   }),
 })
 const movies = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/movies' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/movies' }),
   schema: z.object({
     title: z.string(),
     genre: z.array(z.string()),
@@ -46,7 +44,7 @@ const movies = defineCollection({
   }),
 })
 const tvShows = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/tv-shows' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/tv-shows' }),
   schema: z.object({
     title: z.string(),
     genre: z.array(z.string()),
@@ -63,7 +61,7 @@ const tvShows = defineCollection({
 })
 
 const games = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/games' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/games' }),
   schema: z.object({
     title: z.string(),
     gamePlatform: z.array(z.string()),
@@ -81,7 +79,7 @@ const games = defineCollection({
 })
 
 const books = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/books' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/books' }),
   schema: z.object({
     title: z.string(),
     author: z.string(),
@@ -102,7 +100,7 @@ const books = defineCollection({
 })
 
 const bookmarks = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/bookmarks' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/bookmarks' }),
   schema: z.object({
     title: z.union([z.string(), z.null()]).optional(),
     sourceTitle: z.string().optional(),
@@ -118,4 +116,4 @@ const bookmarks = defineCollection({
 })
 
 // Export a single `collections` object to register your collection(s)
-export const collections = { journal, notes, movies, tvShows, games, books, bookmarks }
+export const collections = { blog, notes, movies, tvShows, games, books, bookmarks }

@@ -1,0 +1,12 @@
+---
+const { id, className } = Astro.props
+---
+
+<div class='my-6 w-full h-full aspect-video' class:list={className}>
+  <iframe
+    class='w-full h-full'
+    src=`https://www.youtube.com/embed/${id}?rel=0`
+    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+    allowfullscreen
+    loading='lazy'></iframe>
+</div>

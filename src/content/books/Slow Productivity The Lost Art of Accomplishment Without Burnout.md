@@ -1,0 +1,21 @@
+---
+title: "Slow Productivity: The Lost Art of Accomplishment Without Burnout"
+author: Cal Newport
+genre:
+  - Nonfiction
+  - Self Help
+  - Productivity
+  - Business
+  - Audiobook
+  - Personal Development
+  - Psychology
+year: 2024
+description: Do fewer things. Work at a natural pace. Obsess over quality.From the New York Times bestselling author of Digital Minimalism and Deep Work, a groundbreaking philosophy for pursuing meaningful accomplishment while avoiding overload.Our current definition of “productivity” is broken. It pushes us to treat busyness as a proxy for useful effort, leading to impossibly lengthy task lists and ceaseless meetings. We’re overwhelmed by all we have to do and on the edge of burnout, left to decide between giving into soul-sapping hustle culture or rejecting ambition altogether. But are these really our only choices?Long before the arrival of pinging inboxes and clogged schedules, history’s most creative and impactful philosophers, scientists, artists, and writers mastered the art of producing valuable work with staying power. In this timely and provocative book, Cal Newport harnesses the wisdom of these traditional knowledge workers to radically transform our modern jobs. Drawing from deep research on the habits and mindsets of a varied cast of storied thinkers—from Galileo and Isaac Newton, to Jane Austen and Georgia O’Keefe—Newport lays out the key principles of “slow productivity,” a more sustainable alternative to the aimless overwhelm that defines our current moment. Combining cultural criticism with systematic pragmatism, Newport deconstructs the absurdities inherent in standard notions of productivity, and then provides step-by-step advice for workers to replace them with a slower, more humane alternative.From the aggressive rethinking of workload management, to introducing seasonal variation, to shifting your performance toward long-term quality, Slow Productivity provides a roadmap for escaping overload and arriving instead at a more timeless approach to pursuing meaningful accomplishment. The world of work is due for a new revolution. Slow productivity is exactly what we need.Show more
+imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692883158i/197773418.jpg
+pubDate: 2024-10-28T21:25:18+11:00
+updated:
+rating: 4
+progress:
+"# repeat":
+---
+Do fewer things. Work at a natural pace. Obsess over quality.From the New York Times bestselling author of Digital Minimalism and Deep Work, a groundbreaking philosophy for pursuing meaningful accomplishment while avoiding overload.Our current definition of “productivity” is broken. It pushes us to treat busyness as a proxy for useful effort, leading to impossibly lengthy task lists and ceaseless meetings. We’re overwhelmed by all we have to do and on the edge of burnout, left to decide between giving into soul-sapping hustle culture or rejecting ambition altogether. But are these really our only choices?Long before the arrival of pinging inboxes and clogged schedules, history’s most creative and impactful philosophers, scientists, artists, and writers mastered the art of producing valuable work with staying power. In this timely and provocative book, Cal Newport harnesses the wisdom of these traditional knowledge workers to radically transform our modern jobs. Drawing from deep research on the habits and mindsets of a varied cast of storied thinkers—from Galileo and Isaac Newton, to Jane Austen and Georgia O’Keefe—Newport lays out the key principles of “slow productivity,” a more sustainable alternative to the aimless overwhelm that defines our current moment. Combining cultural criticism with systematic pragmatism, Newport deconstructs the absurdities inherent in standard notions of productivity, and then provides step-by-step advice for workers to replace them with a slower, more humane alternative.From the aggressive rethinking of workload management, to introducing seasonal variation, to shifting your performance toward long-term quality, Slow Productivity provides a roadmap for escaping overload and arriving instead at a more timeless approach to pursuing meaningful accomplishment. The world of work is due for a new revolution. Slow productivity is exactly what we need.Show more

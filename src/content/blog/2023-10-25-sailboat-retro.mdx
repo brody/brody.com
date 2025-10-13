@@ -1,0 +1,132 @@
+---
+title: Sailboat Retro
+pubDate: 2023-10-25
+draft: false
+entrySlug: sailboat-retro
+description: Give the team the forum to reflect and share what went well and, often more importantly, what didn't.
+ogImage: /assets/journal/sailboat-retro/og.png
+tags:
+  - career
+---
+
+import { Image } from 'astro:assets'
+import retroAnchor from '/src/content/blog/_images/sailboat-retro/retro-anchor.svg'
+import retroGoal from '/src/content/blog/_images/sailboat-retro/retro-goal.svg'
+import retroReef from '/src/content/blog/_images/sailboat-retro/retro-reef.svg'
+import retroSprint from '/src/content/blog/_images/sailboat-retro/retro-sprint.svg'
+import retroSun from '/src/content/blog/_images/sailboat-retro/retro-sun.svg'
+import retroWind from '/src/content/blog/_images/sailboat-retro/retro-wind.svg'
+import nutmegRetro from '/src/content/blog/_images/sailboat-retro/nutmeg-retro.jpg'
+
+<figure>
+  <Image src={nutmegRetro} alt="A recent Prospa Design System team retro" class="wide"         width={1400}
+        height={750}
+        quality={90} />
+  <figcaption>
+    A recent Prospa Design System team retro. Don't mind my wakeboarding avatar 🙈
+  </figcaption>
+</figure>
+
+Retros are a crucial part of the agile process. They allow the team to reflect and share what went well and, often more importantly, what didn't.
+
+While feedback can be given at any meeting, retros help embed this practice into the team culture & give the time and space to celebrate the wins and address the issues that arose over the last sprint.
+
+There are many variants of Retros — Start Stop Continue, Mad Glad Sad, Liked Learned Lacked Longed for — but after first trialling the Sailboat retro, I've found that it helps frame the feedback in ways that team members can resonate with.
+
+{/* // import LinkCard from '@components/LinkCard.astro'
+
+// <LinkCard
+// type="Link"
+// url="https://www.figma.com/community/file/967321073661280669/sailboat-retro"
+// title="Sailboat Retro Template"
+// domain="figma.com"
+// /> */}
+
+## Sailboat retro format
+
+<Image src={retroGoal} alt="Sprint Goal" class="-mb-4 ml-0 w-8"  />
+### Sprint Goal
+
+What is the final destination for the team? What is their goal or vision? This is where they are heading and represents their version of success.
+
+<Image src={retroSun} alt="Retro Sun" class="-mb-4 ml-0 w-8" />
+### The Sun
+
+What made the team feel positive? What are the good things that can come out of this? These may be things that they look forward to and may include customer feedback, usage or improving the robustness of their infrastructure.
+
+<Image src={retroWind} alt="Retro Wind" class="-mb-4 ml-0 w-8" />
+### The Wind
+
+What has pushed the team forward towards its vision? What drove them towards the goal? It could be their own capability, support from champions, being well resourced or being motivated by a common goal.
+
+<Image src={retroAnchor} alt="Retro Anchor" class="-mb-4 ml-0 w-8" />
+### The Anchor
+
+What has slowed the team down, or brought them to a complete stop? What created drag and reduced velocity? It may be a dependency or policy. It could be a lack of process or one that is too complex. Some anchors may be necessary, and others need to be considered to see if they will be a constant drain on the team, making them less agile and achieving less progress.
+
+<Image src={retroReef} alt="Retro Reef" class="-mb-4 ml-0 w-8" />
+### The Reef
+
+What are the risks or potential pitfalls in the future? What does the team have to watch out for? There may be communication gaps, technical risks or upcoming disruptions (team on leave, public holidays, etc) that could derail the team. Understanding the risks early can help the team think of ways to navigate around them or put signals in place as a warning as part of the next sprint.
+
+<Image src={retroSprint} alt="Retro Sailboat" class="-mb-4 ml-0 w-8" />
+### The Sailboat
+
+The Sailboat is a visual representation of the sprint, sailing towards the sprint goal with the above elements affecting the journey.
+
+---
+
+## How to run a Sailboat retro
+
+### 0. Set up the Figjam board
+
+Duplicate the Sailboat Retro template in Figjam & let's get started.
+
+{/* <LinkCard
+  type="Link"
+  url="https://www.figma.com/community/file/967321073661280669/sailboat-retro"
+  title="Sailboat Retro Template"
+  domain="figma.com"
+/> */}
+
+### 1. Ice breaker
+
+The team has just switched contexts and may not be in the right headspace for a retro. An ice breaker is a great way to loosen everyone up & get them all in the right frame of mind.
+I've found [Donut: Creative Warmups and Icebreakers](https://www.figma.com/community/widget/1029886180069182307/donut-creative-warmups-and-icebreakers) to be a great plugin for ice breakers.
+Try the Social Standup mini exercise to get everyone talking & the juices flowing.
+
+### 2. Set the stage
+
+Walk through the retro agenda so everyone is on the same page. This is also a good time to set the ground rules for the retro. Last thing to do here is to run through action items from the previous retro. If anything is still outstanding, add it to the action items for this retro.
+
+### 3. Brainstorm
+
+Set a [Figjam timer](https://help.figma.com/hc/en-us/articles/4402269549591-Stay-on-track-with-the-timer-in-FigJam) for 5-10 minutes and ask everyone to add their thoughts to the board. Don't sit in awkward silence, pop on the "Lo-fi hip hop" just below the timer. Gauge the team's energy and extend the timer if needed.
+
+### 4. Review
+
+Once the team have exhausted their ideas, it's time to review the board. I like to start with the sun and work my way around the board counter clockwise. Read through each item but avoid going any deeper. Bonus points for grouping items or having the team do it while reviewing items.
+
+### 5. Vote
+
+Once the team have reviewed the board, it's time to vote. Each team member gets 3 votes. They can use all 3 votes on one item or spread them out. The goal is to identify the top 3 items that the team want to discuss.
+
+Figjam's [voting feature](https://help.figma.com/hc/en-us/articles/9359912208663-Run-voting-sessions-in-FigJam) is great as each participant's choices are hidden until the voting session ends, helping avoid group think.
+
+If you have a smaller team, feel free to up this to 5 votes.
+
+### 6. Discuss
+
+Now that the team have identified the top items, it's time to discuss them. I like to start with the item that has the most votes and work my way down. The goal here is to understand the item and identify what the team can do to improve, mitigate or celebrate it. This is a great time to use the 5 whys technique to get to the root cause of the issue.
+
+Add actions that come out of the discussion to the action items section of the board & don't forget to assign the action to someone so there is a DRI (Directly Responsible Individual).
+
+### 7. Wrapping up
+
+Once the team have discussed all the items, it's time to wrap up. I like to end with a quick round of "What went well?" to end the retro on a positive note. This is also a good time to review the action items and assign them to someone.
+
+---
+
+I hope the Sailboat Retro helps your team reflect, improve & leads to smooth sailing in the future.
+
+If you have any feedback or suggestions, feel free to reach out on [Twitter](https://twitter.com/brodymaclean).

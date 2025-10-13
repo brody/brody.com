@@ -1,0 +1,21 @@
+---
+title: So Good They Can't Ignore You
+author: Cal Newport
+genre:
+  - Nonfiction
+  - Self Help
+  - Business
+  - Productivity
+  - Personal Development
+  - Psychology
+  - Audiobook
+year: 2012
+description: In this eye-opening account, Cal Newport debunks the long-held belief that "follow your passion" is good advice. Not only is the cliché flawed—preexisting passions are rare and have little to do with how most people end up loving their work—but it can also be dangerous, leading to anxiety and chronic job hopping.After making his case against passion, Newport sets out on a quest to discover the reality of how people end up loving what they do. Spending time with organic farmers, venture capitalists, screenwriters, freelance computer programmers, and others who admitted to deriving great satisfaction from their work, Newport uncovers the strategies they used and the pitfalls they avoided in developing their compelling careers.Matching your job to a preexisting passion does not matter, he reveals. Passion comes after you put in the hard work to become excellent at something valuable, not before. In other words, what you do for a living is much less important than how you do it.With a title taken from the comedian Steve Martin, who once said his advice for aspiring entertainers was to "be so good they can't ignore you," Cal Newport's clearly written manifesto is mandatory reading for anyone fretting about what to do with their life, or frustrated by their current job situation and eager to find a fresh new way to take control of their livelihood. He provides an evidence-based blueprint for creating work you love.So Good They Can't Ignore You will change the way we think about our careers, happiness, and the crafting of a remarkable life.Show more
+imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1360564614i/13525945.jpg
+pubDate: 2023-10-18T21:31:02
+updated:
+rating:
+progress:
+"# repeat":
+---
+In this eye-opening account, Cal Newport debunks the long-held belief that "follow your passion" is good advice. Not only is the cliché flawed—preexisting passions are rare and have little to do with how most people end up loving their work—but it can also be dangerous, leading to anxiety and chronic job hopping.After making his case against passion, Newport sets out on a quest to discover the reality of how people end up loving what they do. Spending time with organic farmers, venture capitalists, screenwriters, freelance computer programmers, and others who admitted to deriving great satisfaction from their work, Newport uncovers the strategies they used and the pitfalls they avoided in developing their compelling careers.Matching your job to a preexisting passion does not matter, he reveals. Passion comes after you put in the hard work to become excellent at something valuable, not before. In other words, what you do for a living is much less important than how you do it.With a title taken from the comedian Steve Martin, who once said his advice for aspiring entertainers was to "be so good they can't ignore you," Cal Newport's clearly written manifesto is mandatory reading for anyone fretting about what to do with their life, or frustrated by their current job situation and eager to find a fresh new way to take control of their livelihood. He provides an evidence-based blueprint for creating work you love.So Good They Can't Ignore You will change the way we think about our careers, happiness, and the crafting of a remarkable life.Show more

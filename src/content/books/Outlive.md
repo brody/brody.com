@@ -11,7 +11,7 @@ scoreGr: 4.36
 rating: 
 imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1700067079i/61153739.jpg
 description: 
-datePublished: 2025-01-01
+datePublished: 2023-09-18
 dateModified: 
 tags:
   - books

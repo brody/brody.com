@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import ArticlePost from '../components/ArticlePost.astro'
+import BookmarkPost from '../components/BookmarkPost.astro'
 
 const pageTitle = 'Bookmarks'
 const allBookmarks = await Promise.all(
@@ -42,8 +42,8 @@ const sortedBookmarks = allBookmarks
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <ArticlePost
-            url={bookmark.data.source || `/bookmarks/${bookmark.id}/`}
+          <BookmarkPost
+            url={`/bookmarks/${bookmark.id}/`}
             title={bookmark.data.title}
             sourceTitle={bookmark.data.sourceTitle}
             pubDate={bookmark.data.pubDate}
@@ -55,7 +55,6 @@ const sortedBookmarks = allBookmarks
             imageUrl={'imageUrl' in bookmark.data ? bookmark.data.imageUrl : undefined}
             faviconUrl={'faviconUrl' in bookmark.data ? bookmark.data.faviconUrl : undefined}
             description={'description' in bookmark.data ? bookmark.data.description : undefined}
-            external={'source' in bookmark.data && !!bookmark.data.source}
             content={'renderedContent' in bookmark ? bookmark.renderedContent : undefined}
           />
         )

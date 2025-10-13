@@ -9,7 +9,6 @@ description: "Entry-level design hiring has collapsed 50% since 2019 as companie
 tags:
   - "clippings"
 imageUrl: "https://rogerwong.b-cdn.net/media/talent-crisis-part-1-featured-1120x630.jpg"
-faviconUrl: https://rogerwong.me/favicon.ico
 ---
 
 > Entry-level hiring has collapsed, revealing a new permanent reality.

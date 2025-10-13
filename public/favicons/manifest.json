@@ -4,6 +4,11 @@
     "localPath": "/favicons/appleinsider.com.ico",
     "sourceUrl": "https://appleinsider.com/articles/25/09/26/apples-secret-veritas-chatbot-could-be-the-key-to-fixing-siri?utm_source=feedly"
   },
+  "theatlantic.com": {
+    "originalUrl": "https://cdn.theatlantic.com/_next/static/images/favicon-3888b0e329526a975703e3059a02b92d.ico",
+    "localPath": "/favicons/theatlantic.com.ico",
+    "sourceUrl": "https://www.theatlantic.com/ideas/archive/2025/10/dumphone-smartphone-technology-apps/684492/"
+  },
   "leerob.com": {
     "originalUrl": "/favicon.ico?7b2b24376ea43ec8",
     "localPath": "/favicons/leerob.com.ico",
@@ -19,10 +24,10 @@
     "localPath": "/favicons/writing.nikunjk.com.png",
     "sourceUrl": "https://writing.nikunjk.com/p/the-quiet-ones"
   },
-  "newyorker.com": {
-    "originalUrl": "https://www.newyorker.com/verso/static/thenewyorker-us/assets/favicon.ico",
-    "localPath": "/favicons/newyorker.com.ico",
-    "sourceUrl": "https://www.newyorker.com/magazine/2025/10/06/tim-berners-lee-invented-the-world-wide-web-now-he-wants-to-save-it"
+  "oliverburkeman.com": {
+    "originalUrl": "https://static.wixstatic.com/media/053ea9_904d6f423dcd49119dc3ae38bee7ed80%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/053ea9_904d6f423dcd49119dc3ae38bee7ed80%7Emv2.png",
+    "localPath": "/favicons/oliverburkeman.com.png",
+    "sourceUrl": "https://www.oliverburkeman.com/river"
   },
   "theverge.com": {
     "originalUrl": "/static-assets/icons/favicon-32x32.png",

@@ -11,7 +11,7 @@ isbn: "9781594204753"
 pubDate: 2025-05-14
 inProgress: false
 updated: 
-rating: 
+rating: 5
 ---
 ## PART 1 In the Beginning: Conception
 

@@ -3,16 +3,16 @@ import { getCollection, render } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import ArticlePost from '../components/ArticlePost.astro'
 
-const pageTitle = 'Journal'
-const allJournalPosts = await Promise.all(
-  (await getCollection('journal')).map(async (item) => {
+const pageTitle = 'Blog'
+const allBlogPosts = await Promise.all(
+  (await getCollection('blog')).map(async (item) => {
     const { Content } = await render(item)
-    return { ...item, source: 'journal', renderedContent: { Content } }
+    return { ...item, source: 'blog', renderedContent: { Content } }
   })
 )
 
-// Sort journal posts by publication date (newest first)
-const sortedJournalPosts = allJournalPosts
+// Sort blog entries by publication date (newest first)
+const sortedBlogPosts = allBlogPosts
   .filter((item) => item.data.pubDate) // Filter out items without dates
   .sort((a, b) => {
     const dateA = a.data.pubDate
@@ -35,7 +35,7 @@ const sortedJournalPosts = allJournalPosts
 
   <ul class='space-y-0'>
     {
-      sortedJournalPosts.map((post, index) => {
+      sortedBlogPosts.map((post, index) => {
         // Use eager loading for first 3 items (above the fold), lazy for the rest
         const loading = index < 3 ? 'eager' : 'lazy'
 

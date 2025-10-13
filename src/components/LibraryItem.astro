@@ -51,6 +51,12 @@ function formatDate(pubDate: Date | string): string {
     ]
     const month = months[dateObj.getMonth()]
     const day = dateObj.getDate()
+    const year = dateObj.getFullYear()
+
+    // Include year if not current year
+    if (year !== now.getFullYear()) {
+      return `${month} ${day}, ${year}`
+    }
     return `${month} ${day}`
   }
 
@@ -75,7 +81,7 @@ function formatDate(pubDate: Date | string): string {
     if (diffDays === 7) return '7d ago'
   }
 
-  // For older dates, format as "Sep 16"
+  // For older dates, format as "Sep 16" or "Sep 16, 2024" if not current year
   const months = [
     'Jan',
     'Feb',
@@ -92,7 +98,12 @@ function formatDate(pubDate: Date | string): string {
   ]
   const month = months[dateObj.getMonth()]
   const day = dateObj.getDate()
+  const year = dateObj.getFullYear()
 
+  // Include year if not current year
+  if (year !== now.getFullYear()) {
+    return `${month} ${day}, ${year}`
+  }
   return `${month} ${day}`
 }
 ---
@@ -101,10 +112,8 @@ function formatDate(pubDate: Date | string): string {
   <p class='mb-4 text-sm text-tx-3'>
     <a href={url}>
       {source === 'books' && (inProgress ? 'Started' : 'Read')}
-      {
-        (source === 'movies' || source === 'tvShows' || source === 'games') &&
-          (inProgress ? 'Started' : 'Watched')
-      }
+      {(source === 'movies' || source === 'tvShows') && (inProgress ? 'Started' : 'Watched')}
+      {source === 'games' && (inProgress ? 'Played' : 'Played')}
       {formatDate(pubDate)}</a
     >
   </p>
@@ -168,9 +177,9 @@ function formatDate(pubDate: Date | string): string {
       }
       {source === 'books' && author && <p class='pt-0.5 text-sm text-tx-1'>{author}</p>}
 
-      {/* Show markdown content for journal posts */}
+      {/* Show markdown content for blog entries */}
       {
-        content && source === 'journal' && (
+        content && source === 'blog' && (
           <div class='mt-3 mb-4 max-w-none prose prose-base'>
             <content.Content />
           </div>

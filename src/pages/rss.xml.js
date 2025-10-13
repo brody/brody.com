@@ -2,7 +2,7 @@ import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
 
 export async function GET(context) {
-  const posts = await getCollection('journal')
+  const posts = await getCollection('blog')
   const bookmarks = await getCollection('bookmarks')
 
   // Combine and sort all items by date

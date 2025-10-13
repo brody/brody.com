@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import icon from 'astro-icon'
+import mdx from '@astrojs/mdx'
 import preact from '@astrojs/preact'
 import tailwindcss from '@tailwindcss/vite'
 import tunnel from 'astro-tunnel'
@@ -7,7 +8,7 @@ import tunnel from 'astro-tunnel'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://brody.com',
-  integrations: [preact(), icon(), tunnel()],
+  integrations: [mdx(), preact(), icon(), tunnel()],
 
   vite: {
     plugins: [tailwindcss()],

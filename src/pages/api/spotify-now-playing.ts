@@ -36,7 +36,7 @@ async function getNowPlaying() {
     },
     cache: 'no-store',
   })
-  
+
   console.log('[Spotify API] Currently playing response status:', nowPlayingResponse.status)
 
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status >= 400) {
@@ -73,7 +73,12 @@ async function getNowPlaying() {
   }
 
   const song = await nowPlayingResponse.json()
-  console.log('[Spotify API] Currently playing song:', song.item?.name, 'is_playing:', song.is_playing)
+  console.log(
+    '[Spotify API] Currently playing song:',
+    song.item?.name,
+    'is_playing:',
+    song.is_playing
+  )
 
   if (song.item === null || !song.is_playing) {
     console.log('[Spotify API] Nothing playing or paused, fetching recently played...')
@@ -114,7 +119,7 @@ async function getNowPlaying() {
     songUrl: song.item.external_urls.spotify,
     album: song.item.album.name,
   }
-  
+
   console.log('[Spotify API] Returning currently playing:', result.title)
   return result
 }

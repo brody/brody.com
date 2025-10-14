@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # obsidian vault
 src/content/.obsidian
+
+# Local Netlify folder
+.netlify

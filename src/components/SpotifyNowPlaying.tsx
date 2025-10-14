@@ -96,8 +96,8 @@ export default function SpotifyNowPlaying() {
     }
 
     fetchNowPlaying()
-    // Refresh every 10 seconds
-    const interval = setInterval(fetchNowPlaying, 10000)
+    // Refresh every 15 seconds
+    const interval = setInterval(fetchNowPlaying, 15000)
     console.log('[Spotify] Interval started:', interval)
     return () => {
       console.log('[Spotify] Component unmounting, clearing interval')
@@ -108,7 +108,7 @@ export default function SpotifyNowPlaying() {
   if (loading) {
     console.log('[Spotify] Rendering loading state')
     return (
-      <li class="dashed-border py-8">
+      <li class="py-8 dashed-border">
         <div class="flex flex-row gap-6 blur-md">
           <div class="bg-ui-2 h-[80px] w-[80px] rounded-sm"></div>
           <div>

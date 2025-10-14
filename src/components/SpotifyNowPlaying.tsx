@@ -19,9 +19,9 @@ function formatRelativeTime(dateString: string): string {
   const diffHours = Math.floor(diffTime / (1000 * 60 * 60))
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
 
-  // If less than an hour, show minutes
-  if (diffMinutes < 60 && diffMinutes > 0) {
-    return `${diffMinutes}m ago`
+  // If less than an hour, show minutes (minimum 1m)
+  if (diffMinutes < 60 && diffMinutes >= 0) {
+    return diffMinutes === 0 ? '1m ago' : `${diffMinutes}m ago`
   }
 
   // If less than a day, show hours
@@ -90,8 +90,8 @@ export default function SpotifyNowPlaying() {
 
   if (loading) {
     return (
-      <li class="dashed-border py-8">
-        <div class="flex flex-row gap-6">
+      <li class="py-8 dashed-border">
+        <div class="flex flex-row gap-6 blur-md">
           <div class="bg-ui-2 h-[80px] w-[80px] rounded-sm"></div>
           <div>
             <div class="pb-1 text-sm">
@@ -114,8 +114,8 @@ export default function SpotifyNowPlaying() {
                 <p>Loading</p>
               </div>
             </div>
-            <h2 class="text-h4 font-heading text-tx-3">Lorem ipsum dolor sit</h2>
-            <p class="text-tx-3 pt-0.5 text-sm">Lorem ipsum</p>
+            <h2 class="text-h4 font-heading text-tx-3">Baby Shark</h2>
+            <p class="text-tx-3 pt-0.5 text-sm">Pinkfong</p>
           </div>
         </div>
       </li>
@@ -127,7 +127,7 @@ export default function SpotifyNowPlaying() {
   }
 
   return (
-    <li class="dashed-border py-8">
+    <li class="py-8 dashed-border">
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}
       <div class="flex flex-row gap-6">
         {data.albumImageUrl && (

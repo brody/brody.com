@@ -61,15 +61,11 @@ function formatRelativeTime(dateString: string): string {
 }
 
 export default function SpotifyNowPlaying() {
-  console.log('[Spotify] SpotifyNowPlaying component rendering')
   const [data, setData] = useState<SpotifyData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    console.log('[Spotify] Component mounted, starting polling...')
-
     async function fetchNowPlaying() {
-      console.log('[Spotify] Fetching now playing...')
       try {
         // Add cache-busting and no-cache headers
         const response = await fetch(`/api/spotify-now-playing?t=${Date.now()}`, {
@@ -98,20 +94,15 @@ export default function SpotifyNowPlaying() {
     fetchNowPlaying()
     // Refresh every 15 seconds
     const interval = setInterval(fetchNowPlaying, 15000)
-    console.log('[Spotify] Interval started:', interval)
-    return () => {
-      console.log('[Spotify] Component unmounting, clearing interval')
-      clearInterval(interval)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   if (loading) {
-    console.log('[Spotify] Rendering loading state')
     return (
       <li class="py-8 dashed-border">
         <div class="flex flex-row gap-6 blur-md">
-          <div class="bg-ui-2 h-[80px] w-[80px] rounded-sm"></div>
-          <div>
+          <div class="bg-ui-2 h-[80px] w-[80px] flex-shrink-0 rounded-sm"></div>
+          <div class="min-w-0 flex-1">
             <div class="pb-1 text-sm">
               <div class="text-tx-3 flex items-center gap-1.5">
                 <svg
@@ -141,18 +132,15 @@ export default function SpotifyNowPlaying() {
   }
 
   if (!data || data.error || !data.title) {
-    console.log('[Spotify] No data or error, hiding component:', { data })
     return null // Don't show anything if there's an error or no data
   }
-
-  console.log('[Spotify] Rendering track:', data.title)
 
   return (
     <li class="py-8 dashed-border">
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}
       <div class="flex flex-row gap-6">
         {data.albumImageUrl && (
-          <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
+          <a href={data.songUrl} target="_blank" rel="noopener noreferrer" class="flex-shrink-0">
             <img
               src={data.albumImageUrl}
               alt={`${data.album} album art`}
@@ -163,7 +151,7 @@ export default function SpotifyNowPlaying() {
             />
           </a>
         )}
-        <div>
+        <div class="min-w-0 flex-1">
           <div class="pb-1 text-sm">
             <div class="text-tx-spotify flex items-center gap-1.5">
               <svg
@@ -199,10 +187,10 @@ export default function SpotifyNowPlaying() {
           </div>
           {data.title && (
             <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
-              <h2 class="text-h4 font-heading hover:text-tx-1 text-tx-0 truncate">{data.title}</h2>
+              <h2 class="truncate text-h4 font-heading hover:text-tx-1 text-tx-0">{data.title}</h2>
             </a>
           )}
-          {data.artist && <p class="text-tx-1 pt-0.5 text-sm truncate">{data.artist}</p>}
+          {data.artist && <p class="text-tx-1 truncate pt-0.5 text-sm">{data.artist}</p>}
         </div>
       </div>
     </li>

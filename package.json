@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.7",
+    "@astrojs/netlify": "^6.5.12",
     "@astrojs/preact": "^4.0.2",
     "@astrojs/rss": "^4.0.12",
     "@iconify-json/prime": "^1.2.4",

@@ -65,7 +65,10 @@ export default function SpotifyNowPlaying() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    console.log('[Spotify] Component mounted, starting polling...')
+    
     async function fetchNowPlaying() {
+      console.log('[Spotify] Fetching now playing...')
       try {
         // Add cache-busting and no-cache headers
         const response = await fetch(`/api/spotify-now-playing?t=${Date.now()}`, {
@@ -74,13 +77,13 @@ export default function SpotifyNowPlaying() {
             'Cache-Control': 'no-cache',
           },
         })
-        
+
         if (!response.ok) {
           console.error('Spotify API error:', response.status)
           setData({ isPlaying: false, error: 'API error' })
           return
         }
-        
+
         const result = await response.json()
         setData(result)
       } catch (error) {
@@ -94,7 +97,11 @@ export default function SpotifyNowPlaying() {
     fetchNowPlaying()
     // Refresh every 10 seconds
     const interval = setInterval(fetchNowPlaying, 10000)
-    return () => clearInterval(interval)
+    console.log('[Spotify] Interval started:', interval)
+    return () => {
+      console.log('[Spotify] Component unmounting, clearing interval')
+      clearInterval(interval)
+    }
   }, [])
 
   if (loading) {

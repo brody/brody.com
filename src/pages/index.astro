@@ -78,7 +78,7 @@ const allThings = [
 
   <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
   <ul>
-    <SpotifyNowPlaying client:load />
+    <SpotifyNowPlaying client:only="preact" />
     <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
     <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
     {

@@ -9,7 +9,7 @@ import netlify from '@astrojs/netlify'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://brody.com',
-  output: 'hybrid',
+  output: 'server',
   adapter: netlify(),
   integrations: [mdx(), preact(), icon(), tunnel()],
 

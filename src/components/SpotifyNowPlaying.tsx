@@ -199,10 +199,10 @@ export default function SpotifyNowPlaying() {
           </div>
           {data.title && (
             <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
-              <h2 class="text-h4 font-heading hover:text-tx-1 text-tx-0">{data.title}</h2>
+              <h2 class="text-h4 font-heading hover:text-tx-1 text-tx-0 truncate">{data.title}</h2>
             </a>
           )}
-          {data.artist && <p class="text-tx-1 pt-0.5 text-sm">{data.artist}</p>}
+          {data.artist && <p class="text-tx-1 pt-0.5 text-sm truncate">{data.artist}</p>}
         </div>
       </div>
     </li>

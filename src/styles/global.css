@@ -46,10 +46,11 @@
   --color-tx-book: var(--color-red-400);
   --color-tx-music: var(--color-lavender-400);
   --color-tx-game: var(--color-mauve-400);
+  --color-tx-spotify: rgba(30, 215, 96, 1);
 
   --color-tx-accent-1: var(--color-sky-400);
-  --color-tx-accent-2: var(--color-lavender-400);
-  --color-bg-accent-1: var(--color-lavender-500);
+  --color-tx-accent-2: var(--color-sky-500);
+  --color-bg-accent-1: var(--color-sky-500);
 
   /* --color-gradient: linear-gradient(
     45deg,
@@ -59,9 +60,11 @@
   ); */
   --color-tx-gradient: linear-gradient(
     45deg,
-    var(--color-sky-400),
-    var(--color-lavender-300) 50%,
-    var(--color-sky-400)
+    var(--color-lavender-400),
+    var(--color-sky-400) 20%,
+    var(--color-sky-500) 50%,
+    var(--color-sky-400) 80%,
+    var(--color-lavender-400)
   );
 
   --color-lavender-50: rgba(238, 241, 255, 1);
@@ -344,7 +347,7 @@
   }
 
   .prose {
-    @apply !text-tx-1 prose-h2:!mb-5 prose-h3:!mb-3 prose-h4:!mb-3 prose-headings:!leading-[140%] prose-headings:!font-heading prose-headings:!text-tx-0 prose-h1:!text-2xl prose-h2:!text-[1.375rem] prose-h3:!text-lg prose-h4:!text-base prose-a:!font-normal prose-a:!text-tx-0 prose-a:!decoration-1 prose-a:!decoration-wavy prose-a:!decoration-tx-accent-1 prose-a:!underline prose-a:!underline-offset-3 prose-a:!transition-colors prose-a:hover:!text-tx-accent-2 prose-blockquote:!border-l-mauve-400 prose-blockquote:!border-l-2 prose-blockquote:!my-4 prose-blockquote:!font-normal prose-blockquote:!not-italic prose-blockquote:!text-tx-2 prose-blockquote:opacity-90 prose-figcaption:!text-tx-3 prose-figcaption:opacity-80 prose-strong:!font-semibold prose-strong:!text-tx-1 prose-code:rounded prose-code:!bg-bg-2 prose-code:p-1.5 prose-code:!font-normal prose-code:!font-code prose-code:before:!content-[''] prose-code:after:!content-[''] prose-code:!text-tx-1 prose-pre:!bg-bg-2 prose-pre:!leading-relaxed prose-pre:!text-tx-1 prose-ol:!text-tx-1 prose-ul:overflow-x-clip prose-ul:!text-tx-1 prose-li:marker:!text-tx-accent-1 prose-table:font-body prose-th:border prose-th:border-ui-2 prose-th:pt-2 prose-th:last-of-type:pr-2 prose-td:border prose-td:border-ui-2 prose-td:last-of-type:pr-2 prose-img:mx-auto prose-img:!mt-8 prose-hr:!border-ui-2 prose-lead:!text-lg prose-lead:!text-tx-1 prose-p:!my-4 !leading-[1.625];
+    @apply !text-tx-1 prose-h2:!mb-5 prose-h3:!mb-3 prose-h4:!mb-3 prose-headings:!leading-[140%] prose-headings:!font-heading prose-headings:!text-tx-0 prose-h1:!text-2xl prose-h2:!text-[1.375rem] prose-h3:!text-lg prose-h4:!text-base prose-a:!font-normal prose-a:!text-tx-0 prose-a:!decoration-1 prose-a:!decoration-wavy prose-a:!decoration-tx-accent-1 prose-a:!underline prose-a:!underline-offset-3 prose-a:!transition-colors prose-a:hover:!text-tx-accent-1 prose-blockquote:!border-l-mauve-400 prose-blockquote:!border-l-2 prose-blockquote:!my-4 prose-blockquote:!font-normal prose-blockquote:!not-italic prose-blockquote:!text-tx-2 prose-blockquote:opacity-90 prose-figcaption:!text-tx-3 prose-figcaption:opacity-80 prose-strong:!font-semibold prose-strong:!text-tx-1 prose-code:rounded prose-code:!bg-bg-2 prose-code:p-1.5 prose-code:!font-normal prose-code:!font-code prose-code:before:!content-[''] prose-code:after:!content-[''] prose-code:!text-tx-1 prose-pre:!bg-bg-2 prose-pre:!leading-relaxed prose-pre:!text-tx-1 prose-ol:!text-tx-1 prose-ul:overflow-x-clip prose-ul:!text-tx-1 prose-li:marker:!text-tx-accent-1 prose-table:font-body prose-th:border prose-th:border-ui-2 prose-th:pt-2 prose-th:last-of-type:pr-2 prose-td:border prose-td:border-ui-2 prose-td:last-of-type:pr-2 prose-img:mx-auto prose-img:!mt-8 prose-hr:!border-ui-2 prose-lead:!text-lg prose-lead:!text-tx-1 prose-p:!my-4 !leading-[1.625];
   }
 
   /* a {
@@ -650,5 +653,54 @@
     .hamburger {
       display: none;
     }
+  }
+
+  /* Spotify Now Playing Animations */
+  @keyframes sound-bar {
+    0% {
+      height: 3px;
+    }
+    50% {
+      height: 10px;
+    }
+    100% {
+      height: 3px;
+    }
+  }
+
+  .animate-sound-bar-1 {
+    animation: sound-bar 1s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+
+  .animate-sound-bar-2 {
+    animation: sound-bar 1s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  .animate-sound-bar-3 {
+    animation: sound-bar 1s ease-in-out infinite;
+    animation-delay: 0.3s;
+  }
+
+  /* Dashed border utility */
+  .dashed-border {
+    position: relative;
+  }
+
+  .dashed-border::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 4px,
+      var(--color-ui-1) 4px,
+      var(--color-ui-1) 8px
+    );
+    background-size: 8px 1px;
   }
 }

@@ -68,11 +68,7 @@ export default function SpotifyNowPlaying() {
     async function fetchNowPlaying() {
       try {
         const response = await fetch('/api/spotify-now-playing')
-        if (!response.ok) {
-          console.error('Spotify API error:', response.status, response.statusText)
-        }
         const result = await response.json()
-        console.log('Spotify data:', result)
         setData(result)
       } catch (error) {
         console.error('Failed to fetch Spotify data:', error)
@@ -83,8 +79,8 @@ export default function SpotifyNowPlaying() {
     }
 
     fetchNowPlaying()
-    // Refresh every 30 seconds
-    const interval = setInterval(fetchNowPlaying, 30000)
+    // Refresh every 10 seconds
+    const interval = setInterval(fetchNowPlaying, 10000)
     return () => clearInterval(interval)
   }, [])
 

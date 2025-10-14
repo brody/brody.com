@@ -1,6 +1,6 @@
 # Brody.com
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7cc5cd45-6a9f-45ea-a1ee-ab17b7f61c22/deploy-status)](https://app.netlify.com/sites/brody/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a3a74b51-eb0a-4cd1-9be5-657d94afd0ae/deploy-status)](https://app.netlify.com/projects/brody/deploys)
 
 *Personal website powered by [Astro](https://astro.build/), [Tailwind](https://tailwindcss.com/), [Netlify](https://www.netlify.com/) & 💖.*
 

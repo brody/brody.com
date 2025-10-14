@@ -1,12 +1,12 @@
 /**
  * Helper script to get Spotify refresh token
  * Run with: node scripts/get-spotify-token.js
- *
- * IMPORTANT: Delete this file before committing to git!
+ * 
+ * Add your credentials here temporarily (DO NOT COMMIT)
  */
 
-const CLIENT_ID = '9956cc16e6f24c5aab20411358ca14ff'
-const CLIENT_SECRET = 'ff07203c10654506baf21e553dd4a804'
+const CLIENT_ID = 'YOUR_CLIENT_ID_HERE'
+const CLIENT_SECRET = 'YOUR_CLIENT_SECRET_HERE'
 const REDIRECT_URI = 'http://localhost:3000'
 
 console.log('\n🎵 Spotify Refresh Token Generator\n')

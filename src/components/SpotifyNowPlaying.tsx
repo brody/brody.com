@@ -68,7 +68,11 @@ export default function SpotifyNowPlaying() {
     async function fetchNowPlaying() {
       try {
         const response = await fetch('/api/spotify-now-playing')
+        if (!response.ok) {
+          console.error('Spotify API error:', response.status, response.statusText)
+        }
         const result = await response.json()
+        console.log('Spotify data:', result)
         setData(result)
       } catch (error) {
         console.error('Failed to fetch Spotify data:', error)
@@ -86,7 +90,7 @@ export default function SpotifyNowPlaying() {
 
   if (loading) {
     return (
-      <li class="py-8 dashed-border">
+      <li class="dashed-border py-8">
         <div class="flex flex-row gap-6">
           <div class="bg-ui-2 h-[80px] w-[80px] rounded-sm"></div>
           <div>
@@ -123,7 +127,7 @@ export default function SpotifyNowPlaying() {
   }
 
   return (
-    <li class="py-8 dashed-border">
+    <li class="dashed-border py-8">
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}
       <div class="flex flex-row gap-6">
         {data.albumImageUrl && (

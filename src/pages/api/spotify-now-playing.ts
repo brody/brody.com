@@ -109,6 +109,28 @@ async function getNowPlaying() {
 
 export const GET: APIRoute = async () => {
   try {
+    // Check if environment variables are set
+    if (!client_id || !client_secret || !refresh_token) {
+      console.error('Missing Spotify environment variables')
+      return new Response(
+        JSON.stringify({
+          isPlaying: false,
+          error: 'Missing credentials',
+          debug: {
+            hasClientId: !!client_id,
+            hasClientSecret: !!client_secret,
+            hasRefreshToken: !!refresh_token,
+          },
+        }),
+        {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+    }
+
     const response = await getNowPlaying()
 
     return new Response(JSON.stringify(response), {

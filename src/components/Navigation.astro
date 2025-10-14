@@ -33,9 +33,9 @@ const isCurrentPage = (href: string) => {
 ---
 
 <nav
-  class='flex sticky top-0 flex-col gap-4 px-4 pt-16 pb-8 md:px-8 md:pt-20 md:pb-10 min-h-dvh dashed-border'
+  class='flex sticky top-0 flex-col gap-4 px-4 pt-16 pb-8 dashed-border min-h-dvh md:px-8 md:pt-32 md:pb-10'
 >
-  <a href='/' class='hidden p-4 md:block'>
+  <a href='/' class='hidden p-4 -mt-4 md:block'>
     <Image
       src={avatarImage}
       alt='Brody Maclean'
@@ -55,8 +55,8 @@ const isCurrentPage = (href: string) => {
               aria-current={isCurrentPage(href) ? 'page' : null}
               class={
                 isCurrentPage(href)
-                  ? 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute after:bg-tx-3 text-tx-0 py-1.5 pl-4 pr-5 items-center'
-                  : 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 py-1.5 pl-4 pr-5 items-center '
+                  ? 'link after:content-[" "] after:bg-tx-3 text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+                  : 'link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
               }
               href={href}
             >
@@ -69,7 +69,7 @@ const isCurrentPage = (href: string) => {
     </ul>
   </div>
   <div>
-    <span class='flex px-4 mb-2 text-base md:text-sm text-tx-3'>Library</span>
+    <span class='flex px-4 mb-2 text-base text-tx-3 md:text-sm'>Library</span>
     <ul class='library-nav'>
       {
         libraryLinks.map(({ href, icon, label }) => (
@@ -78,8 +78,8 @@ const isCurrentPage = (href: string) => {
               aria-current={isCurrentPage(href) ? 'page' : null}
               class={
                 isCurrentPage(href)
-                  ? 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute after:bg-tx-3 text-tx-0 py-1.5 pl-4 pr-5 items-center'
-                  : 'link inline-flex text-lg md:text-sm gap-3 after:content-[" "] after:block after:left-4 md:after:left-6 after:h-1 after:rounded-full after:w-1 after:absolute hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 py-1.5 pl-4 pr-5 items-center '
+                  ? 'link after:content-[" "] after:bg-tx-3 text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+                  : 'link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
               }
               href={href}
             >

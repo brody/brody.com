@@ -28,6 +28,9 @@ const sortedBookmarks = allBookmarks
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
+
+// Only render first 12 items
+const initialBookmarks = sortedBookmarks.slice(0, 12)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -38,7 +41,7 @@ const sortedBookmarks = allBookmarks
 
   <ul class='space-y-0'>
     {
-      sortedBookmarks.map((bookmark, index) => {
+      initialBookmarks.map((bookmark, index) => {
         // Use eager loading for first 3 items (above the fold), lazy for the rest
         const loading = index < 3 ? 'eager' : 'lazy'
 
@@ -65,5 +68,10 @@ const sortedBookmarks = allBookmarks
     }
   </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={sortedBookmarks.length} />
+  <LazyLoadList
+    client:load
+    initialCount={12}
+    totalCount={sortedBookmarks.length}
+    contentType='bookmarks'
+  />
 </BaseLayout>

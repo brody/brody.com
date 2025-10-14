@@ -4,32 +4,44 @@ interface LazyLoadListProps {
   initialCount?: number
   loadMoreCount?: number
   totalCount: number
+  contentType?: string // Filter by content type (blog, books, movies, etc.)
 }
 
 /**
- * LazyLoadList - A reusable component for lazy loading list items
- * This component hides items beyond the initial count and shows them when scrolling near the bottom
+ * LazyLoadList - A component for true lazy loading of content
+ * Fetches and renders items only when the user scrolls near them
  */
 export default function LazyLoadList({
   initialCount = 12,
   loadMoreCount = 12,
   totalCount,
+  contentType = 'all',
 }: LazyLoadListProps) {
-  const [visibleCount, setVisibleCount] = useState(initialCount)
-  const hasMore = visibleCount < totalCount
+  const [htmlContent, setHtmlContent] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [offset, setOffset] = useState(initialCount)
+  const hasMore = offset < totalCount
   const observerTarget = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    // Hide items beyond the visible count
-    const items = document.querySelectorAll('[data-lazy-item]')
-    items.forEach((item, index) => {
-      if (index >= visibleCount) {
-        ;(item as HTMLElement).style.display = 'none'
-      } else {
-        ;(item as HTMLElement).style.display = ''
-      }
-    })
-  }, [visibleCount])
+  const loadMore = async () => {
+    if (isLoading || !hasMore) return
+
+    setIsLoading(true)
+    try {
+      const typeParam = contentType !== 'all' ? `&type=${contentType}` : ''
+      const response = await fetch(
+        `/content-fragment?offset=${offset}&limit=${loadMoreCount}${typeParam}`
+      )
+      const html = await response.text()
+      setHtmlContent((prev) => prev + html)
+      setOffset((prev) => prev + loadMoreCount)
+    } catch (error) {
+      console.error('Failed to load more items:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   useEffect(() => {
     // Set up IntersectionObserver to load more when scrolling near the bottom
@@ -37,12 +49,12 @@ export default function LazyLoadList({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((prev) => Math.min(prev + loadMoreCount, totalCount))
+        if (entries[0].isIntersecting && !isLoading) {
+          loadMore()
         }
       },
       {
-        rootMargin: '100px', // Trigger when within 100px of the sentinel
+        rootMargin: '200px', // Trigger when within 200px of the sentinel
       }
     )
 
@@ -51,29 +63,34 @@ export default function LazyLoadList({
     return () => {
       observer.disconnect()
     }
-  }, [hasMore, loadMoreCount, totalCount, visibleCount])
+  }, [hasMore, isLoading, offset])
 
-  const loadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + loadMoreCount, totalCount))
-  }
-
-  if (!hasMore) return null
+  if (!hasMore && !htmlContent) return null
 
   return (
     <>
-      {/* Sentinel element for IntersectionObserver */}
-      <div ref={observerTarget} className="h-px" />
+      {/* Render dynamically loaded HTML content */}
+      {htmlContent && <div ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />}
 
-      {/* Manual load more button as fallback */}
-      <div className="mt-8 flex justify-center">
-        <button
-          onClick={loadMore}
-          className="text-tx-1 bg-bg-2 hover:bg-bg-3 rounded-lg px-6 py-3 text-sm font-medium transition-colors duration-200"
-          aria-label="Load more items"
-        >
-          Load More ({totalCount - visibleCount} remaining)
-        </button>
-      </div>
+      {/* Sentinel element for IntersectionObserver */}
+      {hasMore && <div ref={observerTarget} className="h-px" />}
+
+      {/* Loading indicator and manual load more button */}
+      {hasMore && (
+        <li className="mt-8 flex list-none justify-center">
+          {isLoading ? (
+            <div className="text-tx-2 text-sm">Loading...</div>
+          ) : (
+            <button
+              onClick={loadMore}
+              className="text-tx-1 bg-bg-2 hover:bg-bg-3 rounded-lg px-6 py-3 text-sm font-medium transition-colors duration-200"
+              aria-label="Load more items"
+            >
+              Load More ({totalCount - offset} remaining)
+            </button>
+          )}
+        </li>
+      )}
     </>
   )
 }

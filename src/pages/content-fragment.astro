@@ -1,0 +1,215 @@
+---
+import { getCollection, render } from 'astro:content'
+import LibraryItem from '../components/LibraryItem.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+import NotePost from '../components/NotePost.astro'
+import BookmarkPost from '../components/BookmarkPost.astro'
+
+const url = new URL(Astro.request.url)
+const offset = parseInt(url.searchParams.get('offset') || '0')
+const limit = parseInt(url.searchParams.get('limit') || '12')
+const contentType = url.searchParams.get('type') || 'all' // Filter by content type
+
+const allPosts = await Promise.all(
+  (await getCollection('blog'))
+    .filter((item) => item && item.data)
+    .map(async (item) => {
+      try {
+        const { Content } = await render(item)
+        return { ...item, source: 'blog', renderedContent: { Content } }
+      } catch (error) {
+        console.error('Error rendering blog post:', item.id, error)
+        return { ...item, source: 'blog', renderedContent: undefined }
+      }
+    })
+)
+const allNotes = await Promise.all(
+  (await getCollection('notes'))
+    .filter((item) => item && item.data)
+    .map(async (item) => {
+      try {
+        const { Content } = await render(item)
+        return { ...item, source: 'notes', renderedContent: { Content } }
+      } catch (error) {
+        console.error('Error rendering note:', item.id, error)
+        return { ...item, source: 'notes', renderedContent: undefined }
+      }
+    })
+)
+const allMovies = (await getCollection('movies'))
+  .filter((item) => item && item.data)
+  .map((item) => ({ ...item, source: 'movies' }))
+const allTvShows = (await getCollection('tvShows'))
+  .filter((item) => item && item.data)
+  .map((item) => ({
+    ...item,
+    source: 'tvShows',
+  }))
+const allGames = (await getCollection('games'))
+  .filter((item) => item && item.data)
+  .map((item) => ({ ...item, source: 'games' }))
+const allBooks = (await getCollection('books'))
+  .filter((item) => item && item.data)
+  .map((item) => ({
+    ...item,
+    source: 'books',
+    data: {
+      ...item.data,
+      pubDate: item.data.datePublished || item.data.pubDate,
+      imageUrl: item.data.imageUrl || item.data.imageUrl,
+      imageAlt: item.data.title,
+      year: item.data.year,
+      rating: item.data.rating,
+    },
+  }))
+const allBookmarks = await Promise.all(
+  (await getCollection('bookmarks'))
+    .filter((item) => item && item.data)
+    .map(async (item) => {
+      try {
+        const { Content } = await render(item)
+        return { ...item, source: 'bookmarks', renderedContent: { Content } }
+      } catch (error) {
+        console.error('Error rendering bookmark:', item.id, error)
+        return { ...item, source: 'bookmarks', renderedContent: undefined }
+      }
+    })
+)
+
+let allThings = [
+  ...allPosts,
+  ...allNotes,
+  ...allMovies,
+  ...allTvShows,
+  ...allGames,
+  ...allBooks,
+  ...allBookmarks,
+]
+
+// Filter by content type if specified
+if (contentType !== 'all') {
+  allThings = allThings.filter((item) => item.source === contentType)
+}
+
+allThings = allThings
+  .filter((item) => item.data.pubDate)
+  .sort((a, b) => {
+    const dateA = typeof a.data.pubDate === 'string' ? new Date(a.data.pubDate) : a.data.pubDate
+    const dateB = typeof b.data.pubDate === 'string' ? new Date(b.data.pubDate) : b.data.pubDate
+    if (!dateA || !dateB) return 0
+    return dateB.getTime() - dateA.getTime()
+  })
+
+const items = allThings.slice(offset, offset + limit)
+---
+
+{
+  items.map((post) => {
+    const loading = 'lazy'
+
+    return (
+      <div class='list-none' style='list-style: none;'>
+        {post.source === 'notes' && (
+          <NotePost
+            url={`/notes/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            content={'renderedContent' in post ? post.renderedContent : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'blog' && (
+          <ArticlePost
+            url={`/posts/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            content={'renderedContent' in post ? post.renderedContent : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'movies' && (
+          <LibraryItem
+            url={`/movies/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+            year={'year' in post.data ? post.data.year : undefined}
+            rating={'rating' in post.data ? post.data.rating : undefined}
+            description={'description' in post.data ? post.data.description : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'tvShows' && (
+          <LibraryItem
+            url={`/tv-shows/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+            year={'year' in post.data ? post.data.year : undefined}
+            rating={'rating' in post.data ? post.data.rating : undefined}
+            description={'description' in post.data ? post.data.description : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'games' && (
+          <LibraryItem
+            url={`/games/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+            year={'year' in post.data ? post.data.year : undefined}
+            rating={'rating' in post.data ? post.data.rating : undefined}
+            description={'description' in post.data ? post.data.description : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'books' && (
+          <LibraryItem
+            url={`/books/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+            inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+            year={'year' in post.data ? post.data.year : undefined}
+            rating={'rating' in post.data ? post.data.rating : undefined}
+            author={'author' in post.data ? post.data.author : undefined}
+            description={'description' in post.data ? post.data.description : undefined}
+            loading={loading}
+          />
+        )}
+        {post.source === 'bookmarks' && (
+          <BookmarkPost
+            url={`/bookmarks/${post.id}/`}
+            title={post.data.title}
+            sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
+            pubDate={post.data.pubDate}
+            source={post.source}
+            loading={loading}
+            sourceUrl={'source' in post.data ? post.data.source : undefined}
+            imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+            faviconUrl={'faviconUrl' in post.data ? post.data.faviconUrl : undefined}
+            description={'description' in post.data ? post.data.description : undefined}
+            content={'renderedContent' in post ? post.renderedContent : undefined}
+          />
+        )}
+      </div>
+    )
+  })
+}

@@ -34,6 +34,9 @@ const sortedBooks = allBooks
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
+
+// Only render first 12 items
+const initialBooks = sortedBooks.slice(0, 12)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -43,7 +46,7 @@ const sortedBooks = allBooks
 
   <ul class='space-y-0'>
     {
-      sortedBooks.map((book, index) => {
+      initialBooks.map((book, index) => {
         // Use eager loading for first 3 items (above the fold), lazy for the rest
         const loading = index < 3 ? 'eager' : 'lazy'
 
@@ -69,5 +72,5 @@ const sortedBooks = allBooks
     }
   </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={sortedBooks.length} />
+  <LazyLoadList client:load initialCount={12} totalCount={sortedBooks.length} contentType='books' />
 </BaseLayout>

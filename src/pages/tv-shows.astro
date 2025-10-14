@@ -23,6 +23,9 @@ const sortedTvShows = allTvShows
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
+
+// Only render first 12 items
+const initialTvShows = sortedTvShows.slice(0, 12)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -32,7 +35,7 @@ const sortedTvShows = allTvShows
 
   <ul class='space-y-0'>
     {
-      sortedTvShows.map((tvShow, index) => {
+      initialTvShows.map((tvShow, index) => {
         // Use eager loading for first 3 items (above the fold), lazy for the rest
         const loading = index < 3 ? 'eager' : 'lazy'
 
@@ -57,5 +60,10 @@ const sortedTvShows = allTvShows
     }
   </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={sortedTvShows.length} />
+  <LazyLoadList
+    client:load
+    initialCount={12}
+    totalCount={sortedTvShows.length}
+    contentType='tvShows'
+  />
 </BaseLayout>

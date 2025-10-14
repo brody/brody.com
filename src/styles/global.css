@@ -703,4 +703,15 @@
     );
     background-size: 8px 1px;
   }
+
+  /* Remove list styles from lazy loaded items */
+  [data-lazy-item] {
+    list-style: none !important;
+  }
+
+  /* Ensure all child li elements also have no bullets */
+  .list-none li,
+  [data-lazy-item] li {
+    list-style: none !important;
+  }
 }

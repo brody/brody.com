@@ -101,8 +101,8 @@ export default function SpotifyNowPlaying() {
     return (
       <li class="py-8 dashed-border">
         <div class="flex flex-row gap-6 blur-md">
-          <div class="bg-ui-2 h-[80px] w-[80px] flex-shrink-0 rounded-sm"></div>
-          <div class="min-w-0 flex-1">
+          <div class="bg-ui-2 h-20 w-20 flex-shrink-0 rounded-sm"></div>
+          <div class="flex-1 min-w-0">
             <div class="pb-1 text-sm">
               <div class="text-tx-3 flex items-center gap-1.5">
                 <svg
@@ -146,12 +146,12 @@ export default function SpotifyNowPlaying() {
               alt={`${data.album} album art`}
               width={80}
               height={80}
-              class="h-[80px] w-[80px] rounded-sm object-cover"
+              class="h-20 w-20 rounded-sm object-cover"
               loading="eager"
             />
           </a>
         )}
-        <div class="min-w-0 flex-1">
+        <div class="flex-1 min-w-0">
           <div class="pb-1 text-sm">
             <div class="text-tx-spotify flex items-center gap-1.5">
               <svg

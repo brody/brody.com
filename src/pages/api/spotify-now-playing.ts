@@ -27,20 +27,26 @@ async function getAccessToken() {
 
 async function getNowPlaying() {
   const { access_token } = await getAccessToken()
+  console.log('[Spotify API] Got access token, fetching from Spotify...')
 
   // Try to get currently playing
   const nowPlayingResponse = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
+    cache: 'no-store',
   })
+  
+  console.log('[Spotify API] Currently playing response status:', nowPlayingResponse.status)
 
   if (nowPlayingResponse.status === 204 || nowPlayingResponse.status >= 400) {
+    console.log('[Spotify API] No current track, fetching recently played...')
     // Nothing is currently playing, get the last played track
     const recentlyPlayedResponse = await fetch(RECENTLY_PLAYED_ENDPOINT, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
+      cache: 'no-store',
     })
 
     if (recentlyPlayedResponse.status === 200) {
@@ -67,13 +73,16 @@ async function getNowPlaying() {
   }
 
   const song = await nowPlayingResponse.json()
+  console.log('[Spotify API] Currently playing song:', song.item?.name, 'is_playing:', song.is_playing)
 
   if (song.item === null || !song.is_playing) {
+    console.log('[Spotify API] Nothing playing or paused, fetching recently played...')
     // If nothing is playing or paused, get recently played with timestamp
     const recentlyPlayedResponse = await fetch(RECENTLY_PLAYED_ENDPOINT, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
+      cache: 'no-store',
     })
 
     if (recentlyPlayedResponse.status === 200) {
@@ -97,7 +106,7 @@ async function getNowPlaying() {
     return { isPlaying: false }
   }
 
-  return {
+  const result = {
     isPlaying: song.is_playing,
     title: song.item.name,
     artist: song.item.artists.map((artist: any) => artist.name).join(', '),
@@ -105,6 +114,9 @@ async function getNowPlaying() {
     songUrl: song.item.external_urls.spotify,
     album: song.item.album.name,
   }
+  
+  console.log('[Spotify API] Returning currently playing:', result.title)
+  return result
 }
 
 export const GET: APIRoute = async () => {

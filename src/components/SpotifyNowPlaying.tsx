@@ -61,12 +61,13 @@ function formatRelativeTime(dateString: string): string {
 }
 
 export default function SpotifyNowPlaying() {
+  console.log('[Spotify] SpotifyNowPlaying component rendering')
   const [data, setData] = useState<SpotifyData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     console.log('[Spotify] Component mounted, starting polling...')
-    
+
     async function fetchNowPlaying() {
       console.log('[Spotify] Fetching now playing...')
       try {
@@ -105,42 +106,20 @@ export default function SpotifyNowPlaying() {
   }, [])
 
   if (loading) {
+    console.log('[Spotify] Rendering loading state')
     return (
-      <li class="py-8 dashed-border">
-        <div class="flex flex-row gap-6 blur-md">
-          <div class="bg-ui-2 h-[80px] w-[80px] rounded-sm"></div>
-          <div>
-            <div class="pb-1 text-sm">
-              <div class="text-tx-3 flex items-center gap-1.5">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                  <path d="M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527" />
-                  <path d="M9 15c1.5 -1 4 -1 5 .5" />
-                  <path d="M7 9c2 -1 6 -2 10 .5" />
-                </svg>
-                <p>Loading</p>
-              </div>
-            </div>
-            <h2 class="text-h4 font-heading text-tx-3">Baby Shark</h2>
-            <p class="text-tx-3 pt-0.5 text-sm">Pinkfong</p>
-          </div>
-        </div>
+      <li class="dashed-border py-8">
+        <p class="text-tx-3 mb-4 text-sm">Loading Spotify...</p>
       </li>
     )
   }
 
   if (!data || data.error || !data.title) {
+    console.log('[Spotify] No data or error, hiding component:', { data })
     return null // Don't show anything if there's an error or no data
   }
+  
+  console.log('[Spotify] Rendering track:', data.title)
 
   return (
     <li class="py-8 dashed-border">

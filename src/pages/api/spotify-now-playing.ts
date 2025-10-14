@@ -110,6 +110,7 @@ async function getNowPlaying() {
 export const GET: APIRoute = async () => {
   try {
     const response = await getNowPlaying()
+    console.log('[Spotify API] Returning response:', response)
 
     return new Response(JSON.stringify(response), {
       status: 200,

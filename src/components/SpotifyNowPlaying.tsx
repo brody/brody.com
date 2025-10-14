@@ -108,8 +108,8 @@ export default function SpotifyNowPlaying() {
   if (loading) {
     console.log('[Spotify] Rendering loading state')
     return (
-      <li class="dashed-border py-8">
-        <p class="text-tx-3 mb-4 text-sm">Loading Spotify...</p>
+      <li class="py-8 dashed-border">
+        <p class="mb-4 text-sm text-tx-3">Loading Spotify...</p>
       </li>
     )
   }
@@ -118,7 +118,7 @@ export default function SpotifyNowPlaying() {
     console.log('[Spotify] No data or error, hiding component:', { data })
     return null // Don't show anything if there's an error or no data
   }
-  
+
   console.log('[Spotify] Rendering track:', data.title)
 
   return (

@@ -67,7 +67,20 @@ export default function SpotifyNowPlaying() {
   useEffect(() => {
     async function fetchNowPlaying() {
       try {
-        const response = await fetch('/api/spotify-now-playing')
+        // Add cache-busting and no-cache headers
+        const response = await fetch(`/api/spotify-now-playing?t=${Date.now()}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache',
+          },
+        })
+        
+        if (!response.ok) {
+          console.error('Spotify API error:', response.status)
+          setData({ isPlaying: false, error: 'API error' })
+          return
+        }
+        
         const result = await response.json()
         setData(result)
       } catch (error) {

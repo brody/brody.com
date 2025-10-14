@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import BookmarkPost from '../components/BookmarkPost.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 const pageTitle = 'Bookmarks'
 const allBookmarks = await Promise.all(
@@ -30,8 +31,8 @@ const sortedBookmarks = allBookmarks
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
-  <p class='mb-8 text-tx-2'>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
+  <p class='text-tx-2 mb-8'>
     A collection of interesting resources, links, and bookmarks I've saved.
   </p>
 
@@ -42,23 +43,27 @@ const sortedBookmarks = allBookmarks
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <BookmarkPost
-            url={`/bookmarks/${bookmark.id}/`}
-            title={bookmark.data.title}
-            sourceTitle={bookmark.data.sourceTitle}
-            pubDate={bookmark.data.pubDate}
-            source={bookmark.source}
-            loading={loading}
-            sourceUrl={
-              'source' in bookmark.data && bookmark.data.source ? bookmark.data.source : undefined
-            }
-            imageUrl={'imageUrl' in bookmark.data ? bookmark.data.imageUrl : undefined}
-            faviconUrl={'faviconUrl' in bookmark.data ? bookmark.data.faviconUrl : undefined}
-            description={'description' in bookmark.data ? bookmark.data.description : undefined}
-            content={'renderedContent' in bookmark ? bookmark.renderedContent : undefined}
-          />
+          <div data-lazy-item>
+            <BookmarkPost
+              url={`/bookmarks/${bookmark.id}/`}
+              title={bookmark.data.title}
+              sourceTitle={bookmark.data.sourceTitle}
+              pubDate={bookmark.data.pubDate}
+              source={bookmark.source}
+              loading={loading}
+              sourceUrl={
+                'source' in bookmark.data && bookmark.data.source ? bookmark.data.source : undefined
+              }
+              imageUrl={'imageUrl' in bookmark.data ? bookmark.data.imageUrl : undefined}
+              faviconUrl={'faviconUrl' in bookmark.data ? bookmark.data.faviconUrl : undefined}
+              description={'description' in bookmark.data ? bookmark.data.description : undefined}
+              content={'renderedContent' in bookmark ? bookmark.renderedContent : undefined}
+            />
+          </div>
         )
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={sortedBookmarks.length} />
 </BaseLayout>

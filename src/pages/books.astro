@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import LibraryItem from '../components/LibraryItem.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 const pageTitle = 'Books'
 const allBooks = (await getCollection('books')).map((item) => ({
@@ -36,9 +37,9 @@ const sortedBooks = allBooks
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
 
-  <p class='mb-8 text-tx-2'>Books I've read, with ratings and thoughts.</p>
+  <p class='text-tx-2 mb-8'>Books I've read, with ratings and thoughts.</p>
 
   <ul class='space-y-0'>
     {
@@ -47,22 +48,26 @@ const sortedBooks = allBooks
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <LibraryItem
-            url={`/books/${book.id}/`}
-            title={book.data.title}
-            pubDate={book.data.pubDate}
-            source={book.source}
-            imageUrl={book.data.imageUrl}
-            imageAlt={book.data.imageAlt}
-            inProgress={'inProgress' in book.data ? book.data.inProgress : undefined}
-            year={book.data.year}
-            rating={book.data.rating}
-            author={'author' in book.data ? book.data.author : undefined}
-            description={'description' in book.data ? book.data.description : undefined}
-            loading={loading}
-          />
+          <div data-lazy-item>
+            <LibraryItem
+              url={`/books/${book.id}/`}
+              title={book.data.title}
+              pubDate={book.data.pubDate}
+              source={book.source}
+              imageUrl={book.data.imageUrl}
+              imageAlt={book.data.imageAlt}
+              inProgress={'inProgress' in book.data ? book.data.inProgress : undefined}
+              year={book.data.year}
+              rating={book.data.rating}
+              author={'author' in book.data ? book.data.author : undefined}
+              description={'description' in book.data ? book.data.description : undefined}
+              loading={loading}
+            />
+          </div>
         )
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={sortedBooks.length} />
 </BaseLayout>

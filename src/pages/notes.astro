@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import NotePost from '../components/NotePost.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 const pageTitle = 'Notes'
 const allNotes = await Promise.all(
@@ -30,8 +31,8 @@ const sortedNotes = allNotes
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
-  <p class='mb-8 text-tx-2'>Personal notes, thoughts, and observations I've written down.</p>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
+  <p class='text-tx-2 mb-8'>Personal notes, thoughts, and observations I've written down.</p>
 
   <ul class='space-y-0'>
     {
@@ -40,18 +41,22 @@ const sortedNotes = allNotes
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <NotePost
-            url={`/notes/${note.id}/`}
-            title={note.data.title || note.id}
-            pubDate={note.data.pubDate}
-            source={note.source}
-            loading={loading}
-            imageUrl={'imageUrl' in note.data ? note.data.imageUrl : undefined}
-            description={'description' in note.data ? note.data.description : undefined}
-            content={'renderedContent' in note ? note.renderedContent : undefined}
-          />
+          <div data-lazy-item>
+            <NotePost
+              url={`/notes/${note.id}/`}
+              title={note.data.title || note.id}
+              pubDate={note.data.pubDate}
+              source={note.source}
+              loading={loading}
+              imageUrl={'imageUrl' in note.data ? note.data.imageUrl : undefined}
+              description={'description' in note.data ? note.data.description : undefined}
+              content={'renderedContent' in note ? note.renderedContent : undefined}
+            />
+          </div>
         )
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={sortedNotes.length} />
 </BaseLayout>

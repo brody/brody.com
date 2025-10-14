@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import LibraryItem from '../components/LibraryItem.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 const pageTitle = 'Movies'
 const allMovies = (await getCollection('movies')).map((item) => ({ ...item, source: 'movies' }))
@@ -25,9 +26,9 @@ const sortedMovies = allMovies
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
 
-  <p class='mb-8 text-tx-2'>Movies I've watched, with ratings and thoughts.</p>
+  <p class='text-tx-2 mb-8'>Movies I've watched, with ratings and thoughts.</p>
 
   <ul class='space-y-0'>
     {
@@ -36,21 +37,25 @@ const sortedMovies = allMovies
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <LibraryItem
-            url={`/movies/${movie.id}/`}
-            title={movie.data.title}
-            pubDate={movie.data.pubDate}
-            source={movie.source}
-            imageUrl={'imageUrl' in movie.data ? movie.data.imageUrl : undefined}
-            imageAlt={'imageAlt' in movie.data ? movie.data.imageAlt : undefined}
-            inProgress={'inProgress' in movie.data ? movie.data.inProgress : undefined}
-            year={'year' in movie.data ? movie.data.year : undefined}
-            rating={'rating' in movie.data ? movie.data.rating : undefined}
-            description={'description' in movie.data ? movie.data.description : undefined}
-            loading={loading}
-          />
+          <div data-lazy-item>
+            <LibraryItem
+              url={`/movies/${movie.id}/`}
+              title={movie.data.title}
+              pubDate={movie.data.pubDate}
+              source={movie.source}
+              imageUrl={'imageUrl' in movie.data ? movie.data.imageUrl : undefined}
+              imageAlt={'imageAlt' in movie.data ? movie.data.imageAlt : undefined}
+              inProgress={'inProgress' in movie.data ? movie.data.inProgress : undefined}
+              year={'year' in movie.data ? movie.data.year : undefined}
+              rating={'rating' in movie.data ? movie.data.rating : undefined}
+              description={'description' in movie.data ? movie.data.description : undefined}
+              loading={loading}
+            />
+          </div>
         )
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={sortedMovies.length} />
 </BaseLayout>

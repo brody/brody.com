@@ -22,8 +22,8 @@ const {
   url,
   imageUrl,
   loading = 'lazy',
-  width = 1200,
-  height = 640,
+  width = 580,
+  height = 320,
 } = Astro.props
 
 // Extract base URL from the full URL
@@ -77,6 +77,7 @@ const articleTitle = sourceTitle?.includes(' - ')
         height={height}
         class='object-cover w-full max-h-80'
         loading={loading}
+        densities={[2, 3]}
       />
 
       <div class='absolute bottom-0 left-0 h-[120px] w-full bg-gradient-to-t from-black to-transparent opacity-60' />
@@ -98,6 +99,7 @@ const articleTitle = sourceTitle?.includes(' - ')
                 height={24}
                 class='object-contain w-3 h-3'
                 loading={loading}
+                densities={[2, 3]}
               />
             ) : (
               <img
@@ -132,6 +134,7 @@ const articleTitle = sourceTitle?.includes(' - ')
                 height={24}
                 class='object-contain w-3 h-3'
                 loading={loading}
+                densities={[2, 3]}
               />
             ) : (
               <img
@@ -169,6 +172,7 @@ const articleTitle = sourceTitle?.includes(' - ')
               height={24}
               class='object-contain w-3 h-3'
               loading={loading}
+              densities={[2, 3]}
             />
           ) : (
             <img

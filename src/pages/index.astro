@@ -7,6 +7,7 @@ import LibraryItem from '../components/LibraryItem.astro'
 import ArticlePost from '../components/ArticlePost.astro'
 import NotePost from '../components/NotePost.astro'
 import BookmarkPost from '../components/BookmarkPost.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 // const allNotes = Object.values(import.meta.glob('./notes/*.md', { eager: true }));
 const allPosts = await Promise.all(
@@ -84,7 +85,7 @@ const allThings = [
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div>
+          <div data-lazy-item>
             {post.source === 'notes' && (
               <NotePost
                 url={`/notes/${post.id}/`}
@@ -192,6 +193,8 @@ const allThings = [
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={allThings.length} />
 </BaseLayout>
 
 <style>

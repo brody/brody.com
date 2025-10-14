@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import LibraryItem from '../components/LibraryItem.astro'
+import LazyLoadList from '../components/LazyLoadList'
 
 const pageTitle = 'TV Shows'
 const allTvShows = (await getCollection('tvShows')).map((item) => ({ ...item, source: 'tvShows' }))
@@ -25,9 +26,9 @@ const sortedTvShows = allTvShows
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
 
-  <p class='mb-8 text-tx-2'>TV shows I've watched, with ratings and thoughts.</p>
+  <p class='text-tx-2 mb-8'>TV shows I've watched, with ratings and thoughts.</p>
 
   <ul class='space-y-0'>
     {
@@ -36,21 +37,25 @@ const sortedTvShows = allTvShows
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <LibraryItem
-            url={`/tv-shows/${tvShow.id}/`}
-            title={tvShow.data.title}
-            pubDate={tvShow.data.pubDate}
-            source={tvShow.source}
-            imageUrl={'imageUrl' in tvShow.data ? tvShow.data.imageUrl : undefined}
-            imageAlt={'imageAlt' in tvShow.data ? tvShow.data.imageAlt : undefined}
-            inProgress={'inProgress' in tvShow.data ? tvShow.data.inProgress : undefined}
-            year={'year' in tvShow.data ? tvShow.data.year : undefined}
-            rating={'rating' in tvShow.data ? tvShow.data.rating : undefined}
-            description={'description' in tvShow.data ? tvShow.data.description : undefined}
-            loading={loading}
-          />
+          <div data-lazy-item>
+            <LibraryItem
+              url={`/tv-shows/${tvShow.id}/`}
+              title={tvShow.data.title}
+              pubDate={tvShow.data.pubDate}
+              source={tvShow.source}
+              imageUrl={'imageUrl' in tvShow.data ? tvShow.data.imageUrl : undefined}
+              imageAlt={'imageAlt' in tvShow.data ? tvShow.data.imageAlt : undefined}
+              inProgress={'inProgress' in tvShow.data ? tvShow.data.inProgress : undefined}
+              year={'year' in tvShow.data ? tvShow.data.year : undefined}
+              rating={'rating' in tvShow.data ? tvShow.data.rating : undefined}
+              description={'description' in tvShow.data ? tvShow.data.description : undefined}
+              loading={loading}
+            />
+          </div>
         )
       })
     }
   </ul>
+
+  <LazyLoadList client:load initialCount={12} totalCount={sortedTvShows.length} />
 </BaseLayout>

@@ -124,12 +124,13 @@ function formatDate(pubDate: Date | string): string {
           <Image
             src={imageUrl}
             alt={imageAlt || title || 'Content image'}
-            width={160}
-            height={240}
+            width={80}
+            height={120}
             class='w-20 h-full rounded-sm'
             loading={loading}
             decoding='async'
             quality={'high'}
+            densities={[2, 3]}
           />
         )
     }

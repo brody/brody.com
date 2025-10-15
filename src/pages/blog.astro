@@ -16,15 +16,18 @@ const allBlogPosts = await Promise.all(
 const sortedBlogPosts = allBlogPosts
   .filter((item) => item.data.pubDate) // Filter out items without dates
   .sort((a, b) => {
-    const dateA = a.data.pubDate
-      ? typeof a.data.pubDate === 'string'
-        ? new Date(a.data.pubDate)
-        : a.data.pubDate
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = rawDateA
+      ? typeof rawDateA === 'string'
+        ? new Date(rawDateA)
+        : rawDateA
       : new Date(0)
-    const dateB = b.data.pubDate
-      ? typeof b.data.pubDate === 'string'
-        ? new Date(b.data.pubDate)
-        : b.data.pubDate
+    const dateB = rawDateB
+      ? typeof rawDateB === 'string'
+        ? new Date(rawDateB)
+        : rawDateB
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
@@ -34,8 +37,8 @@ const initialBlogPosts = sortedBlogPosts.slice(0, 12)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>{pageTitle}</h1>
-  <p class='mb-8 text-tx-2'>Personal thoughts, experiences, and reflections from my journey.</p>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
+  <p class='text-tx-2 mb-8'>Personal thoughts, experiences, and reflections from my journey.</p>
 
   <ul class='space-y-0'>
     {
@@ -48,7 +51,7 @@ const initialBlogPosts = sortedBlogPosts.slice(0, 12)
             <ArticlePost
               url={`/posts/${post.id}/`}
               title={post.data.title}
-              pubDate={post.data.pubDate}
+              pubDate={post.data.updatedDate || post.data.pubDate}
               source={post.source}
               imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
               imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}

@@ -16,15 +16,18 @@ const allNotes = await Promise.all(
 const sortedNotes = allNotes
   .filter((item) => item.data.pubDate) // Filter out items without dates
   .sort((a, b) => {
-    const dateA = a.data.pubDate
-      ? typeof a.data.pubDate === 'string'
-        ? new Date(a.data.pubDate)
-        : a.data.pubDate
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = rawDateA
+      ? typeof rawDateA === 'string'
+        ? new Date(rawDateA)
+        : rawDateA
       : new Date(0)
-    const dateB = b.data.pubDate
-      ? typeof b.data.pubDate === 'string'
-        ? new Date(b.data.pubDate)
-        : b.data.pubDate
+    const dateB = rawDateB
+      ? typeof rawDateB === 'string'
+        ? new Date(rawDateB)
+        : rawDateB
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
@@ -48,7 +51,7 @@ const initialNotes = sortedNotes.slice(0, 12)
             <NotePost
               url={`/notes/${note.id}/`}
               title={note.data.title || note.id}
-              pubDate={note.data.pubDate}
+              pubDate={note.data.updatedDate || note.data.pubDate}
               source={note.source}
               loading={loading}
               imageUrl={'imageUrl' in note.data ? note.data.imageUrl : undefined}

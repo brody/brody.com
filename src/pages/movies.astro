@@ -11,15 +11,18 @@ const allMovies = (await getCollection('movies')).map((item) => ({ ...item, sour
 const sortedMovies = allMovies
   .filter((item) => item.data.pubDate) // Filter out items without dates
   .sort((a, b) => {
-    const dateA = a.data.pubDate
-      ? typeof a.data.pubDate === 'string'
-        ? new Date(a.data.pubDate)
-        : a.data.pubDate
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = rawDateA
+      ? typeof rawDateA === 'string'
+        ? new Date(rawDateA)
+        : rawDateA
       : new Date(0)
-    const dateB = b.data.pubDate
-      ? typeof b.data.pubDate === 'string'
-        ? new Date(b.data.pubDate)
-        : b.data.pubDate
+    const dateB = rawDateB
+      ? typeof rawDateB === 'string'
+        ? new Date(rawDateB)
+        : rawDateB
       : new Date(0)
     return dateB.getTime() - dateA.getTime()
   })
@@ -44,7 +47,7 @@ const initialMovies = sortedMovies.slice(0, 12)
             <LibraryItem
               url={`/movies/${movie.id}/`}
               title={movie.data.title}
-              pubDate={movie.data.pubDate}
+              pubDate={movie.data.updatedDate || movie.data.pubDate}
               source={movie.source}
               imageUrl={'imageUrl' in movie.data ? movie.data.imageUrl : undefined}
               imageAlt={'imageAlt' in movie.data ? movie.data.imageAlt : undefined}

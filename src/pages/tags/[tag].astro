@@ -46,15 +46,18 @@ export async function getStaticPaths() {
     const allItems = [...filteredPosts, ...filteredBookmarks, ...filteredNotes, ...filteredBooks]
       .filter((item) => item.data.pubDate) // Filter out items without dates
       .sort((a, b) => {
-        const dateA = a.data.pubDate
-          ? typeof a.data.pubDate === 'string'
-            ? new Date(a.data.pubDate)
-            : a.data.pubDate
+        // Prioritize 'updatedDate' over 'pubDate' if it exists
+        const rawDateA = a.data.updatedDate || a.data.pubDate
+        const rawDateB = b.data.updatedDate || b.data.pubDate
+        const dateA = rawDateA
+          ? typeof rawDateA === 'string'
+            ? new Date(rawDateA)
+            : rawDateA
           : new Date(0)
-        const dateB = b.data.pubDate
-          ? typeof b.data.pubDate === 'string'
-            ? new Date(b.data.pubDate)
-            : b.data.pubDate
+        const dateB = rawDateB
+          ? typeof rawDateB === 'string'
+            ? new Date(rawDateB)
+            : rawDateB
           : new Date(0)
         return dateB.getTime() - dateA.getTime()
       })
@@ -82,8 +85,8 @@ const itemsWithContent = await Promise.all(
 ---
 
 <BaseLayout pageTitle={tag}>
-  <h1 class='mb-3 text-tx-0 text-h1 font-heading'>#{tag}</h1>
-  <p class='mb-8 text-tx-2'>Content tagged with {tag}</p>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>#{tag}</h1>
+  <p class='text-tx-2 mb-8'>Content tagged with {tag}</p>
   <ul class='space-y-0'>
     {
       itemsWithContent.map((item, index) => {
@@ -94,7 +97,7 @@ const itemsWithContent = await Promise.all(
             <ArticlePost
               url={`/posts/${item.id}/`}
               title={item.data.title}
-              pubDate={item.data.pubDate}
+              pubDate={item.data.updatedDate || item.data.pubDate}
               source={item.source}
               imageUrl={'imageUrl' in item.data ? item.data.imageUrl : undefined}
               imageAlt={'imageAlt' in item.data ? item.data.imageAlt : undefined}
@@ -107,7 +110,7 @@ const itemsWithContent = await Promise.all(
             <BookmarkPost
               url={`/bookmarks/${item.id}/`}
               title={item.data.title}
-              pubDate={item.data.pubDate}
+              pubDate={item.data.updatedDate || item.data.pubDate}
               source={item.source}
               sourceTitle={'sourceTitle' in item.data ? item.data.sourceTitle : undefined}
               sourceUrl={'source' in item.data ? item.data.source : undefined}
@@ -123,7 +126,7 @@ const itemsWithContent = await Promise.all(
             <NotePost
               url={`/notes/${item.id}/`}
               title={item.data.title || item.id}
-              pubDate={item.data.pubDate}
+              pubDate={item.data.updatedDate || item.data.pubDate}
               source={item.source}
               loading={loading}
               imageUrl={'imageUrl' in item.data ? item.data.imageUrl : undefined}
@@ -136,7 +139,7 @@ const itemsWithContent = await Promise.all(
             <LibraryItem
               url={`/books/${item.id}/`}
               title={item.data.title}
-              pubDate={item.data.pubDate}
+              pubDate={item.data.updatedDate || item.data.pubDate}
               source={item.source}
               imageUrl={'imageUrl' in item.data ? item.data.imageUrl : undefined}
               imageAlt={item.data.title}

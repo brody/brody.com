@@ -55,8 +55,11 @@ const allThings = [
 ]
   .filter((item) => item.data.pubDate) // Filter out items without dates
   .sort((a, b) => {
-    const dateA = typeof a.data.pubDate === 'string' ? new Date(a.data.pubDate) : a.data.pubDate
-    const dateB = typeof b.data.pubDate === 'string' ? new Date(b.data.pubDate) : b.data.pubDate
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
+    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
     if (!dateA || !dateB) return 0
     return dateB.getTime() - dateA.getTime()
   })
@@ -68,11 +71,11 @@ const totalCount = allThings.length
 
 <BaseLayout>
   <section class='mb-8'>
-    <h1 class='max-w-xl text-tx-0 text-h1 font-heading'>
+    <h1 class='text-tx-0 text-h1 font-heading max-w-xl'>
       G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design lead
       from Sydney, Australia. :-)
     </h1>
-    <p class='mt-4 prose'>
+    <p class='prose mt-4'>
       Currently, I am Design Lead at <a href='https://atlassian.com/' target='_blank'>Atlassian</a>,
       focusing on design quality & visual integration of our AI Design Kit.
     </p>
@@ -96,7 +99,7 @@ const totalCount = allThings.length
               <NotePost
                 url={`/notes/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -108,7 +111,7 @@ const totalCount = allThings.length
               <ArticlePost
                 url={`/posts/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -120,7 +123,7 @@ const totalCount = allThings.length
               <LibraryItem
                 url={`/movies/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -135,7 +138,7 @@ const totalCount = allThings.length
               <LibraryItem
                 url={`/tv-shows/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -150,7 +153,7 @@ const totalCount = allThings.length
               <LibraryItem
                 url={`/games/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -165,7 +168,7 @@ const totalCount = allThings.length
               <LibraryItem
                 url={`/books/${post.id}/`}
                 title={post.data.title}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
                 imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -182,7 +185,7 @@ const totalCount = allThings.length
                 url={`/bookmarks/${post.id}/`}
                 title={post.data.title}
                 sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
-                pubDate={post.data.pubDate}
+                pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}
                 loading={loading}
                 sourceUrl={'source' in post.data ? post.data.source : undefined}

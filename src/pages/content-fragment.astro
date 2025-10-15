@@ -94,8 +94,11 @@ if (contentType !== 'all') {
 allThings = allThings
   .filter((item) => item.data.pubDate)
   .sort((a, b) => {
-    const dateA = typeof a.data.pubDate === 'string' ? new Date(a.data.pubDate) : a.data.pubDate
-    const dateB = typeof b.data.pubDate === 'string' ? new Date(b.data.pubDate) : b.data.pubDate
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
+    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
     if (!dateA || !dateB) return 0
     return dateB.getTime() - dateA.getTime()
   })
@@ -113,7 +116,7 @@ const items = allThings.slice(offset, offset + limit)
           <NotePost
             url={`/notes/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -125,7 +128,7 @@ const items = allThings.slice(offset, offset + limit)
           <ArticlePost
             url={`/posts/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -137,7 +140,7 @@ const items = allThings.slice(offset, offset + limit)
           <LibraryItem
             url={`/movies/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -152,7 +155,7 @@ const items = allThings.slice(offset, offset + limit)
           <LibraryItem
             url={`/tv-shows/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -167,7 +170,7 @@ const items = allThings.slice(offset, offset + limit)
           <LibraryItem
             url={`/games/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -182,7 +185,7 @@ const items = allThings.slice(offset, offset + limit)
           <LibraryItem
             url={`/books/${post.id}/`}
             title={post.data.title}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
             imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
@@ -199,7 +202,7 @@ const items = allThings.slice(offset, offset + limit)
             url={`/bookmarks/${post.id}/`}
             title={post.data.title}
             sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
-            pubDate={post.data.pubDate}
+            pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}
             loading={loading}
             sourceUrl={'source' in post.data ? post.data.source : undefined}

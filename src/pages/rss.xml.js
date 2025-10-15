@@ -9,14 +9,16 @@ export async function GET(context) {
   const allItems = [
     ...posts.map((post) => ({
       title: post.data.title || 'no title',
-      pubDate: new Date(post.data.pubDate),
+      // Prioritize 'updatedDate' over 'pubDate' if it exists
+      pubDate: new Date(post.data.updatedDate || post.data.pubDate),
       description: post.data.description || '',
       link: `/posts/${post.id}/`,
       categories: post.data.tags || [],
     })),
     ...bookmarks.map((bookmark) => ({
       title: bookmark.data.title || 'no title',
-      pubDate: new Date(bookmark.data.pubDate),
+      // Prioritize 'updatedDate' over 'pubDate' if it exists
+      pubDate: new Date(bookmark.data.updatedDate || bookmark.data.pubDate),
       description: bookmark.data.description || bookmark.data.title || 'no description',
       link: bookmark.data.source || `/bookmarks/${bookmark.id}/`,
       categories: bookmark.data.tags || ['bookmark'],

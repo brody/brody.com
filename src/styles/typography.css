@@ -10,11 +10,7 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
   --prose-strong-color: var(--color-gray-950);
   --prose-link-color: var(--color-gray-950);
   --prose-code-color: var(--color-gray-950);
-  --prose-marker-color: color-mix(
-    in oklab,
-    var(--color-gray-700) 25%,
-    transparent
-  );
+  --prose-marker-color: color-mix(in oklab, var(--color-gray-700) 25%, transparent);
   --prose-link-underline-color: var(--color-sky-400);
   --prose-th-borders: var(--color-gray-300);
   --prose-td-borders: var(--color-gray-200);
@@ -27,11 +23,7 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
     --prose-strong-color: var(--color-white);
     --prose-link-color: var(--color-white);
     --prose-code-color: var(--color-white);
-    --prose-marker-color: color-mix(
-      in oklab,
-      var(--color-gray-300) 35%,
-      transparent
-    );
+    --prose-marker-color: color-mix(in oklab, var(--color-gray-300) 35%, transparent);
     --prose-link-underline-color: var(--color-sky-400);
     --prose-th-borders: var(--color-gray-600);
     --prose-td-borders: var(--color-gray-700);
@@ -45,19 +37,11 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
       --prose-strong-color: var(--color-white);
       --prose-link-color: var(--color-white);
       --prose-code-color: var(--color-white);
-      --prose-marker-color: color-mix(
-        in oklab,
-        var(--color-gray-300) 35%,
-        transparent
-      );
+      --prose-marker-color: color-mix(in oklab, var(--color-gray-300) 35%, transparent);
       --prose-link-underline-color: var(--color-sky-400);
       --prose-th-borders: var(--color-gray-600);
       --prose-td-borders: var(--color-gray-700);
-      --prose-hr-color: color-mix(
-        in oklab,
-        var(--color-white) 10%,
-        transparent
-      );
+      --prose-hr-color: color-mix(in oklab, var(--color-white) 10%, transparent);
       --prose-blockquote-border-color: var(--color-gray-600);
     }
   }
@@ -66,8 +50,7 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
   font-size: var(--text-sm);
   line-height: 2;
 
-  *:where(:not(.not-prose, .not-prose *))
-    + *:where(:not(.not-prose, .not-prose *)) {
+  *:where(:not(.not-prose, .not-prose *)) + *:where(:not(.not-prose, .not-prose *)) {
     margin-top: calc(var(--spacing) * 6);
   }
 
@@ -170,7 +153,7 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
   code:where(:not(.not-prose, .not-prose *))::before,
   code:where(:not(.not-prose, .not-prose *))::after {
     display: inline;
-    content: "`";
+    content: '`';
   }
 
   pre:where(:not(.not-prose, .not-prose *)) {
@@ -289,13 +272,13 @@ https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/app/typography.css
     padding-inline-start: calc(var(--spacing) * 4);
   }
 
-  blockquote p:first-of-type::before {
+  /* blockquote p:first-of-type::before {
     content: open-quote;
   }
 
   blockquote p:last-of-type::after {
     content: close-quote;
-  }
+  } */
 
   figure:where(:not(.not-prose, .not-prose *)) {
     figcaption:where(:not(.not-prose, .not-prose *)) {

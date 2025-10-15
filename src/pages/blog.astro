@@ -44,7 +44,7 @@ const initialBlogPosts = sortedBlogPosts.slice(0, 12)
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             <ArticlePost
               url={`/posts/${post.id}/`}
               title={post.data.title}
@@ -55,16 +55,16 @@ const initialBlogPosts = sortedBlogPosts.slice(0, 12)
               content={'renderedContent' in post ? post.renderedContent : undefined}
               loading={loading}
             />
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList
-    client:load
-    initialCount={12}
-    totalCount={sortedBlogPosts.length}
-    contentType='blog'
-  />
+    <LazyLoadList
+      client:load
+      initialCount={12}
+      totalCount={sortedBlogPosts.length}
+      contentType='blog'
+    />
+  </ul>
 </BaseLayout>

@@ -21,8 +21,8 @@ export default function LazyLoadList({
   const [isLoading, setIsLoading] = useState(false)
   const [offset, setOffset] = useState(initialCount)
   const hasMore = offset < totalCount
-  const observerTarget = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const observerTarget = useRef<HTMLLIElement>(null)
+  const containerRef = useRef<HTMLSpanElement>(null)
 
   const loadMore = async () => {
     if (isLoading || !hasMore) return
@@ -69,11 +69,11 @@ export default function LazyLoadList({
 
   return (
     <>
-      {/* Render dynamically loaded HTML content */}
-      {htmlContent && <div ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />}
+      {/* Render dynamically loaded HTML content directly (as <li> elements) */}
+      {htmlContent && <span ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />}
 
       {/* Sentinel element for IntersectionObserver */}
-      {hasMore && <div ref={observerTarget} className="h-px" />}
+      {hasMore && <li ref={observerTarget} className="h-px list-none" aria-hidden="true" />}
 
       {/* Loading indicator and manual load more button */}
       {hasMore && (

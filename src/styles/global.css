@@ -361,7 +361,7 @@
 
   blockquote p:first-of-type::before,
   blockquote p:last-of-type::after {
-    @apply content-[none];
+    @apply !content-[none];
   }
 
   mark {
@@ -702,16 +702,5 @@
       var(--color-ui-1) 8px
     );
     background-size: 8px 1px;
-  }
-
-  /* Remove list styles from lazy loaded items */
-  [data-lazy-item] {
-    list-style: none !important;
-  }
-
-  /* Ensure all child li elements also have no bullets */
-  .list-none li,
-  [data-lazy-item] li {
-    list-style: none !important;
   }
 }

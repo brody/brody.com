@@ -108,7 +108,7 @@ const items = allThings.slice(offset, offset + limit)
     const loading = 'lazy'
 
     return (
-      <div class='list-none' style='list-style: none;'>
+      <>
         {post.source === 'notes' && (
           <NotePost
             url={`/notes/${post.id}/`}
@@ -209,7 +209,7 @@ const items = allThings.slice(offset, offset + limit)
             content={'renderedContent' in post ? post.renderedContent : undefined}
           />
         )}
-      </div>
+      </>
     )
   })
 }

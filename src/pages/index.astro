@@ -91,7 +91,7 @@ const totalCount = allThings.length
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             {post.source === 'notes' && (
               <NotePost
                 url={`/notes/${post.id}/`}
@@ -194,13 +194,13 @@ const totalCount = allThings.length
             )}
 
             {/* {post.source === 'notes' ? <p>I am happy to be learning notes!</p> : <p>I am happy to be learning posts</p>} */}
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={totalCount} />
+    <LazyLoadList client:load initialCount={12} totalCount={totalCount} />
+  </ul>
 </BaseLayout>
 
 <style>

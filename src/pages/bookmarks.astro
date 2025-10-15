@@ -46,7 +46,7 @@ const initialBookmarks = sortedBookmarks.slice(0, 12)
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             <BookmarkPost
               url={`/bookmarks/${bookmark.id}/`}
               title={bookmark.data.title}
@@ -62,16 +62,16 @@ const initialBookmarks = sortedBookmarks.slice(0, 12)
               description={'description' in bookmark.data ? bookmark.data.description : undefined}
               content={'renderedContent' in bookmark ? bookmark.renderedContent : undefined}
             />
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList
-    client:load
-    initialCount={12}
-    totalCount={sortedBookmarks.length}
-    contentType='bookmarks'
-  />
+    <LazyLoadList
+      client:load
+      initialCount={12}
+      totalCount={sortedBookmarks.length}
+      contentType='bookmarks'
+    />
+  </ul>
 </BaseLayout>

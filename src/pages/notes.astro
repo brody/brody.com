@@ -44,7 +44,7 @@ const initialNotes = sortedNotes.slice(0, 12)
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             <NotePost
               url={`/notes/${note.id}/`}
               title={note.data.title || note.id}
@@ -55,11 +55,16 @@ const initialNotes = sortedNotes.slice(0, 12)
               description={'description' in note.data ? note.data.description : undefined}
               content={'renderedContent' in note ? note.renderedContent : undefined}
             />
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={sortedNotes.length} contentType='notes' />
+    <LazyLoadList
+      client:load
+      initialCount={12}
+      totalCount={sortedNotes.length}
+      contentType='notes'
+    />
+  </ul>
 </BaseLayout>

@@ -40,7 +40,7 @@ const initialGames = sortedGames.slice(0, 12)
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             <LibraryItem
               url={`/games/${game.id}/`}
               title={game.data.title}
@@ -54,11 +54,16 @@ const initialGames = sortedGames.slice(0, 12)
               description={'description' in game.data ? game.data.description : undefined}
               loading={loading}
             />
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList client:load initialCount={12} totalCount={sortedGames.length} contentType='games' />
+    <LazyLoadList
+      client:load
+      initialCount={12}
+      totalCount={sortedGames.length}
+      contentType='games'
+    />
+  </ul>
 </BaseLayout>

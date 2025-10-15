@@ -40,7 +40,7 @@ const initialTvShows = sortedTvShows.slice(0, 12)
         const loading = index < 3 ? 'eager' : 'lazy'
 
         return (
-          <div data-lazy-item>
+          <>
             <LibraryItem
               url={`/tv-shows/${tvShow.id}/`}
               title={tvShow.data.title}
@@ -54,16 +54,16 @@ const initialTvShows = sortedTvShows.slice(0, 12)
               description={'description' in tvShow.data ? tvShow.data.description : undefined}
               loading={loading}
             />
-          </div>
+          </>
         )
       })
     }
-  </ul>
 
-  <LazyLoadList
-    client:load
-    initialCount={12}
-    totalCount={sortedTvShows.length}
-    contentType='tvShows'
-  />
+    <LazyLoadList
+      client:load
+      initialCount={12}
+      totalCount={sortedTvShows.length}
+      contentType='tvShows'
+    />
+  </ul>
 </BaseLayout>

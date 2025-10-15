@@ -77,13 +77,13 @@ export default function LazyLoadList({
 
       {/* Loading indicator and manual load more button */}
       {hasMore && (
-        <li className="mt-8 flex list-none justify-center">
+        <li className="flex justify-center mt-8 list-none">
           {isLoading ? (
-            <div className="text-tx-2 text-sm">Loading...</div>
+            <div className="text-sm text-tx-2">Loading...</div>
           ) : (
             <button
               onClick={loadMore}
-              className="text-tx-1 bg-bg-2 hover:bg-bg-3 rounded-lg px-6 py-3 text-sm font-medium transition-colors duration-200"
+              className="px-6 py-3 text-sm font-medium rounded-lg transition-colors duration-200 text-tx-1 bg-bg-2 hover:bg-bg-3"
               aria-label="Load more items"
             >
               Load More ({totalCount - offset} remaining)

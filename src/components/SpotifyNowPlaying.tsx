@@ -92,8 +92,8 @@ export default function SpotifyNowPlaying() {
     }
 
     fetchNowPlaying()
-    // Refresh every 15 seconds
-    const interval = setInterval(fetchNowPlaying, 15000)
+    // Refresh every 30 seconds
+    const interval = setInterval(fetchNowPlaying, 30000)
     return () => clearInterval(interval)
   }, [])
 

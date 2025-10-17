@@ -138,7 +138,7 @@ export default function SpotifyNowPlaying() {
       href={data.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class={`bg-bg-2 fixed right-3 bottom-6 z-50 hidden h-24 w-70 overflow-hidden rounded-xl p-2 hover:scale-105 md:block ${
+      class={`bg-bg-2 fixed right-3 bottom-6 z-50 hidden h-24 w-70 overflow-hidden rounded-xl p-2 transition-transform duration-300 hover:scale-105 md:block ${
         isInitialLoad ? 'animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0' : 'opacity-100'
       }`}
       style={isInitialLoad ? { transform: 'translateY(10px) scale(0.9)' } : {}}

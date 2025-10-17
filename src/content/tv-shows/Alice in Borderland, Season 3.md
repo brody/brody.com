@@ -8,7 +8,7 @@ description: Arisu—a listless, jobless and video-game-obsessed young man—sud
 imageUrl: https://resizing.flixster.com/ludeqT8ZKMJMdfrmuL6OAe2DcSU=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vMjliNTIyNWYtMjAzMS00NTZjLWFhZjgtODIyNzYxZDg4ZmZjLmpwZw==
 imageAlt: Season 3
 pubDate: 2025-10-02T20:20:04
-updatedDate: 2025-10-17T20:20:04
+updatedDate: 2025-10-17T20:20:04+10
 rating: 4
 inProgress: false
 repeat: false

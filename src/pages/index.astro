@@ -71,11 +71,11 @@ const totalCount = allThings.length
 
 <BaseLayout>
   <section class='mb-8'>
-    <h1 class='text-tx-0 text-h1 font-heading max-w-xl'>
+    <h1 class='max-w-xl text-tx-0 text-h1 font-heading'>
       G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design lead
       from Sydney, Australia. :-)
     </h1>
-    <p class='prose mt-4'>
+    <p class='mt-4 prose'>
       Currently, I am Design Lead at <a href='https://atlassian.com/' target='_blank'>Atlassian</a>,
       focusing on design quality & visual integration of our AI Design Kit.
     </p>
@@ -85,7 +85,6 @@ const totalCount = allThings.length
 
   <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
   <ul>
-    <SpotifyNowPlaying client:only='preact' />
     <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
     <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
     {
@@ -204,6 +203,7 @@ const totalCount = allThings.length
 
     <LazyLoadList client:load initialCount={12} totalCount={totalCount} />
   </ul>
+  <SpotifyNowPlaying client:only='preact' />
 </BaseLayout>
 
 <style>

@@ -99,35 +99,20 @@ export default function SpotifyNowPlaying() {
 
   if (loading) {
     return (
-      <li class="py-8 dashed-border">
-        <div class="flex flex-row gap-6 blur-md">
+      <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl opacity-0 transition-all duration-300 bg-bg-2 w-70">
+        {/* <div class="flex flex-row gap-6 blur-md">
           <div class="flex-shrink-0 w-20 h-20 rounded-sm bg-ui-2"></div>
           <div class="flex-1 min-w-0">
             <div class="pb-1 text-sm">
               <div class="text-tx-3 flex items-center gap-1.5">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                  <path d="M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527" />
-                  <path d="M9 15c1.5 -1 4 -1 5 .5" />
-                  <path d="M7 9c2 -1 6 -2 10 .5" />
-                </svg>
                 <p>Loading</p>
               </div>
             </div>
             <h2 class="text-h4 font-heading text-tx-3">Baby Shark</h2>
             <p class="text-tx-3 pt-0.5 text-sm">Pinkfong</p>
           </div>
-        </div>
-      </li>
+        </div> */}
+      </div>
     )
   }
 
@@ -136,39 +121,28 @@ export default function SpotifyNowPlaying() {
   }
 
   return (
-    <li class="py-8 dashed-border">
+    <a
+      href={data.songUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl transition-all duration-300 bg-bg-2 w-70 hover:scale-105"
+    >
+      {/* <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl bg-bg-2 w-70"> */}
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}
-      <div class="flex flex-row gap-6">
+      <div class="flex flex-row gap-3 items-end">
         {data.albumImageUrl && (
-          <a href={data.songUrl} target="_blank" rel="noopener noreferrer" class="flex-shrink-0">
-            <img
-              src={data.albumImageUrl}
-              alt={`${data.album} album art`}
-              width={80}
-              height={80}
-              class="object-cover w-20 h-20 rounded-sm"
-              loading="eager"
-            />
-          </a>
+          <img
+            src={data.albumImageUrl}
+            alt={`${data.album} album art`}
+            width={80}
+            height={80}
+            class="object-cover w-20 h-20 rounded-lg"
+            loading="eager"
+          />
         )}
-        <div class="flex-1 min-w-0">
-          <div class="pb-1 text-sm">
-            <div class="text-tx-spotify flex items-center gap-1.5">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                <path d="M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527" />
-                <path d="M9 15c1.5 -1 4 -1 5 .5" />
-                <path d="M7 9c2 -1 6 -2 10 .5" />
-              </svg>
+        <div class="flex-1 mb-1 min-w-0">
+          <div class="pb-1 text-[10px] uppercase">
+            <div class="text-tx-3 flex items-center gap-1.5">
               <p>
                 {data.isPlaying
                   ? 'Now playing'
@@ -177,22 +151,29 @@ export default function SpotifyNowPlaying() {
                     : 'Last played'}
               </p>
               {data.isPlaying && (
-                <div class="flex h-[10px] items-end gap-0.5">
-                  <div class="bg-tx-spotify animate-sound-bar-1 w-0.5 rounded-xs"></div>
-                  <div class="bg-tx-spotify animate-sound-bar-2 w-0.5 rounded-xs"></div>
-                  <div class="bg-tx-spotify animate-sound-bar-3 w-0.5 rounded-xs"></div>
+                <div class="flex h-[6px] items-end gap-0.5">
+                  <div class="bg-tx-3 animate-sound-bar-1 w-0.25 rounded-xs"></div>
+                  <div class="bg-tx-3 animate-sound-bar-2 w-0.25 rounded-xs"></div>
+                  <div class="bg-tx-3 animate-sound-bar-3 w-0.25 rounded-xs"></div>
                 </div>
               )}
             </div>
           </div>
           {data.title && (
-            <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
-              <h2 class="truncate text-h4 font-heading hover:text-tx-1 text-tx-0">{data.title}</h2>
-            </a>
+            // <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
+            <h2 class="text-sm truncate font-heading hover:text-tx-1 text-tx-0">{data.title}</h2>
+            // </a>
           )}
-          {data.artist && <p class="text-tx-1 truncate pt-0.5 text-sm">{data.artist}</p>}
+          {data.artist && <p class="text-tx-1 truncate pt-0.5 text-xs">{data.artist}</p>}
         </div>
       </div>
-    </li>
+      <img
+        src={data.albumImageUrl}
+        alt={`${data.album} album art`}
+        class="object-cover absolute top-0 right-0 bottom-0 left-0 self-stretch w-full rounded-sm opacity-30 blur-2xl -z-10"
+        loading="eager"
+      />
+      {/* </div> */}
+    </a>
   )
 }

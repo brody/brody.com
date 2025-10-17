@@ -683,6 +683,17 @@
     animation-delay: 0.3s;
   }
 
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
   /* Dashed border utility */
   .dashed-border {
     position: relative;

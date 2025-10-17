@@ -62,7 +62,8 @@ function formatRelativeTime(dateString: string): string {
 
 export default function SpotifyNowPlaying() {
   const [data, setData] = useState<SpotifyData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useEffect(() => {
     async function fetchNowPlaying() {
@@ -83,11 +84,27 @@ export default function SpotifyNowPlaying() {
 
         const result = await response.json()
         setData(result)
+
+        // Preload the image if we have one
+        if (result.albumImageUrl) {
+          const img = new Image()
+          img.onload = () => {
+            setImageLoaded(true)
+            // After first load, no longer initial
+            if (isInitialLoad) {
+              setTimeout(() => setIsInitialLoad(false), 600)
+            }
+          }
+          img.onerror = () => {
+            setImageLoaded(true) // Still show component even if image fails
+          }
+          img.src = result.albumImageUrl
+        } else {
+          setImageLoaded(true)
+        }
       } catch (error) {
         console.error('Failed to fetch Spotify data:', error)
         setData({ isPlaying: false, error: 'Failed to load' })
-      } finally {
-        setLoading(false)
       }
     }
 
@@ -95,29 +112,25 @@ export default function SpotifyNowPlaying() {
     // Refresh every 30 seconds
     const interval = setInterval(fetchNowPlaying, 30000)
     return () => clearInterval(interval)
-  }, [])
+  }, [isInitialLoad])
 
-  if (loading) {
-    return (
-      <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl opacity-0 transition-all duration-300 bg-bg-2 w-70">
-        {/* <div class="flex flex-row gap-6 blur-md">
-          <div class="flex-shrink-0 w-20 h-20 rounded-sm bg-ui-2"></div>
-          <div class="flex-1 min-w-0">
-            <div class="pb-1 text-sm">
-              <div class="text-tx-3 flex items-center gap-1.5">
-                <p>Loading</p>
-              </div>
-            </div>
-            <h2 class="text-h4 font-heading text-tx-3">Baby Shark</h2>
-            <p class="text-tx-3 pt-0.5 text-sm">Pinkfong</p>
-          </div>
-        </div> */}
-      </div>
-    )
+  // Don't render until we have data and image is loaded
+  if (!data || !imageLoaded || data.error || !data.title) {
+    return null // Don't show anything if there's an error or no data
   }
 
-  if (!data || data.error || !data.title) {
-    return null // Don't show anything if there's an error or no data
+  // Only show if currently playing OR played within the last 6 hours
+  if (!data.isPlaying) {
+    if (!data.playedAt) {
+      return null
+    }
+    const playedAtDate = new Date(data.playedAt)
+    const now = new Date()
+    const diffHours = (now.getTime() - playedAtDate.getTime()) / (1000 * 60 * 60)
+
+    if (diffHours > 6) {
+      return null
+    }
   }
 
   return (
@@ -125,7 +138,10 @@ export default function SpotifyNowPlaying() {
       href={data.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl transition-all duration-300 bg-bg-2 w-70 hover:scale-105 md:block"
+      class={`bg-bg-2 fixed right-3 bottom-6 z-50 hidden h-24 w-70 overflow-hidden rounded-xl p-2 hover:scale-105 md:block ${
+        isInitialLoad ? 'animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0' : 'opacity-100'
+      }`}
+      style={isInitialLoad ? { transform: 'translateY(10px) scale(0.9)' } : {}}
     >
       {/* <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl bg-bg-2 w-70"> */}
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}

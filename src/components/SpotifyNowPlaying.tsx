@@ -125,7 +125,7 @@ export default function SpotifyNowPlaying() {
       href={data.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl transition-all duration-300 bg-bg-2 w-70 hover:scale-105"
+      class="hidden overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl transition-all duration-300 bg-bg-2 w-70 hover:scale-105 md:block"
     >
       {/* <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl bg-bg-2 w-70"> */}
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}

@@ -2,6 +2,7 @@
 title: "Apple adds a new toggle to make Liquid Glass less glassy"
 author: "[[Jay Peters]]"
 pubDate: 2025-10-21T11:55:17+11:00
+updatedDate: 2025-10-22T12:50:00+11:00
 tags:
   - "clippings"
 published: 2025-10-21
@@ -12,3 +13,7 @@ description: "The fourth iOS 26.1 developer beta has a new option that lets you 
 faviconUrl: "/static-assets/icons/favicon-32x32.png"
 ---
 In a win for legibility & accessibility, the fourth iOS 26.1 developer beta has a new option that lets you tint Liquid Glass elements of iOS 26 so that they are more opaque.
+
+### Further reading
+
+- [Liquid Glass Is Cracked, and Usability Suffers in iOS 26](https://www.nngroup.com/articles/liquid-glass/)

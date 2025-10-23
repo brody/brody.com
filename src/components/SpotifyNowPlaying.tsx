@@ -138,7 +138,7 @@ export default function SpotifyNowPlaying() {
       href={data.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class={`bg-bg-2 fixed right-3 bottom-6 z-50 hidden h-24 w-70 overflow-hidden rounded-xl p-2 transition-transform duration-300 hover:scale-105 md:block ${
+      class={`bg-bg-2 hover:bg-bg-2/50 shadow-neutral-0/30 hover:shadow-neutral-0/20 fixed right-3 bottom-6 z-50 hidden h-24 w-70 overflow-hidden rounded-xl p-2 shadow-[0px_1px_2px_0px_inset] transition-all duration-300 hover:scale-102 md:block ${
         isInitialLoad ? 'animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0' : 'opacity-100'
       }`}
       style={isInitialLoad ? { transform: 'translateY(10px) scale(0.9)' } : {}}
@@ -186,7 +186,7 @@ export default function SpotifyNowPlaying() {
       <img
         src={data.albumImageUrl}
         alt={`${data.album} album art`}
-        class="object-cover absolute top-0 right-0 bottom-0 left-0 self-stretch w-full rounded-sm opacity-30 blur-2xl -z-10"
+        class="absolute top-0 right-0 bottom-0 left-0 -z-10 w-full self-stretch rounded-sm object-cover opacity-30 blur-[32px] transition-opacity duration-300"
         loading="eager"
       />
       {/* </div> */}

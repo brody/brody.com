@@ -1,7 +1,7 @@
 ---
 title: "Schema 2025: Design Systems For A New Era"
 author: "[[Simplifying authoring experience for collections]]"
-pubDate: 2025-10-31T13:51:12+11:00
+pubDate: 2025-10-29T13:51:12+11:00
 tags:
   - clippings
 published: 2001-10-28

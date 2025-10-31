@@ -1,4 +1,14 @@
 {
+  "bbc.com": {
+    "originalUrl": "https://static.files.bbci.co.uk/bbcdotcom/web/20251010-110820-1cf8d3aa45-web-2.31.3-2/favicon-32x32.png",
+    "localPath": "/favicons/bbc.com.png",
+    "sourceUrl": "https://www.bbc.com/future/article/20251008-truth-terminal-the-ai-bot-that-became-a-real-life-millionaire"
+  },
+  "theverge.com": {
+    "originalUrl": "/static-assets/icons/favicon-32x32.png",
+    "localPath": "/favicons/theverge.com.png",
+    "sourceUrl": "https://www.theverge.com/news/786697/youtube-labs-ai-experiment-music-radio-hosts"
+  },
   "appleinsider.com": {
     "originalUrl": "https://photos5.appleinsider.com/v11/favicon.ico",
     "localPath": "/favicons/appleinsider.com.ico",
@@ -24,6 +34,16 @@
     "localPath": "/favicons/bigthink.com.png",
     "sourceUrl": "https://bigthink.com/smart-skills/how-to-escape-the-dopamine-crash-loop-and-rewire-your-curiosity/"
   },
+  "experience.odyssey.ml": {
+    "originalUrl": "/logo-white.svg",
+    "localPath": "/favicons/experience.odyssey.ml.svg",
+    "sourceUrl": "https://experience.odyssey.ml/"
+  },
+  "404media.co": {
+    "originalUrl": "https://www.404media.co/content/images/size/w256h256/format/png/2023/08/favicon-3.svg",
+    "localPath": "/favicons/404media.co.svg",
+    "sourceUrl": "https://www.404media.co/reddit-answers-ai-suggests-users-try-heroin/"
+  },
   "writing.nikunjk.com": {
     "originalUrl": "https://substackcdn.com/image/fetch/$s_!tAKj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79b1a390-5c05-4cd0-ae74-f86153c30367%2Ffavicon-16x16.png",
     "localPath": "/favicons/writing.nikunjk.com.png",
@@ -34,10 +54,10 @@
     "localPath": "/favicons/oliverburkeman.com.png",
     "sourceUrl": "https://www.oliverburkeman.com/river"
   },
-  "theverge.com": {
-    "originalUrl": "/static-assets/icons/favicon-32x32.png",
-    "localPath": "/favicons/theverge.com.png",
-    "sourceUrl": "https://www.theverge.com/news/786697/youtube-labs-ai-experiment-music-radio-hosts"
+  "calv.info": {
+    "originalUrl": "https://calv.info/favicon.ico",
+    "localPath": "/favicons/calv.info.ico",
+    "sourceUrl": "https://calv.info/you-still-need-to-think"
   },
   "linear.app": {
     "originalUrl": "/favicon.ico",

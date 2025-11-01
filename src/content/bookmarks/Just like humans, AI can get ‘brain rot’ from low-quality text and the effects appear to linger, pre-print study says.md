@@ -1,5 +1,5 @@
 ---
-title: "Just like humans, AI can get ‘brain rot’ from low-quality text and the effects appear to linger, pre-print study says"
+title: "AI can get ‘brain rot’ from low-quality text and the effects appear to linger"
 author: "[[Marco Quiroz-Gutierrez]]"
 pubDate: 2025-11-01T18:48:30+11:00
 tags:

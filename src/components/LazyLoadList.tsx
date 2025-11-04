@@ -49,7 +49,9 @@ export default function LazyLoadList({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isLoading) {
+        // Only trigger if intersecting, not already loading, and user has scrolled
+        // Check boundingClientRect to ensure we're not in a render-loop
+        if (entries[0].isIntersecting && !isLoading && entries[0].boundingClientRect.top > 0) {
           loadMore()
         }
       },
@@ -63,7 +65,7 @@ export default function LazyLoadList({
     return () => {
       observer.disconnect()
     }
-  }, [hasMore, isLoading, offset])
+  }, [hasMore, isLoading])
 
   if (!hasMore && !htmlContent) return null
 
@@ -77,13 +79,13 @@ export default function LazyLoadList({
 
       {/* Loading indicator and manual load more button */}
       {hasMore && (
-        <li className="flex justify-center mt-8 list-none">
+        <li className="mt-8 flex list-none justify-center">
           {isLoading ? (
-            <div className="text-sm text-tx-2">Loading...</div>
+            <div className="text-tx-2 text-sm">Loading...</div>
           ) : (
             <button
               onClick={loadMore}
-              className="px-6 py-3 text-sm font-medium rounded-lg transition-colors duration-200 text-tx-1 bg-bg-2 hover:bg-bg-3"
+              className="text-tx-1 bg-bg-2 hover:bg-bg-3 rounded-lg px-6 py-3 text-sm font-medium transition-colors duration-200"
               aria-label="Load more items"
             >
               Load More ({totalCount - offset} remaining)

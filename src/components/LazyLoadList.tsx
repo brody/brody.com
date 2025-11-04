@@ -31,9 +31,6 @@ export default function LazyLoadList({
     setIsLoading(true)
     justLoadedRef.current = true
 
-    // Store the current scroll position before loading
-    const scrollBeforeLoad = window.scrollY
-
     try {
       const typeParam = contentType !== 'all' ? `&type=${contentType}` : ''
       const response = await fetch(
@@ -43,12 +40,8 @@ export default function LazyLoadList({
       setHtmlContent((prev) => prev + html)
       setOffset((prev) => prev + loadMoreCount)
 
-      // After content is added, maintain scroll position and add cooldown
+      // Add a cooldown to prevent immediate re-trigger
       requestAnimationFrame(() => {
-        // Maintain the scroll position to prevent auto-scroll behavior
-        window.scrollTo(0, scrollBeforeLoad)
-
-        // Clear the cooldown after a delay to prevent immediate re-trigger
         setTimeout(() => {
           justLoadedRef.current = false
         }, 500)

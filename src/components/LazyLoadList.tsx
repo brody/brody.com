@@ -23,11 +23,17 @@ export default function LazyLoadList({
   const hasMore = offset < totalCount
   const observerTarget = useRef<HTMLLIElement>(null)
   const containerRef = useRef<HTMLSpanElement>(null)
+  const justLoadedRef = useRef(false)
 
   const loadMore = async () => {
-    if (isLoading || !hasMore) return
+    if (isLoading || !hasMore || justLoadedRef.current) return
 
     setIsLoading(true)
+    justLoadedRef.current = true
+
+    // Store the current scroll position before loading
+    const scrollBeforeLoad = window.scrollY
+
     try {
       const typeParam = contentType !== 'all' ? `&type=${contentType}` : ''
       const response = await fetch(
@@ -36,8 +42,20 @@ export default function LazyLoadList({
       const html = await response.text()
       setHtmlContent((prev) => prev + html)
       setOffset((prev) => prev + loadMoreCount)
+
+      // After content is added, maintain scroll position and add cooldown
+      requestAnimationFrame(() => {
+        // Maintain the scroll position to prevent auto-scroll behavior
+        window.scrollTo(0, scrollBeforeLoad)
+
+        // Clear the cooldown after a delay to prevent immediate re-trigger
+        setTimeout(() => {
+          justLoadedRef.current = false
+        }, 500)
+      })
     } catch (error) {
       console.error('Failed to load more items:', error)
+      justLoadedRef.current = false
     } finally {
       setIsLoading(false)
     }
@@ -49,9 +67,13 @@ export default function LazyLoadList({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Only trigger if intersecting, not already loading, and user has scrolled
-        // Check boundingClientRect to ensure we're not in a render-loop
-        if (entries[0].isIntersecting && !isLoading && entries[0].boundingClientRect.top > 0) {
+        // Only trigger if intersecting, not already loading, not in cooldown, and scrolled
+        if (
+          entries[0].isIntersecting &&
+          !isLoading &&
+          !justLoadedRef.current &&
+          entries[0].boundingClientRect.top > 0
+        ) {
           loadMore()
         }
       },

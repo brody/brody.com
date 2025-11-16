@@ -7,8 +7,8 @@ description: "Thirteen teams of celebs and their loved ones have gathered at the
 imageUrl: https://10.com.au/ip/s3/2025/08/25/376b4c8ccca6d53b57a1e6e7a8d1948f-1391356.jpg
 imageAlt: The Amazing Race Australia
 pubDate: 2025-09-29T21:47:58+10:00
-updatedDate: 
-rating: 0
-inProgress: true
+updatedDate: 2025-11-16T20:30:58+11:00
+rating: 5
+inProgress: false
 repeat: false
 ---

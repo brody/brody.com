@@ -8,7 +8,7 @@ description: "Amid an international crisis, a career diplomat juggles her new hi
 imageUrl: "https://resizing.flixster.com/d0OFGStIY7HMW0vf3hckPPVXS2Y=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vNjQ4NTNjNjAtNzg2ZC00MmUwLWEyOTEtOWJmYWU0ZWNlNDFiLmpwZw=="
 imageAlt: "Season 3"
 pubDate: 2025-11-08T22:46:05+11:00
-updatedDate: 2025-11-18T20:32:05+11:00
+updatedDate: 2025-11-17T20:32:05+11:00
 rating: 4.5
 inProgress: false
 repeat: false

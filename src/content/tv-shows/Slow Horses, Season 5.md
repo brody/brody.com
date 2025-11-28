@@ -8,8 +8,8 @@ description: "A mass shooting rocks London, intensifying a testy mayoral race; S
 imageUrl: "https://theposterdb.com/api/assets/646966/view"
 imageAlt: "Season 5"
 pubDate: 2025-11-26T18:42:46+11:00
-updatedDate:
-rating: 0
-inProgress: true
+updatedDate: 2025-11-28T18:42:46+11:00
+rating: 5
+inProgress: false
 repeat: false
 ---

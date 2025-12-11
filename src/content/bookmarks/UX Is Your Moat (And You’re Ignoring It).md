@@ -6,7 +6,7 @@ tags:
   - "clippings"
 published: 2025-11-25
 sourceTitle: "UX Is Your Moat (And You’re Ignoring It)"
-source: "https://eleganthack.com/ux-is-your-moat-and-youre-ignoring-it/?utm_source=heydesigner.com"
+source: "https://eleganthack.com/ux-is-your-moat-and-youre-ignoring-it/"
 imageUrl: "https://eleganthack.com/wp-content/uploads/2025/11/noun-sofa-7955099.png"
 description: "Last week, Google released Nano Banana Pro, their latest image generator. The demos looked impressive. I opened Gemini to try it. Then I had a question I needed to ask. Something unrelated to image…"
 faviconUrl: "https://eleganthack.com/favicon.ico"
@@ -14,7 +14,7 @@ faviconUrl: "https://eleganthack.com/favicon.ico"
 
 Design is always going to be a competitive advantage. By sweating the details, you can create a product that is so good, users don't want to leave.
 
-[Christina Wodtke](https://christinawodtke.com/blog/2025/11/20/ux-is-your-moat), writing on her blog:
+[Christina Wodtke](https://eleganthack.com/ux-is-your-moat-and-youre-ignoring-it/), writing on her blog:
 
 > The most useful model might not win.
 >

@@ -4,6 +4,16 @@
     "localPath": "/favicons/bbc.com.png",
     "sourceUrl": "https://www.bbc.com/future/article/20251008-truth-terminal-the-ai-bot-that-became-a-real-life-millionaire"
   },
+  "joshuacrowley.com": {
+    "originalUrl": "/stickers/helmet.png",
+    "localPath": "/favicons/joshuacrowley.com.png",
+    "sourceUrl": "https://joshuacrowley.com/blog/an-agent-is-an-office"
+  },
+  "adage.com": {
+    "originalUrl": "/pf/resources/images/favicons/adage.ico?d=160",
+    "localPath": "/favicons/adage.com.ico",
+    "sourceUrl": "https://adage.com/video/apple-tv-mnemonic-bts-33s/"
+  },
   "theverge.com": {
     "originalUrl": "/static-assets/icons/favicon-32x32.png",
     "localPath": "/favicons/theverge.com.png",
@@ -24,15 +34,35 @@
     "localPath": "/favicons/zdnet.com.png",
     "sourceUrl": "https://www.zdnet.com/article/german-state-replaces-microsoft-exchange-and-outlook-with-open-source-email/"
   },
+  "spectrum.ieee.org": {
+    "originalUrl": "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjU5NjY0OS9vcmlnaW4ucG5nIiwiZXhwaXJlc19hdCI6MTc4NTc0NjUwNn0.pFbPADvK9fyfasig9FMci3xf6UeB_WJaER5Yea_eRpI/img.png?width=48&height=48",
+    "localPath": "/favicons/spectrum.ieee.org.png",
+    "sourceUrl": "https://spectrum.ieee.org/ai-agents-safety"
+  },
+  "anthropic.com": {
+    "originalUrl": "/images/icons/favicon-32x32.png",
+    "localPath": "/favicons/anthropic.com.png",
+    "sourceUrl": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+  },
   "leerob.com": {
     "originalUrl": "/favicon.ico?7b2b24376ea43ec8",
     "localPath": "/favicons/leerob.com.ico",
     "sourceUrl": "https://leerob.com/docs"
   },
+  "readartifact.com": {
+    "originalUrl": "https://substackcdn.com/image/fetch/$s_!oqLU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa19eee3-0aeb-4182-b440-2d2cff9f8a48%2Ffavicon-16x16.png",
+    "localPath": "/favicons/readartifact.com.png",
+    "sourceUrl": "https://www.readartifact.com/p/how-to-build-visual-confidence-as"
+  },
   "bigthink.com": {
     "originalUrl": "https://bigthink.com/wp-content/uploads/2023/06/cropped-bt-icon-512x512-1-1.png?w=32",
     "localPath": "/favicons/bigthink.com.png",
     "sourceUrl": "https://bigthink.com/smart-skills/how-to-escape-the-dopamine-crash-loop-and-rewire-your-curiosity/"
+  },
+  "fortune.com": {
+    "originalUrl": "/icons/favicons/favicon.ico",
+    "localPath": "/favicons/fortune.com.ico",
+    "sourceUrl": "https://fortune.com/2025/10/22/ai-brain-rot-junk-social-media-viral-addicting-content-tech/"
   },
   "experience.odyssey.ml": {
     "originalUrl": "/logo-white.svg",
@@ -44,15 +74,35 @@
     "localPath": "/favicons/404media.co.svg",
     "sourceUrl": "https://www.404media.co/reddit-answers-ai-suggests-users-try-heroin/"
   },
+  "figma.com": {
+    "originalUrl": "https://static.figma.com/app/icon/1/icon-192.png",
+    "localPath": "/favicons/figma.com.png",
+    "sourceUrl": "https://www.figma.com/blog/schema-2025-design-systems-recap/"
+  },
   "writing.nikunjk.com": {
     "originalUrl": "https://substackcdn.com/image/fetch/$s_!tAKj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79b1a390-5c05-4cd0-ae74-f86153c30367%2Ffavicon-16x16.png",
     "localPath": "/favicons/writing.nikunjk.com.png",
     "sourceUrl": "https://writing.nikunjk.com/p/the-quiet-ones"
   },
+  "shapeof.ai": {
+    "originalUrl": "https://cdn.prod.website-files.com/65db6dd21591364dfcb8ade9/65dfd71acc18c754f7ea0200_fav32.png",
+    "localPath": "/favicons/shapeof.ai.png",
+    "sourceUrl": "https://www.shapeof.ai/"
+  },
+  "strangestloop.io": {
+    "originalUrl": "/favicons/favicon-32x32.png",
+    "localPath": "/favicons/strangestloop.io.png",
+    "sourceUrl": "https://strangestloop.io/essays/things-that-arent-doing-the-thing"
+  },
   "oliverburkeman.com": {
     "originalUrl": "https://static.wixstatic.com/media/053ea9_904d6f423dcd49119dc3ae38bee7ed80%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/053ea9_904d6f423dcd49119dc3ae38bee7ed80%7Emv2.png",
     "localPath": "/favicons/oliverburkeman.com.png",
     "sourceUrl": "https://www.oliverburkeman.com/river"
+  },
+  "eleganthack.com": {
+    "originalUrl": "https://eleganthack.com/favicon.ico",
+    "localPath": "/favicons/eleganthack.com.ico",
+    "sourceUrl": "https://eleganthack.com/ux-is-your-moat-and-youre-ignoring-it/"
   },
   "calv.info": {
     "originalUrl": "https://calv.info/favicon.ico",

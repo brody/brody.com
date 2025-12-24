@@ -7,8 +7,8 @@ description: The newest chapter in New Line Cinema's bloody successful franchise
 imageUrl: https://resizing.flixster.com/fMPxFfapy9bIhXUyUqJ1d7hrpNM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2U0MTFhZjkyLTBkM2YtNGNlNC04NmFiLTBkZjBiOTFjNjRhNy5qcGc=
 imageAlt: Final Destination Bloodlines
 pubDate: 2025-08-17
-# updatedDate:
-rating: 0
-inProgress: true
+updatedDate: 2025-12-24T14:39:58+11:00
+rating: 4
+inProgress: false
 repeat: false
 ---

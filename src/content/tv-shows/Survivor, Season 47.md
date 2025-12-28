@@ -9,8 +9,8 @@ description: "Castaways inhabit a remote destination and attempt to outwit, outl
 imageUrl: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p27863086_b_v13_aa.jpg"
 imageAlt: "Season 47"
 pubDate: 2025-12-05T20:58:20+11:00
-updatedDate:
-rating: 0
+updatedDate: 2025-12-28T14:40:20+11:00
+rating: 5
 inProgress: true
 repeat: false
 ---

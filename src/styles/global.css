@@ -45,12 +45,12 @@
   --color-tx-tv: var(--color-sapphire-400);
   --color-tx-book: var(--color-red-400);
   --color-tx-music: var(--color-lavender-400);
-  --color-tx-game: var(--color-mauve-400);
+  --color-tx-game: var(--color-peach-400);
   --color-tx-spotify: rgba(30, 215, 96, 1);
 
-  --color-tx-accent-1: var(--color-sky-400);
-  --color-tx-accent-2: var(--color-sky-500);
-  --color-bg-accent-1: var(--color-sky-500);
+  --color-tx-accent-1: var(--color-mauve-400);
+  --color-tx-accent-2: var(--color-mauve-500);
+  --color-bg-accent-1: var(--color-mauve-500);
 
   /* --color-gradient: linear-gradient(
     45deg,
@@ -60,11 +60,11 @@
   ); */
   --color-tx-gradient: linear-gradient(
     45deg,
-    var(--color-lavender-400),
-    var(--color-sky-400) 20%,
-    var(--color-sky-500) 50%,
-    var(--color-sky-400) 80%,
-    var(--color-lavender-400)
+    var(--color-lavender-300),
+    var(--color-mauve-400) 20%,
+    var(--color-mauve-500) 50%,
+    var(--color-mauve-400) 80%,
+    var(--color-lavender-300)
   );
 
   --color-lavender-50: rgba(238, 241, 255, 1);

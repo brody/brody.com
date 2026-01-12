@@ -14,7 +14,7 @@ faviconUrl: "/jason/avatar-9f11ce77d31e68e834c564594ee0bc32a005ee8d"
 
 I have to admit, I have to agree with Jason Fried on this one — and admit that my house has a lot of these problems.
 
-Neither my wife nor I could tell you what each of the buttons on our Philips Hue tap dial switches do. So much so thatI've had to set a reminder to turn on all our lights and disable the auto-lock from the front door when the cleaners are coming.
+Neither my wife nor I could tell you what each of the buttons on our Philips Hue tap dial switches do. So much so that I've had to set a reminder to turn on all our lights and disable the auto-lock from the front door when the cleaners are coming.
 
 Which reminds me...
 

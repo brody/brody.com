@@ -20,9 +20,8 @@ Which reminds me...
 
 [Jason Fried](https://world.hey.com/jason/the-big-regression-da7fc60d) writes on his blog:
 
-> The TV is the latest Samsung which has a baffling UI just to watch CNN. My parents aren’t idiots, but definitely feel like they’re missing something obvious. They aren’t — TVs have simply gotten worse. You don’t turn them on anymore, you boot them up.  
+> The TV is the latest Samsung which has a baffling UI just to watch CNN. My parents aren’t idiots, but definitely feel like they’re missing something obvious. They aren’t — TVs have simply gotten worse. You don’t turn them on anymore, you boot them up.
 
 > Thermostats... Nest would have been an upgrade, but these other propriety ones from some other company trying to be nest-like are baffling.
-  
+
 > And the lag. Lag everywhere. Everything feels a beat or two behind. Everything. Lag is the giveaway that the system is working too hard for too little. Real-time must be the hardest problem.  
-  

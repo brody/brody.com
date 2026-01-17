@@ -116,7 +116,7 @@ function formatDate(pubDate: Date | string): string {
       {
         title && (
           <a href={url}>
-            <h2 class='text-h1 font-heading hover:text-tx-1 text-tx-0'>{title}</h2>
+            <h2 class='mb-3 text-h1 font-heading hover:text-tx-1 text-tx-0'>{title}</h2>
           </a>
         )
       }
@@ -124,7 +124,7 @@ function formatDate(pubDate: Date | string): string {
       {/* Show markdown content between title and source */}
       {
         content && (
-          <div class='mt-3 mb-4 max-w-none content-preview prose prose-base'>
+          <div class='mb-4 max-w-none content-preview prose prose-base'>
             <content.Content />
           </div>
         )

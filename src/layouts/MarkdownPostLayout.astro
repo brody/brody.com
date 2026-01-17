@@ -87,7 +87,7 @@ function formatDate(pubDate: Date | string): string {
       <p class='mb-3 text-sm text-tx-3'>Posted {formatDate(frontmatter.pubDate)}</p>
     )
   }
-  <h1 class='text-tx-0 text-h1 font-heading'>{frontmatter.title}</h1>
+  <h1 class='mb-6 text-tx-0 text-h1 font-heading'>{frontmatter.title}</h1>
   {
     frontmatter.datePublished && !frontmatter.pubDate && (
       <p>{new Date(frontmatter.datePublished).toLocaleDateString()}</p>

@@ -10,7 +10,7 @@ year: 2021
 imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1625673562i/56614951.jpg
 isbn: "9781982177881"
 pubDate: 2025-05-07
-updated: 
+updatedDate: 
 rating: 3
 progress:
 ---

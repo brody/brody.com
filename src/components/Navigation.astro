@@ -33,9 +33,9 @@ const isCurrentPage = (href: string) => {
 ---
 
 <nav
-  class='flex sticky top-0 flex-col gap-4 px-4 pt-16 pb-8 dashed-border min-h-dvh md:px-8 md:pt-32 md:pb-10'
+  class='dashed-border sticky top-0 flex min-h-dvh flex-col gap-4 px-4 pt-16 pb-8 md:px-8 md:pt-32 md:pb-10'
 >
-  <a href='/' class='hidden p-4 -mt-4 md:block'>
+  <a href='/' class='-mt-4 hidden p-4 md:block'>
     <Image
       src={avatarImage}
       alt='Brody Maclean'
@@ -43,7 +43,7 @@ const isCurrentPage = (href: string) => {
       height={48}
       quality={90}
       densities={[2, 3]}
-      class='w-12 h-12 rounded-full'
+      class='h-12 w-12 rounded-full'
     />
   </a>
   <div>
@@ -69,7 +69,7 @@ const isCurrentPage = (href: string) => {
     </ul>
   </div>
   <div>
-    <span class='flex px-4 mb-2 text-base text-tx-3 md:text-sm'>Library</span>
+    <span class='text-tx-3 mb-2 flex px-4 text-base md:text-sm'>Library</span>
     <ul class='library-nav'>
       {
         libraryLinks.map(({ href, icon, label }) => (

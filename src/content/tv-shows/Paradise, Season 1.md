@@ -6,7 +6,7 @@ genre:
 year: 2025
 imageUrl: "https://resizing.flixster.com/r8BIEwOnrvHgaRg7Se7nRugARaU=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vMmE5M2RjOTgtN2JiNC00N2E0LTllZjQtNjYxMmQ0NDM2NmJkLmpwZw=="
 pubDate: 2025-05-07
-updated:
+updatedDate:
 # rating:
 status: "in-progress"
 progress:

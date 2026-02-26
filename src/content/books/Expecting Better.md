@@ -10,7 +10,7 @@ imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.good
 isbn: "9781594204753"
 pubDate: 2025-05-14
 inProgress: false
-updated: 
+updatedDate: 
 rating: 5
 ---
 ## PART 1 In the Beginning: Conception

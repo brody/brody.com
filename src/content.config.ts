@@ -132,6 +132,7 @@ const work = defineCollection({
     tags: z.array(z.string()),
     featured: z.boolean().optional(),
     draft: z.boolean().optional(),
+    noLink: z.boolean().optional(),
   }),
 })
 

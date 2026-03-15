@@ -22,6 +22,6 @@ const sortedWorkPosts = allWorkPosts
   <p class='text-tx-2 mb-8'>A selection of projects and case studies from my design career.</p>
 
   {sortedWorkPosts.map((post) => (
-    <WorkCard href={`/work/${post.id}/`} frontmatter={post.data} />
+    <WorkCard href={post.data.noLink ? undefined : `/work/${post.id}/`} frontmatter={post.data} />
   ))}
 </BaseLayout>

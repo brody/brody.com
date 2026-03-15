@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+
+const pageTitle = 'Journal'
+const posts = (await getCollection('journal'))
+  .map((item) => ({ ...item, source: 'journal' }))
+  .filter((item) => item.data.pubDate)
+  .sort((a, b) => {
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
+    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
+    return dateB.getTime() - dateA.getTime()
+  })
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
+  <p class='text-tx-2 mb-8'>Personal thoughts, experiences, and reflections from my journey.</p>
+
+  <ul class='space-y-0'>
+    {
+      posts.map((post, index) => (
+        <ArticlePost
+          url={`/posts/${post.id}/`}
+          title={post.data.title}
+          pubDate={post.data.updatedDate || post.data.pubDate}
+          source={post.source}
+          description={post.data.description ?? undefined}
+          ogImage={post.data.ogImage}
+          loading={index < 3 ? 'eager' : 'lazy'}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>

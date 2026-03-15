@@ -8,7 +8,7 @@ import NotePost from '../../components/NotePost.astro'
 
 export async function getStaticPaths() {
   // Get all collections with tags
-  const allPosts = await getCollection('blog')
+  const allPosts = await getCollection('journal')
   const allBookmarks = await getCollection('bookmarks')
   const allNotes = await getCollection('notes')
   const allBooks = await getCollection('books')
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts
       .filter((post) => post.data.tags?.includes(tag))
-      .map((item) => ({ ...item, source: 'blog' }))
+      .map((item) => ({ ...item, source: 'journal' }))
     const filteredBookmarks = allBookmarks
       .filter((bookmark) => bookmark.data.tags?.includes(tag))
       .map((item) => ({ ...item, source: 'bookmarks' }))
@@ -75,7 +75,7 @@ const { items } = Astro.props
 // Render content for posts, bookmarks, and notes
 const itemsWithContent = await Promise.all(
   items.map(async (item) => {
-    if (item.source === 'blog' || item.source === 'bookmarks' || item.source === 'notes') {
+    if (item.source === 'journal' || item.source === 'bookmarks' || item.source === 'notes') {
       const { Content } = await render(item)
       return { ...item, renderedContent: { Content } }
     }
@@ -92,7 +92,7 @@ const itemsWithContent = await Promise.all(
       itemsWithContent.map((item, index) => {
         const loading = index < 3 ? 'eager' : 'lazy'
 
-        if (item.source === 'blog') {
+        if (item.source === 'journal') {
           return (
             <ArticlePost
               url={`/posts/${item.id}/`}

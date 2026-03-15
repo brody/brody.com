@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import WorkCard from '../components/WorkCard'
+
+const pageTitle = 'Work'
+const allWorkPosts = await getCollection('work')
+
+const sortedWorkPosts = allWorkPosts
+  .filter((item) => item.data.pubDate)
+  .sort((a, b) => {
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = rawDateA ? (typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA) : new Date(0)
+    const dateB = rawDateB ? (typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB) : new Date(0)
+    return dateB.getTime() - dateA.getTime()
+  })
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class='text-tx-0 text-h1 font-heading mb-3'>{pageTitle}</h1>
+  <p class='text-tx-2 mb-8'>A selection of projects and case studies from my design career.</p>
+
+  {sortedWorkPosts.map((post) => (
+    <WorkCard href={`/work/${post.id}/`} frontmatter={post.data} />
+  ))}
+</BaseLayout>

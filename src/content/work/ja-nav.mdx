@@ -1,0 +1,167 @@
+---
+pubDate: 2022-01-01
+title: JobAdder Navigation Redesign
+entrySlug: ja-nav
+featured: false
+draft: false
+tags:
+  - Stakeholder Management
+  - UX
+  - UI
+
+# ogImage: ""
+featuredImage: /assets/work/jobadder-nav/featuredImage.png
+ogImage: /assets/work/jobadder-nav/og.jpg
+description: A major overhaul of the cluttered navigation that took up a third of the users screen.
+---
+
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+
+JobAdder is a global recruitment platform built for staffing agency and in-house corporate recruiters. Used by over 10,000 people every day, we empower recruiters all over the world to recruit smarter and simpler.
+
+## Problem
+
+The previous navigation was a full width, persistent and took up 1/4 of the screen at all times. Users had always made comments and complaints about not being able to use the full height of the screen to view jobs, job ads and candidates.
+
+## Previous design
+
+import navold from '/public/assets/work/jobadder-nav/nav-old.png'
+
+<Image src={navold} alt='Navigation Old' class='wide' />
+
+## New design
+
+import navnew from '/public/assets/work/jobadder-nav/nav-new.png'
+
+<Image src={navnew} alt='Navigation Old' class='wide' />
+
+## My role
+
+I worked with the Product Manager, [Tom Dyson](https://twitter.com/dysontom), and JobAdder CEO, [Brett Iredale](https://twitter.com/BrettIredale), to empathise with the users to understand and define the problem.
+
+Starting with mapping the information architecture of the JobAdder suite of products with the aim to iterate and streamline the complex world of JobAdder.
+
+I researched equally complex SaaS products to explore how others solved the same problem. Using them as inspiration to help evolve potential options.
+
+I created wireframe upon wireframe with no fear of failure, just aiming to throw as many ideas at the wall to see what sticks.
+
+### A small sample
+
+import wf1 from '/public/assets/work/jobadder-nav/wireframe/wf1.jpg'
+import wf2 from '/public/assets/work/jobadder-nav/wireframe/wf2.jpg'
+import wf3 from '/public/assets/work/jobadder-nav/wireframe/wf3.jpg'
+import wf4 from '/public/assets/work/jobadder-nav/wireframe/wf4.jpg'
+import wf5 from '/public/assets/work/jobadder-nav/wireframe/wf5.jpg'
+import wf6 from '/public/assets/work/jobadder-nav/wireframe/wf6.jpg'
+import wf7 from '/public/assets/work/jobadder-nav/wireframe/wf7.jpg'
+import wf8 from '/public/assets/work/jobadder-nav/wireframe/wf8.jpg'
+
+<div class="flex flex-wrap  wide">
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf1} alt='wireframe 1' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf2} alt='wireframe 2' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf3} alt='wireframe 3' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf4} alt='wireframe 4' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf5} alt='wireframe 5' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf6} alt='wireframe 6' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf7} alt='wireframe 7' class='!my-1' />
+</div>
+
+<div class='w-1/2 px-2 py-1 md:w-1/4'>
+	<Image src={wf8} alt='wireframe 8' class='!my-1' />
+</div>
+
+</div>
+
+Once I'd found and got sign off on a solution that covered all business and user goals I moved onto high fidelity designs using the _Venom_ color palette and giving focus to accessibility.
+
+Then moving from Sketch to code, I created a prototype to explore the interactions and animations.
+
+<div class="px-5 py-4 mb-10 rounded-md bg-subtle not-prose">
+  <span class="block mb-1 font-mono text-xs text-subtle">Link:</span>
+  <span class="block mb-2 leading-normal text-heading font-heading">
+    New Navigation Prototype
+  </span>
+
+  <a
+    href="https://codepen.io"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="bg-accent
+    inline-flex
+    rounded-md
+    px-2.5
+    py-1
+    font-medium
+    text-sm
+    hover:bg-accentHover
+    transition-colors"
+  >
+    <Icon
+      name="tabler:external-link"
+      class="inline-flex w-4 mr-1 text-border"
+    />
+    <span class="text-border">
+      Codepen
+    </span>
+  </a>
+</div>
+
+Working closely with the developer, [Alex Periphanos](https://www.linkedin.com/in/alexandre-periphanos), the navigation was implemented so we were able to test it with out users.
+
+## Learnings and iteration
+
+The average JobAdder user isn't overly tech savvy so I chose to limit breaking mental modals where possible. Instead of restructuring the information architecture, I left that to a future version.
+
+Another important choice was to default to the navigation being expanded. Initially having the labels visible will allow the users to easily navigate and when comfortable, collapse the nav to utilize more of the screen.
+
+## Results
+
+The navigation launched mid-December, after a small group of users got access to it with positive feedback. Once globally live, the feedback too was overwhelmingly positive.
+
+<blockquote class='twitter-tweet' data-lang='en'>
+	<p lang='en' dir='ltr'>
+		We&#39;ve moved (to the left) 👈🏼 Say hello to our new side navigation bar! Visit any JobAdder
+		page with a single click and leave space for the important stuff with minimised &amp; expandable
+		view options.
+		<a href='https://t.co/crp84KLGqV'>pic.twitter.com/crp84KLGqV</a>
+	</p>
+	&mdash; JobAdder (@JobAdder) <a href='https://twitter.com/JobAdder/status/1072964137540415488?ref_src=twsrc%5Etfw'>December 12, 2018</a>
+</blockquote>
+<script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>
+
+{/* # Redesign & Design System */}
+
+{/* After multiple UI design explorations, I started defining patterns, documenting & building out the Sketch component library. */}
+
+{/* ## Base design elements */}
+
+{/* ![venom](/public/assets/work/venom/venom.png) */}
+
+{/* ## Main table view before and after */}
+
+{/* ![redesign](/public/assets/work/venom/redesign1.png) */}
+
+{/* ## Candidate details before & after */}
+
+{/* ![redesign 2](/public/assets/work/venom/redesign2.png) */}

@@ -726,15 +726,11 @@
   }
 
   .wide {
-    @apply -mx-4 w-screen max-w-fit md:-mx-12 md:w-[calc(100%+96px)] md:max-w-[720px];
+    @apply -mx-4 w-screen max-w-fit md:-mx-12 md:w-[calc(100%+96px)] md:max-w-180;
   }
 
   .wide-video {
-    @apply -mx-4 w-screen md:-mx-12 md:w-[calc(100%+96px)] md:max-w-[920px];
-  }
-
-  .superwide {
-    @apply -ml-5 w-screen max-w-fit md:w-[calc(100vw-120px)] md:max-w-[1000px];
+    @apply -mx-4 w-screen md:-mx-12 md:w-[calc(100%+96px)] md:max-w-230;
   }
 
   /* ===== scrollbar ===== */

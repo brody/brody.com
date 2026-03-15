@@ -11,15 +11,15 @@ const limit = parseInt(url.searchParams.get('limit') || '12')
 const contentType = url.searchParams.get('type') || 'all' // Filter by content type
 
 const allPosts = await Promise.all(
-  (await getCollection('blog'))
+  (await getCollection('journal'))
     .filter((item) => item && item.data)
     .map(async (item) => {
       try {
         const { Content } = await render(item)
-        return { ...item, source: 'blog', renderedContent: { Content } }
+        return { ...item, source: 'journal', renderedContent: { Content } }
       } catch (error) {
-        console.error('Error rendering blog post:', item.id, error)
-        return { ...item, source: 'blog', renderedContent: undefined }
+        console.error('Error rendering journal post:', item.id, error)
+        return { ...item, source: 'journal', renderedContent: undefined }
       }
     })
 )
@@ -124,7 +124,7 @@ const items = allThings.slice(offset, offset + limit)
             loading={loading}
           />
         )}
-        {post.source === 'blog' && (
+        {post.source === 'journal' && (
           <ArticlePost
             url={`/posts/${post.id}/`}
             title={post.data.title}

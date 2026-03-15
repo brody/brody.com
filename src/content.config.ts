@@ -3,8 +3,8 @@ import { glob } from 'astro/loaders'
 // Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content'
 // Define a `loader` and `schema` for each collection
-const blog = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
+const journal = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/journal' }),
   schema: z.object({
     title: z.union([z.string(), z.null()]).optional(),
     pubDate: z.union([z.date(), z.string()]),
@@ -12,6 +12,7 @@ const blog = defineCollection({
     description: z.union([z.string(), z.null()]).optional(),
     imageUrl: z.string().optional(),
     imageAlt: z.string().optional(),
+    ogImage: z.string().optional(),
     tags: z.array(z.string()),
   }),
 })
@@ -117,5 +118,22 @@ const bookmarks = defineCollection({
   }),
 })
 
+const work = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/work' }),
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.union([z.date(), z.string()]),
+    updatedDate: z.union([z.date(), z.string(), z.null()]).optional(),
+    description: z.union([z.string(), z.null()]).optional(),
+    featuredImage: z.string().optional(),
+    ogImage: z.string().optional(),
+    imageUrl: z.string().optional(),
+    imageAlt: z.string().optional(),
+    tags: z.array(z.string()),
+    featured: z.boolean().optional(),
+    draft: z.boolean().optional(),
+  }),
+})
+
 // Export a single `collections` object to register your collection(s)
-export const collections = { blog, notes, movies, tvShows, games, books, bookmarks }
+export const collections = { journal, notes, movies, tvShows, games, books, bookmarks, work }

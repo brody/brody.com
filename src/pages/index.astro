@@ -11,6 +11,8 @@ import NotePost from '../components/NotePost.astro'
 import BookmarkPost from '../components/BookmarkPost.astro'
 import LazyLoadList from '../components/LazyLoadList'
 import SpotifyNowPlaying from '../components/SpotifyNowPlaying'
+import Button from '../components/ui/Button.astro'
+import Badge from '../components/ui/Badge.astro'
 
 // const allNotes = Object.values(import.meta.glob('./notes/*.md', { eager: true }));
 const allPosts = await Promise.all(
@@ -77,7 +79,7 @@ const totalCount = allThings.length
       G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design
       leader from Sydney, Australia. :-)
     </h1>
-    <p class='prose mt-4'>
+    <!-- <p class='mt-4 prose'>
       Currently, I am Design Lead at
       <Image
         src={atlassianLogo}
@@ -87,7 +89,13 @@ const totalCount = allThings.length
         densities={[2, 3]}
         class='not-prose mx-0.75 my-0 -mt-0.5 inline-block h-4.5'
       /> focusing on design quality & visual integration of our AI Design Kit.
-    </p>
+    </p> -->
+    <div class='mt-4 flex items-center gap-2 md:gap-3'>
+      <Button href='mailto:hello@brody.com' class='text-bg-1 bg-white'>Let's chat</Button>
+      <Badge>
+        <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
+      </Badge>
+    </div>
   </section>
 
   <!-- <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} /> -->

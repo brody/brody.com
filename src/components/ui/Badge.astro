@@ -1,0 +1,51 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className, ...rest } = Astro.props
+---
+
+<span
+  class:list={['inline-flex h-8 items-center gap-2 rounded-full px-2 text-sm', className]}
+  {...rest}
+>
+  <span class='pulse-dot' aria-hidden='true'></span>
+  <slot />
+</span>
+
+<style>
+  .pulse-dot {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #22c55e;
+  }
+
+  .pulse-dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #22c55e;
+    animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    70% {
+      transform: scale(3);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+</style>

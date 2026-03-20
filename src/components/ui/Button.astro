@@ -2,9 +2,10 @@
 interface Props {
   href?: string
   class?: string
+  magnetic?: boolean
 }
 
-const { href, class: className, ...rest } = Astro.props
+const { href, class: className, magnetic = false, ...rest } = Astro.props
 const Tag = href ? 'a' : 'button'
 ---
 
@@ -14,7 +15,27 @@ const Tag = href ? 'a' : 'button'
     'ring-offset-background focus-visible:ring-ring inline-flex h-8 items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
     className,
   ]}
+  data-magnetic={magnetic ? 'true' : undefined}
   {...rest}
 >
   <slot />
 </Tag>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLElement>('[data-magnetic]')
+
+  buttons.forEach((btn) => {
+    btn.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)'
+
+    btn.addEventListener('mousemove', (e: MouseEvent) => {
+      const { left, top, width, height } = btn.getBoundingClientRect()
+      const x = e.clientX - (left + width / 2)
+      const y = e.clientY - (top + height / 2)
+      btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`
+    })
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0)'
+    })
+  })
+</script>

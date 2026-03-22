@@ -112,12 +112,7 @@ function formatDate(pubDate: Date | string): string {
   {
     ogImage && (
       <a href={url} class='block mb-3'>
-        <img
-          src={ogImage}
-          alt={title || ''}
-          loading={loading}
-          class='w-full rounded-sm'
-        />
+        <img src={ogImage} alt={title || ''} loading={loading} class='w-full rounded-sm' />
       </a>
     )
   }
@@ -127,17 +122,13 @@ function formatDate(pubDate: Date | string): string {
       {
         title && (
           <a href={url}>
-            <h2 class='mb-3 text-h1 font-heading hover:text-tx-1 text-tx-0'>{title}</h2>
+            <h2 class='mb-3 text-h1 hover:text-tx-1 text-tx-0'>{title}</h2>
           </a>
         )
       }
 
       {/* Show description below title */}
-      {
-        description && (
-          <p class='mb-4 text-tx-2'>{description}</p>
-        )
-      }
+      {description && <p class='mb-4 text-tx-2'>{description}</p>}
 
       {/* Show source information for bookmarks */}
       {

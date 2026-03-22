@@ -1,243 +1,573 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Greeting from '../components/Greeting'
-const pageTitle = 'Home Page'
+// import MarkdownPostLayout from '../layouts/MarkdownPostLayout.astro'
+const pageTitle = 'About Me'
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
-import atlassianLogo from '/public/assets/images/Atlassian.svg'
-import { getCollection, render } from 'astro:content'
-import LibraryItem from '../components/LibraryItem.astro'
-import ArticlePost from '../components/ArticlePost.astro'
-import NotePost from '../components/NotePost.astro'
-import BookmarkPost from '../components/BookmarkPost.astro'
-import LazyLoadList from '../components/LazyLoadList'
-import SpotifyNowPlaying from '../components/SpotifyNowPlaying'
-import Button from '../components/ui/Button.astro'
-import Badge from '../components/ui/Badge.astro'
-
-// const allNotes = Object.values(import.meta.glob('./notes/*.md', { eager: true }));
-const allPosts = await Promise.all(
-  (await getCollection('journal')).map(async (item) => {
-    const { Content } = await render(item)
-    return { ...item, source: 'journal', renderedContent: { Content } }
-  })
-)
-const allNotes = await Promise.all(
-  (await getCollection('notes')).map(async (item) => {
-    const { Content } = await render(item)
-    return { ...item, source: 'notes', renderedContent: { Content } }
-  })
-)
-const allMovies = (await getCollection('movies')).map((item) => ({ ...item, source: 'movies' }))
-const allTvShows = (await getCollection('tvShows')).map((item) => ({ ...item, source: 'tvShows' }))
-const allGames = (await getCollection('games')).map((item) => ({ ...item, source: 'games' }))
-const allBooks = (await getCollection('books')).map((item) => ({
-  ...item,
-  source: 'books',
-  data: {
-    ...item.data,
-    pubDate: item.data.datePublished || item.data.pubDate,
-    imageUrl: item.data.imageUrl || item.data.imageUrl,
-    imageAlt: item.data.title,
-    year: item.data.year,
-    rating: item.data.rating,
-  },
-}))
-const allBookmarks = await Promise.all(
-  (await getCollection('bookmarks')).map(async (item) => {
-    const { Content } = await render(item)
-    return { ...item, source: 'bookmarks', renderedContent: { Content } }
-  })
-)
-const allThings = [
-  ...allPosts,
-  ...allNotes,
-  ...allMovies,
-  ...allTvShows,
-  ...allGames,
-  ...allBooks,
-  ...allBookmarks,
-]
-  .filter((item) => item.data.pubDate) // Filter out items without dates
-  .sort((a, b) => {
-    // Prioritize 'updatedDate' over 'pubDate' if it exists
-    const rawDateA = a.data.updatedDate || a.data.pubDate
-    const rawDateB = b.data.updatedDate || b.data.pubDate
-    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
-    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
-    if (!dateA || !dateB) return 0
-    return dateB.getTime() - dateA.getTime()
-  })
-
-// Only render the first 12 items initially for performance
-const initialItems = allThings.slice(0, 12)
-const totalCount = allThings.length
+import brandLaunch from '/public/assets/images/brand.jpg'
+import sydney from '~/pages/about/_images/sydney.png'
+import hero1 from '~/pages/about/_images/hero1.png'
+import hero2 from '~/pages/about/_images/hero2.png'
+import hero3 from '~/pages/about/_images/hero3.png'
+import marion from 'public/assets/work/automation/redesign.png'
+import prospaRedesign from 'public/assets/work/prospa-rebrand/Prospa.png'
+import salt from 'public/assets/work/salt/salt-square.png'
+import prospaTokens from 'public/assets/journal/prospa-tokens/og-square.png'
+import mitti from 'public/assets/work/mitti/square.png'
 ---
 
 <BaseLayout>
-  <section class='mb-8'>
-    <h1 class='text-tx-0 text-h1 font-heading max-w-xl'>
-      G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design
-      leader from Sydney, Australia. :-)
-    </h1>
-    <!-- <p class='mt-4 prose'>
-      Currently, I am Design Lead at
+  <section class='pt-4 system-grid md:pt-8'>
+    <div class='col-start-1 col-end-13 pb-12 md:pb-20 lg:col-start-7 lg:pb-30'>
+      <h1 class='max-w-2xl m-0 text-tx-3 text-h1'>
+        <span class='text-tx-0'>Brody</span> is a multi-disciplinary <span class='text-tx-0'
+          >design</span
+        > leader based in
+        <Image
+          src={sydney}
+          alt='Sydney Opera House'
+          class='-mt-1 inline-block h-[0.85em] w-auto'
+          width={100}
+          height={54}
+          quality={90}
+          densities={[2, 3]}
+        />
+        <span class='text-tx-0'>Sydney,</span> Australia.
+      </h1>
+    </div>
+    <div class='grid col-span-6 col-start-1 grid-rows-2 row-span-2 gap-2 aspect-square'>
       <Image
-        src={atlassianLogo}
-        alt='Brody Maclean'
-        height={18}
-        quality={90}
+        src={hero1}
+        alt='SafetyCulture team at Figma event'
+        class='object-cover w-full h-full rounded-xl md:rounded-2xl'
+        width={1200}
+        height={600}
+        quality={80}
         densities={[2, 3]}
-        class='not-prose mx-0.75 my-0 -mt-0.5 inline-block h-4.5'
-      /> focusing on design quality & visual integration of our AI Design Kit.
-    </p> -->
-    <div class='mt-4 flex items-center gap-2 md:gap-3'>
-      <Button magnetic href='mailto:hello@brody.com' class='text-bg-2 bg-tx-1 hover:bg-tx-2'
-        >Let's chat</Button
-      >
-      <Badge>
-        <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
-      </Badge>
+      />
+      <Image
+        src={hero2}
+        alt='Brody MacLean presenting at the Prospa brand launch'
+        class='object-cover w-full h-full rounded-xl md:rounded-2xl'
+        width={1200}
+        height={600}
+        quality={80}
+        densities={[2, 3]}
+      />
+    </div>
+    <Image
+      src={hero3}
+      alt='Brody MacLean'
+      class='object-cover col-span-6 col-start-7 row-span-2 aspect-square rounded-xl md:rounded-2xl'
+      width={1200}
+      height={1200}
+      quality={80}
+      densities={[2, 3]}
+    />
+  </section>
+  <section class='py-16 border-b system-grid border-ui-1 lg:py-20'>
+    <div class='col-span-12 col-start-1 md:col-span-6'>
+      <h2 class='mb-4 text-2xl font-medium lg:sticky lg:top-24 lg:mb-0 lg:text-[32px]'>Intro</h2>
+    </div>
+    <div
+      class='col-start-1 col-end-13 flex max-w-4xl flex-col gap-6 text-xl tracking-tight lg:col-start-7 lg:gap-8 lg:text-[28px]'
+    >
+      <p>
+        With 15+ years of experience in product design, I've built a career spanning product
+        strategy, design systems, AI features, and design leadership — working across startups,
+        scale-ups, and enterprise organisations to ship high-quality, user-centred products.
+      </p>
+      <p>
+        I'm equally comfortable leading and growing design teams as I am getting hands-on with
+        components, Figma libraries, and cross-functional delivery.
+      </p>
+      <p>
+        A natural curiosity keeps me at the intersection of design and technology, constantly
+        exploring how emerging tools — particularly AI — can raise the bar for both product
+        experience and design practice.
+      </p>
+    </div>
+  </section>
+  <section class='py-16 border-b system-grid border-ui-1 lg:py-28' id='work'>
+    <div class='col-span-12 col-start-1 md:col-span-6'>
+      <h2 class='mb-4 text-2xl font-medium lg:sticky lg:top-24 lg:mb-0 lg:text-[32px]'>
+        Work highlights
+      </h2>
+    </div>
+    <div class='grid col-start-1 col-end-13 text-lg lg:col-start-7 lg:text-xl'>
+      <div class='flex flex-col gap-12 pb-12 border-b border-ui-1'>
+        <div class='flex flex-col gap-6'>
+          <div class='flex items-center justify-between'>
+            <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#1868DB]'>
+              <svg
+                width='32'
+                height='32'
+                viewBox='0 0 32 32'
+                class='-mt-0.5'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M31.6541 30.0939L17.009 0.750905C16.7207 0.115525 16.4325 0 16.0865 0C15.7982 0 15.4522 0.115525 15.1063 0.693142C13.0306 3.98556 12.1081 7.79782 12.1081 11.7834C12.1081 17.3285 14.9333 22.5271 19.0847 30.9025C19.546 31.8267 19.8919 32 20.6991 32H30.8468C31.5964 32 32 31.7112 32 31.1336C32 30.8447 31.9423 30.6715 31.6541 30.0939ZM10.3784 16.231C9.22519 14.4982 8.87929 14.3826 8.59095 14.3826C8.30271 14.3826 8.12976 14.4982 7.61082 15.5379L0.288293 30.2094C0.0576586 30.6715 0 30.8447 0 31.0759C0 31.5379 0.403601 32 1.26847 32H11.5892C12.2811 32 12.8 31.4224 13.0882 30.3249C13.4342 28.9386 13.5495 27.7256 13.5495 26.2816C13.5495 22.2383 11.7621 18.3105 10.3784 16.231Z'
+                  fill='white'
+                  style='fill:white;fill-opacity:1;'></path>
+              </svg>
+            </div>
+            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+              2024 - 2026
+            </div>
+          </div>
+          <div>
+            <h3 class='text-2xl'>Atlassian</h3>
+            <h4 class='text-base'>Design Lead</h4>
+          </div>
+          <p class='max-w-4xl text-tx-2'>
+            Led the design and integration of AI UI components within the Atlassian Design System,
+            bridging AI patterns, brand principles, and front-end implementation to deliver
+            accessible, production-ready controls.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Owned the end-to-end component lifecycle — from high-fidelity Figma assets and visual
+            specs to UX documentation and cross-team pattern adoption.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Prior to this, I drove the end-to-end delivery for Automation's Business Process
+            Automation initiative and a visual refresh that enabled key design OKRs and
+            cross-functional business goals. Working closely with engineering, product, and design
+            stakeholders, I mentored junior designers and aligned design strategy with customer
+            needs and business objectives.
+          </p>
+        </div>
+        <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
+          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+            <video
+              class='object-cover w-full aspect-square rounded-2xl'
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src='/assets/work/rovo/rovo2-square.webm' type='video/webm' />
+              <source src='/assets/work/rovo/rovo2-square.mp4' type='video/mp4' />
+            </video>
+            <div>
+              <h4 class='text-sm'>AI Design Kit</h4>
+              <p class='text-sm text-tx-2'>Design system, Figma libraries, docs</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <video
+              class='object-cover w-full aspect-square rounded-2xl'
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src='/assets/work/rovo/rebrand.webm' type='video/webm' />
+              <source src='/assets/work/rovo/rebrand.mp4' type='video/mp4' />
+            </video>
+            <div>
+              <h4 class='text-sm'>Rovo brand refresh</h4>
+              <p class='text-sm text-tx-2'>Product & UI design</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <video
+              class='object-cover w-full aspect-square rounded-2xl'
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src='/assets/work/rovo/chat.webm' type='video/webm' />
+              <source src='/assets/work/rovo/chat.mp4' type='video/mp4' />
+            </video>
+            <div>
+              <h4 class='text-sm'>Rovo nudge and chat</h4>
+              <p class='text-sm text-tx-2'>Product & UI design</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <Image
+              src={marion}
+              alt='Automation redesign'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>Builder redesign</h4>
+              <p class='text-sm text-tx-2'>Systems and UI design</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <video
+              class='object-cover w-full aspect-square rounded-2xl'
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src='/assets/work/automation/redesign.webm' type='video/webm' />
+              <source src='/assets/work/automation/redesign.mp4' type='video/mp4' />
+            </video>
+            <div>
+              <h4 class='text-sm'>Business Process Automation</h4>
+              <p class='text-sm text-tx-2'>UX, UI design, strategy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+        <div class='flex flex-col gap-6'>
+          <div class='flex items-center justify-between'>
+            <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#1A1A1A]'>
+              <svg
+                width='41'
+                class='w-10'
+                height='40'
+                viewBox='0 0 41 40'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <g clip-path='url(#clip0_75_350)'>
+                  <path
+                    d='M40.3501 24.3422V3.99822C40.3501 3.70338 40.1535 3.50682 39.8587 3.6051L34.0602 5.96382C33.7653 6.0621 33.6671 6.16038 33.6671 6.45522V20.3127C33.6671 20.6076 33.5688 20.7058 33.3722 20.8041L7.32798 31.3201C7.13142 31.4184 7.03314 31.6149 7.03314 31.8115V37.5117C7.03314 37.9049 7.2297 38.1014 7.52454 37.9049L39.957 24.8336C40.2518 24.7353 40.3501 24.5388 40.3501 24.3422ZM0.350098 13.2365V33.5805C0.350098 33.8754 0.546658 34.0719 0.841498 33.9736L6.64002 31.6149C6.83658 31.5166 6.93486 31.3201 6.93486 31.1235V17.1678C6.93486 16.8729 7.03314 16.7746 7.2297 16.6764L33.2739 6.25866C33.4705 6.16038 33.5688 5.96382 33.5688 5.76726V-0.0312652C33.5688 -0.326106 33.3722 -0.522666 33.0774 -0.424386L0.644938 12.6469C0.448378 12.8434 0.350098 12.9417 0.350098 13.2365Z'
+                    fill='white'
+                    style='fill:white;fill-opacity:1;'></path>
+                </g>
+                <defs>
+                  <clipPath id='clip0_75_350'>
+                    <rect width='40.7' height='39.1' fill='white' style='fill:white;fill-opacity:1;'
+                    ></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+              2022 - 2024
+            </div>
+          </div>
+          <div>
+            <h3 class='text-2xl'>Prospa</h3>
+            <h4 class='text-base'>Design System Lead</h4>
+          </div>
+          <p class='max-w-4xl text-tx-2'>
+            Led the design systems team at Prospa, unifying divergent design and code across
+            products to significantly reduce design and development debt while driving the
+            end-to-end implementation of a company-wide rebrand.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Managed and grew the team through hiring, mentoring, and performance development, and
+            partnered with senior leadership to shape a multi-year systems roadmap and future
+            product design vision.
+          </p>
+        </div>
+
+        <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
+          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+            <Image
+              src={salt}
+              alt='Prospa redesign'
+              class='object-cover w-full aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>Salt Design System</h4>
+              <p class='text-sm text-tx-2'>Brand, strategy, UI design</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <Image
+              src={prospaRedesign}
+              alt='Prospa redesign'
+              class='object-cover w-full aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>Prospa redesign</h4>
+              <p class='text-sm text-tx-2'>UI design, brand, systems, strategy</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <Image
+              src={prospaTokens}
+              alt='Prospa design tokens'
+              class='object-cover w-full aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>
+                Developing a scalable design token taxonomy for Prospa's Design System
+              </h4>
+              <p class='text-sm text-tx-2'>Coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+        <div class='flex flex-col gap-6'>
+          <div class='flex items-center justify-between'>
+            <div
+              class='flex items-center justify-center w-16 h-16 bg-white border border-ui-1 rounded-xl'
+            >
+              <svg
+                width='44'
+                height='34'
+                viewBox='0 0 44 34'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <g clip-path='url(#clip0_201_577)'>
+                  <path
+                    d='M41.1817 27.5806H28.4169C28.0593 29.204 26.8871 30.4909 25.3872 31.0452L38.7579 30.1741C40.0791 30.1444 41.2016 29.204 41.4598 27.9171C41.4996 27.739 41.3605 27.5806 41.1817 27.5806Z'
+                    fill='#FFD700'
+                    style='fill:#FFD700;fill:color(display-p3 1.0000 0.8431 0.0000);fill-opacity:1;'
+                  ></path>
+                  <path
+                    d='M28.4172 27.5806H14.8379V27.6003C14.4207 29.6792 12.9206 31.3126 11.0034 31.9758L25.3974 31.0452C26.8973 30.4909 28.0596 29.204 28.4271 27.5806H28.4172Z'
+                    fill='#00D1FF'
+                    style='fill:#00D1FF;fill:color(display-p3 0.0000 0.8196 1.0000);fill-opacity:1;'
+                  ></path>
+                  <path
+                    d='M0.00681122 32.3322C-0.0329235 32.5103 0.106148 32.6786 0.294888 32.6687L10.9934 31.9758C12.9206 31.3126 14.4107 29.6792 14.8279 27.6003V27.5806H5.82795C3.00678 27.5806 0.573031 29.5702 0.00681122 32.3322Z'
+                    fill='#6559FF'
+                    style='fill:#6559FF;fill:color(display-p3 0.3961 0.3490 1.0000);fill-opacity:1;'
+                  ></path>
+                  <path
+                    d='M42.6227 14.375C39.732 19.285 31.7751 22.9378 27.4539 18.6614C24.5434 15.7807 25.5865 11.8904 27.5235 9.4255C29.4506 6.98042 33.7817 5.30746 36.4142 7.60405C37.1095 8.2079 37.5863 9.00974 37.8545 9.97983C37.934 10.2669 38.2121 10.455 38.5102 10.3956L43.2187 9.49479C43.6558 9.41559 43.9538 9.00974 43.9042 8.56427C43.7452 7.1586 42.9704 4.14926 39.4141 1.90216C37.8644 0.922153 36.0268 0.575684 34.0599 0.575684C32.093 0.575684 30.0964 0.95185 28.2685 1.69429C26.5301 2.40702 25.0202 3.35734 23.7388 4.54523C23.9971 5.17877 24.166 5.86181 24.2355 6.59435C24.3547 7.76245 23.5599 8.81175 22.3977 9.03943L20.3513 9.4255C20.1428 9.92048 19.964 10.4253 19.8149 10.9401C19.9342 11.0093 20.0534 11.0885 20.1825 11.1677C20.9474 11.6825 21.5931 12.3458 22.0897 13.1377C22.954 14.5137 23.3215 16.2262 23.1328 17.9486C22.9738 19.4137 22.4673 20.7897 21.7123 22.0073C24.5633 25.2443 29.4606 26.3233 33.583 25.3433C37.6559 24.3831 43.0597 21.0669 43.785 14.6621C43.8743 13.8702 43.03 13.6921 42.6327 14.3652L42.6227 14.375Z'
+                    fill='#293745'
+                    style='fill:#293745;fill:color(display-p3 0.1608 0.2157 0.2706);fill-opacity:1;'
+                  ></path>
+                  <path
+                    d='M20.8676 13.8998C20.51 13.3256 20.0431 12.8207 19.457 12.4149C19.4272 12.3951 19.4073 12.3753 19.3775 12.3555C17.5 11.0884 15.116 10.93 13.0299 10.1479C12.3941 9.91045 11.5994 9.58373 11.361 8.91059C11.0531 8.02957 11.6392 7.11885 12.4438 6.72288C12.9107 6.4952 13.5067 6.37641 14.0729 6.37641C14.3511 6.37641 14.6292 6.40611 14.8776 6.4556C15.7914 6.65359 16.318 7.33663 16.4073 8.15826C16.4372 8.43543 16.6954 8.63342 16.9736 8.63342C17.0133 8.63342 17.0431 8.63342 17.0828 8.62351L21.1358 7.85138L22.1291 7.6633C22.5663 7.58411 22.8642 7.18815 22.8145 6.75258C22.7748 6.38632 22.7053 6.03984 22.6159 5.71318C21.5728 1.89211 17.2318 1.12988 15.106 1.12988C12.9802 1.12988 11.2418 1.43676 9.71203 2.06039C8.18224 2.68404 6.97034 3.63436 6.0763 4.93114C5.18227 6.22793 4.73526 7.79199 4.73526 9.61343C4.73526 11.8804 6.16571 13.5137 8.24185 14.3848C9.80146 15.0381 11.51 15.2757 13.1094 15.8201C14.4404 16.2756 15.5332 17.206 14.8279 18.6613C14.3014 19.7501 12.9702 20.2549 11.7981 20.2549C10.0697 20.2549 9.31469 18.8097 9.03655 18.0574C8.95707 17.8297 8.73853 17.6911 8.50013 17.6911C8.46039 17.6911 8.43059 17.6911 8.39085 17.701L3.20547 18.681C2.76839 18.7602 2.47038 19.1661 2.52005 19.6016C2.69886 21.1756 3.42401 22.9178 4.69553 23.9177C6.18558 25.0858 8.22198 25.6698 10.8048 25.6698C12.9305 25.6698 14.818 25.3332 16.447 24.6601C18.3246 23.888 19.8444 22.4922 20.7582 20.7796C21.2451 19.8689 21.5728 18.8592 21.692 17.8C21.841 16.4339 21.5728 15.0381 20.8576 13.8998H20.8676Z'
+                    fill='#293745'
+                    style='fill:#293745;fill:color(display-p3 0.1608 0.2157 0.2706);fill-opacity:1;'
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id='clip0_201_577'>
+                    <rect
+                      width='44'
+                      height='33.2444'
+                      fill='white'
+                      style='fill:white;fill-opacity:1;'></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+              2021 - 2022
+            </div>
+          </div>
+          <div>
+            <h3 class='text-2xl'>
+              SafetyCulture Care <span class='ml-1 text-base text-tx-3'>fka Mitti</span>
+            </h3>
+            <h4 class='text-base'>Design Lead</h4>
+          </div>
+          <p class='max-w-4xl text-tx-2'>
+            Led the 0-to-1 design of SafetyCulture Care's risk mitigation product, establishing the
+            UI/UX patterns and remote-first design processes that underpinned the MVP launch.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Hired and managed the design team, providing mentorship, performance development, and
+            hands-on leadership to build out the practice from the ground up.
+          </p>
+        </div>
+        <div class='grid grid-cols-6 gap-4'>
+          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+            <Image
+              src={mitti}
+              alt='Mitti ui design'
+              class='object-cover w-full aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>MVP</h4>
+              <p class='text-sm text-tx-2'>UX, UI design, brand, strategy</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <div>
+              <h4 class='text-sm'>Opal tadpole</h4>
+              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+        <div class='flex flex-col gap-6'>
+          <div class='flex items-center justify-between'>
+            <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#0E0180]'>
+              <svg
+                width='40'
+                height='40'
+                viewBox='0 0 40 40'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <g clip-path='url(#clip0_200_528)'>
+                  <path
+                    d='M21.3931 23.52L21.3591 23.5818C21.0572 24.1077 20.8188 24.6677 20.6488 25.2498L16.0579 41H22.7957L26.852 27.0874C26.9072 26.8953 27.0135 26.7218 27.1596 26.5855C27.3058 26.4491 27.4862 26.355 27.6816 26.3132C27.8771 26.2714 28.0802 26.2835 28.2693 26.3482C28.4584 26.4128 28.6265 26.5277 28.7554 26.6804L35.4054 33.8811L38.8352 27.8795L33.6856 22.4625C32.5144 21.0627 30.8743 20.1365 29.0708 19.8564C27.2674 19.5763 25.4236 19.9615 23.8831 20.9401C22.8615 21.5866 22.0076 22.4725 21.3931 23.52ZM16.9058 20.9601L16.8719 20.8982C16.5707 20.3725 16.2084 19.8843 15.7925 19.4437L4.55746 7.56026L1.03591 13.2805L11.1117 23.9409C11.25 24.0864 11.3466 24.2664 11.3913 24.4621C11.436 24.6578 11.4272 24.8619 11.3657 25.0529C11.3043 25.244 11.1925 25.415 11.0421 25.548C10.8918 25.6809 10.7083 25.7709 10.5112 25.8085L1 28.0132L4.43974 34.0068L11.6684 32.2191C12.8573 32.0001 13.9761 31.4986 14.9306 30.7566C15.8883 30.0144 16.6544 29.0527 17.1672 27.9513C17.6807 26.8486 17.9248 25.6397 17.8794 24.4242C17.8339 23.2087 17.5002 22.0213 16.9058 20.9601ZM21.3053 18.4162H21.3771C21.9776 18.4162 22.5782 18.3444 23.1628 18.2007L38.9908 14.334L35.8364 8.39824L21.6405 11.8679C21.4461 11.916 21.2423 11.9098 21.0513 11.85C20.8602 11.7901 20.6893 11.679 20.5571 11.5287C20.4225 11.3791 20.3312 11.1957 20.2929 10.9982C20.2546 10.8007 20.2707 10.5965 20.3396 10.4074L23.1987 1L16.3292 1.00798L14.2522 8.21269C13.8441 9.35862 13.7145 10.5852 13.874 11.7911C14.0336 12.9971 14.4778 14.1477 15.17 15.148C15.8603 16.1457 16.7761 16.9637 17.8436 17.5323C18.911 18.101 20.0982 18.4042 21.3053 18.4162Z'
+                    fill='#F26A60'
+                    style='fill:#F26A60;fill:color(display-p3 0.9490 0.4157 0.3765);fill-opacity:1;'
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id='clip0_200_528'>
+                    <rect width='40' height='40' fill='white' style='fill:white;fill-opacity:1;'
+                    ></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+              2019 - 2020
+            </div>
+          </div>
+          <div>
+            <h3 class='text-2xl'>Deputy</h3>
+            <h4 class='text-base'>Design System Lead</h4>
+          </div>
+          <p class='max-w-4xl text-tx-2'>
+            Led the development and growth of Deputy's design system, Copilot, with an initial focus
+            on reducing design and technical debt ahead of a rebrand while migrating the design
+            library from Sketch to Figma.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Defined and documented emerging design patterns throughout the transition, ensuring
+            consistency and minimising friction across the product and design team.
+          </p>
+        </div>
+        <div class='grid grid-cols-6 gap-4'>
+          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+            <div class='w-full aspect-square rounded-2xl bg-amber-300'></div>
+            <div>
+              <h4 class='text-sm'>Opal tadpole</h4>
+              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <div>
+              <h4 class='text-sm'>Opal tadpole</h4>
+              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='flex flex-col gap-12 pt-12'>
+        <div class='flex flex-col gap-6'>
+          <div class='flex items-center justify-between'>
+            <div
+              class='flex items-center justify-center w-16 h-16 bg-white border border-ui-1 rounded-xl'
+            >
+              <svg
+                width='142'
+                height='123'
+                class='w-10 -mr-1'
+                viewBox='0 0 142 123'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M139.377 58.9642C138.36 58.8076 137.42 58.651 136.402 58.5727C134.053 58.2595 131.939 57.9463 129.825 57.5548C127.241 57.0067 123.796 56.2237 120.507 55.0492C118.471 54.3445 116.749 53.2483 115.339 51.7606C113.852 50.3512 112.756 48.6286 112.051 46.5928C110.876 43.226 110.093 39.8591 109.545 37.2752C109.154 35.1611 108.841 33.047 108.527 30.698C108.371 29.6801 108.293 28.6622 108.136 27.7226C107.979 26.7047 107.118 26 106.1 26C105.082 26 104.221 26.7047 104.064 27.7226C103.908 28.7405 103.751 29.6801 103.673 30.698C103.36 33.047 103.046 35.1611 102.655 37.2752C102.107 39.8591 101.324 43.3043 100.149 46.5928C99.4446 48.6286 98.3484 50.3512 96.8607 51.7606C95.4513 53.2483 93.7288 54.3445 91.693 55.0492C88.3261 56.2237 84.9592 57.0067 82.3753 57.5548C80.2612 57.9463 78.1471 58.2595 75.7981 58.5727C74.7802 58.7293 73.7623 58.8076 72.8227 58.9642C71.8048 59.1208 71.1001 59.9821 71.1001 61C71.1001 62.0179 71.8048 62.8792 72.8227 63.0358C73.8406 63.1924 74.7802 63.349 75.7981 63.4273C78.1471 63.7405 80.2612 64.0537 82.3753 64.4452C84.9592 64.9933 88.4044 65.7763 91.693 66.9508C93.7288 67.6555 95.4513 68.7517 96.8607 70.2394C98.3484 71.6488 99.4446 73.3714 100.149 75.4072C101.324 78.774 102.107 82.1409 102.655 84.7248C103.046 86.8389 103.36 88.953 103.673 91.302C103.829 92.3199 103.908 93.3378 104.064 94.2774C104.221 95.2953 105.082 96 106.1 96C107.118 96 107.979 95.2953 108.136 94.2774C108.293 93.2595 108.449 92.3199 108.527 91.302C108.841 88.953 109.154 86.8389 109.545 84.7248C110.093 82.1409 110.876 78.6957 112.051 75.4072C112.756 73.3714 113.852 71.6488 115.339 70.2394C116.749 68.7517 118.471 67.6555 120.507 66.9508C123.874 65.7763 127.241 64.9933 129.825 64.4452C131.939 64.0537 134.053 63.7405 136.402 63.4273C137.42 63.2707 138.438 63.1924 139.377 63.0358C140.395 62.8792 141.1 62.0179 141.1 61C141.1 60.0604 140.395 59.1208 139.377 58.9642Z'
+                  fill='#19A0FA'
+                  style='fill:#19A0FA;fill:color(display-p3 0.0980 0.6275 0.9804);fill-opacity:1;'
+                ></path>
+                <path
+                  d='M22.2366 123C9.17179 123 0 116.457 0 109.12V97.8845H0.791809C4.68487 100.264 11.7452 101.784 18.8055 101.784C29.7588 101.784 33.7179 97.0913 33.7179 87.3756V0H41.8339C52.5233 0 58 5.75014 58 16.4573V88.4331C58 108.063 47.0466 123 22.2366 123Z'
+                  fill='#1971C2'
+                  style='fill:#1971C2;fill:color(display-p3 0.0980 0.4431 0.7608);fill-opacity:1;'
+                ></path>
+              </svg>
+            </div>
+            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+              2018 - 2019
+            </div>
+          </div>
+          <div>
+            <h3 class='text-2xl'>Jobadder</h3>
+            <h4 class='text-base'>Head of Design</h4>
+          </div>
+          <p class='max-w-4xl text-tx-2'>
+            Led and mentored a team of five designers across product and marketing, working closely
+            with the CEO and Head of Product to shape the roadmap, formalise design processes, and
+            establish Venom — JobAdder's design system.
+          </p>
+          <p class='max-w-4xl text-tx-2'>
+            Spearheaded a full UX and UI redesign across multiple product lines, introducing
+            consistency through a Sketch component library and laying the foundation for a unified
+            design practice.
+          </p>
+        </div>
+        <div class='grid grid-cols-6 gap-4'>
+          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+            <div class='w-full aspect-square rounded-2xl bg-amber-300'></div>
+            <div>
+              <h4 class='text-sm'>Opal tadpole</h4>
+              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <div>
+              <h4 class='text-sm'>Opal tadpole</h4>
+              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} /> -->
+  <section class='py-20 system-grid' id='contact'>
+    <div class='col-span-12 col-start-1 md:col-span-6'>
+      <p class='mb-4 text-2xl tracking-tight lg:mb-0 lg:text-[32px]'>
+        Reach out to connect<br />
+        or collaborate<br />
+        <a href='mailto:hello@brody.com' class='text-tx-2 hover:underline'>hello@brody.com</a>
+      </p>
+    </div>
+    <div
+      class='col-span-6 flex flex-col text-xl font-semibold tracking-tight md:col-start-7 lg:col-start-7 lg:text-[28px]'
+    >
+      <a href='https://www.linkedin.com/in/brodymaclean/' class='text-tx-0 hover:underline'>
+        LinkedIn
+      </a>
+      <a href='https://www.instagram.com/brody/' class='text-tx-0 hover:underline'> Instagram </a>
+      <a href='https://www.github.com/brody/' class='text-tx-0 hover:underline'> Github </a>
+      <a href='https://www.twitter.com/brodymaclean/' class='text-tx-0 hover:underline'>
+        Twitter
+      </a>
+    </div>
+  </section>
 
-  <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
-  <ul>
-    <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
-    <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
-    {
-      initialItems.map((post, index) => {
-        // Use eager loading for first 3 items (above the fold), lazy for the rest
-        const loading = index < 3 ? 'eager' : 'lazy'
-
-        return (
-          <>
-            {post.source === 'notes' && (
-              <NotePost
-                url={`/notes/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                content={'renderedContent' in post ? post.renderedContent : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'journal' && (
-              <ArticlePost
-                url={`/posts/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                content={'renderedContent' in post ? post.renderedContent : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'movies' && (
-              <LibraryItem
-                url={`/movies/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
-                year={'year' in post.data ? post.data.year : undefined}
-                rating={'rating' in post.data ? post.data.rating : undefined}
-                description={'description' in post.data ? post.data.description : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'tvShows' && (
-              <LibraryItem
-                url={`/tv-shows/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
-                year={'year' in post.data ? post.data.year : undefined}
-                rating={'rating' in post.data ? post.data.rating : undefined}
-                description={'description' in post.data ? post.data.description : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'games' && (
-              <LibraryItem
-                url={`/games/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
-                year={'year' in post.data ? post.data.year : undefined}
-                rating={'rating' in post.data ? post.data.rating : undefined}
-                description={'description' in post.data ? post.data.description : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'books' && (
-              <LibraryItem
-                url={`/books/${post.id}/`}
-                title={post.data.title}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
-                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
-                year={'year' in post.data ? post.data.year : undefined}
-                rating={'rating' in post.data ? post.data.rating : undefined}
-                author={'author' in post.data ? post.data.author : undefined}
-                description={'description' in post.data ? post.data.description : undefined}
-                loading={loading}
-              />
-            )}
-            {post.source === 'bookmarks' && (
-              <BookmarkPost
-                url={`/bookmarks/${post.id}/`}
-                title={post.data.title}
-                sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
-                pubDate={post.data.updatedDate || post.data.pubDate}
-                source={post.source}
-                loading={loading}
-                sourceUrl={'source' in post.data ? post.data.source : undefined}
-                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
-                faviconUrl={'faviconUrl' in post.data ? post.data.faviconUrl : undefined}
-                description={'description' in post.data ? post.data.description : undefined}
-                content={'renderedContent' in post ? post.renderedContent : undefined}
-              />
-            )}
-
-            {/* {post.source === 'notes' ? <p>I am happy to be learning notes!</p> : <p>I am happy to be learning posts</p>} */}
-          </>
-        )
-      })
-    }
-
-    <LazyLoadList client:load initialCount={12} totalCount={totalCount} />
-  </ul>
-  <SpotifyNowPlaying client:only='preact' />
+  <!-- <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style> -->
 </BaseLayout>
-
-<style>
-  .text-gradient {
-    background-image: var(--color-tx-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200%;
-    animation: textclip 1.5s linear infinite;
-
-    @apply bg-left;
-  }
-  @keyframes textclip {
-    to {
-      background-position: 200% center;
-    }
-  }
-</style>

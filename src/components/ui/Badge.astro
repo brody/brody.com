@@ -7,10 +7,13 @@ const { class: className, ...rest } = Astro.props
 ---
 
 <span
-  class:list={['inline-flex h-8 items-center gap-2 rounded-full px-2 text-sm', className]}
+  class:list={[
+    'bg-bg-2/70 text-tx-2 inline-flex h-7 items-center gap-2 rounded-full px-3 text-sm',
+    className,
+  ]}
   {...rest}
 >
-  <span class='pulse-dot' aria-hidden='true'></span>
+  <div class='pulse-dot' aria-hidden='true'></div>
   <slot />
 </span>
 
@@ -18,11 +21,18 @@ const { class: className, ...rest } = Astro.props
   .pulse-dot {
     position: relative;
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 0.5em;
+    height: 0.5em;
     flex-shrink: 0;
+  }
+
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     border-radius: 50%;
-    background-color: #42ad3a;
+    background-color: var(--color-green-500);
+    border: 0.5px solid white;
   }
 
   .pulse-dot::before {
@@ -30,14 +40,14 @@ const { class: className, ...rest } = Astro.props
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background-color: #42ad3a;
+    background-color: var(--color-green-500);
     animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @keyframes pulse-ring {
     0% {
       transform: scale(1);
-      opacity: 0.8;
+      opacity: 0.6;
     }
     70% {
       transform: scale(3);

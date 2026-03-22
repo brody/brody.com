@@ -2,16 +2,13 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-body:
+  --font-sans:
     'Wotfard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
-  --font-heading:
-    'AcidGrotesk', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
   --font-code: 'MonoLisa', 'monaco', 'Consolas', 'Lucida Console', 'monospace';
 
-  --text-h1: 1.5rem;
-  --text-h1--line-h1: 1.4;
+  /* --text-h1: 4rem;
+  --text-h1--line-h1: 1.1;
   --text-h2: 1.25rem;
   --text-h2--line-h1: 1.4;
   --text-h3: 1.125rem;
@@ -19,7 +16,7 @@
 
   --text-lg--line-height: 1.625;
   --text-base--line-height: 1.625;
-  --text-sm--line-height: 1.625;
+  --text-sm--line-height: 1.625; */
 
   /* --color-bg-1: var(--color-neutral-0);
   --color-bg-2: var(--color-neutral-25);
@@ -32,15 +29,15 @@
   --color-tx-0: var(--color-neutral-900); */
 
   /* html.dark { */
-  --color-bg-1: var(--color-neutral-950);
-  --color-bg-2: var(--color-neutral-900);
-  --color-ui-1: var(--color-neutral-800);
-  --color-ui-2: var(--color-neutral-700);
-  --color-ui-3: var(--color-neutral-600);
-  --color-tx-3: var(--color-neutral-300);
-  --color-tx-2: var(--color-neutral-100);
-  --color-tx-1: var(--color-neutral-25);
-  --color-tx-0: var(--color-neutral-0);
+  --color-bg-1: var(--color-white);
+  --color-bg-2: #eee;
+  --color-ui-1: #eee;
+  --color-ui-2: var(--color-neutral-100);
+  --color-ui-3: var(--color-neutral-200);
+  --color-tx-3: #aaa;
+  --color-tx-2: #888;
+  --color-tx-1: var(--color-neutral-700);
+  --color-tx-0: #111;
   --color-tx-movie: var(--color-teal-400);
   --color-tx-tv: var(--color-sapphire-400);
   --color-tx-book: var(--color-red-400);
@@ -465,58 +462,28 @@
     @apply pointer-events-auto;
     cursor: var(--cursorPointer);
   }
-  /* } */
 
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  .h-lig {
-    @apply font-heading leading-[140%];
-    font-feature-settings:
-      'salt' on,
-      'ss01' on,
-      'ss03' on,
-      'ss04' on,
-      'ss06' on,
-      'ss07' on,
-      'ss08' on,
-      'ss09' on,
-      'ss10' on;
-    font-variant-ligatures: discretionary-ligatures;
+  .system-grid {
+    @apply m-auto grid max-w-600 grid-cols-12 gap-2;
   }
 
+  h1,
   .h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
-    @apply text-2xl;
+    @apply text-[2.5rem] leading-[1.1] font-semibold tracking-[-3.5%] md:text-[3rem] lg:text-[4rem];
   }
 
   .h2 {
-    @apply text-xl;
+    @apply text-xl leading-[1.4];
   }
 
   .h3 {
-    @apply text-lg;
-  }
-
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3 {
-    @apply leading-[1.4];
+    @apply text-lg leading-[1.4];
   }
 
   .prose {
-    @apply text-tx-1! prose-h2:mb-5! prose-h3:!mb-3 prose-h4:!mb-3 prose-headings:!leading-[140%] prose-headings:!font-heading prose-headings:!text-tx-0 prose-h1:!text-2xl prose-h2:!text-[1.375rem] prose-h3:!text-lg prose-h4:!text-base prose-a:!font-normal prose-a:!text-tx-0 prose-a:!decoration-1 prose-a:!decoration-wavy prose-a:!decoration-tx-accent-1 prose-a:!underline prose-a:!underline-offset-3 prose-a:!transition-colors prose-a:hover:!text-tx-accent-1 prose-blockquote:!border-l-mauve-400 prose-blockquote:!border-l-2 prose-blockquote:!my-4 prose-blockquote:!font-normal prose-blockquote:!not-italic prose-blockquote:!text-tx-2 prose-blockquote:opacity-90 prose-figcaption:!text-tx-3 prose-figcaption:opacity-80 prose-strong:!font-semibold prose-strong:!text-tx-1 prose-code:rounded prose-code:!bg-bg-2 prose-code:p-1.5 prose-code:!font-normal prose-code:!font-code prose-code:before:!content-[''] prose-code:after:!content-[''] prose-code:!text-tx-1 prose-pre:!bg-bg-2 prose-pre:!leading-relaxed prose-pre:!text-tx-1 prose-ol:!text-tx-1 prose-ul:overflow-x-clip prose-ul:!text-tx-1 prose-li:marker:!text-tx-accent-1 prose-table:font-body prose-th:border prose-th:border-ui-2 prose-th:pt-2 prose-th:last-of-type:pr-2 prose-td:border prose-td:border-ui-2 prose-td:last-of-type:pr-2 prose-img:mx-auto prose-img:!mt-8 prose-hr:!border-ui-2 prose-lead:!text-lg prose-lead:!text-tx-1 prose-p:my-4 !leading-[1.625];
+    @apply text-tx-1! prose-h2:mb-5! prose-h3:!mb-3 prose-h4:!mb-3 prose-headings:!leading-[140%] prose-headings:!text-tx-0 prose-h1:!text-2xl prose-h2:!text-[1.375rem] prose-h3:!text-lg prose-h4:!text-base prose-a:!font-normal prose-a:!text-tx-0 prose-a:!decoration-1 prose-a:!decoration-wavy prose-a:!decoration-tx-accent-1 prose-a:!underline prose-a:!underline-offset-3 prose-a:!transition-colors prose-a:hover:!text-tx-accent-1 prose-blockquote:!border-l-mauve-400 prose-blockquote:!border-l-2 prose-blockquote:!my-4 prose-blockquote:!font-normal prose-blockquote:!not-italic prose-blockquote:!text-tx-2 prose-blockquote:opacity-90 prose-figcaption:!text-tx-3 prose-figcaption:opacity-80 prose-strong:!font-semibold prose-strong:!text-tx-1 prose-code:rounded prose-code:!bg-bg-2 prose-code:p-1.5 prose-code:!font-normal prose-code:!font-code prose-code:before:!content-[''] prose-code:after:!content-[''] prose-code:!text-tx-1 prose-pre:!bg-bg-2 prose-pre:!leading-relaxed prose-pre:!text-tx-1 prose-ol:!text-tx-1 prose-ul:overflow-x-clip prose-ul:!text-tx-1 prose-li:marker:!text-tx-accent-1 prose-table:font-sans prose-th:border prose-th:border-ui-2 prose-th:pt-2 prose-th:last-of-type:pr-2 prose-td:border prose-td:border-ui-2 prose-td:last-of-type:pr-2 prose-img:mx-auto prose-img:!mt-8 prose-hr:!border-ui-2 prose-lead:!text-lg prose-lead:!text-tx-1 prose-p:my-4 !leading-[1.625];
   }
 
   /* a {
@@ -550,7 +517,7 @@
   .h2,
   .h3,
   .h4 {
-    @apply font-heading text-tx-0 mb-3 leading-[140%];
+    @apply text-tx-0 mb-3 leading-[140%];
   }
   .h1 {
     @apply text-2xl;
@@ -575,7 +542,7 @@
   .prose h4,
   .prose h5,
   .prose h6 {
-    @apply !font-heading !text-tx-0 !mb-3 !leading-[140%];
+    @apply ! !text-tx-0 !mb-3 !leading-[140%];
   }
 
   .prose h1 {

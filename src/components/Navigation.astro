@@ -1,27 +1,28 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
-import avatarImage from '/public/assets/images/brody.png'
+import Button from '../components/ui/Button.astro'
+import Badge from '../components/ui/Badge.astro'
 
 /** Main menu items */
-const navLinks: { label: string; href: string; icon: string }[] = [
-  { label: 'Home', href: '/', icon: 'tabler:home-2' },
+const navLinks: { label: string; href: string }[] = [
+  // { label: 'Home', href: '/' },
+  { label: 'About', href: '/' },
+  // { label: 'Journal', href: '/journal/' },
+  { label: 'Work', href: '/#work' },
+  // { label: 'Library', href: '/library/' },
+  { label: 'Contact', href: '/#contact' },
   // { label: 'Notes', href: '/notes/', icon: 'tabler:note' },
-  { label: 'Journal', href: '/journal/', icon: 'tabler:notebook' },
-  { label: 'Work', href: '/work/', icon: 'tabler:rocket' },
-  { label: 'About', href: '/about/', icon: 'tabler:user' },
 ]
 
 /** Library links to content collections */
-const libraryLinks: { label: string; href: string; icon: string }[] = [
-  { label: 'Bookmarks', href: '/bookmarks', icon: 'tabler:bookmarks' },
-  { label: 'Books', href: '/books', icon: 'tabler:book' },
-  { label: 'Movies', href: '/movies', icon: 'tabler:movie' },
-  { label: 'TV Shows', href: '/tv-shows', icon: 'tabler:device-tv-old' },
-  { label: 'Games', href: '/games', icon: 'tabler:device-gamepad-2' },
-  // { label: 'Events', href: '/events', icon: 'tabler:ticket' },
-  // { label: 'Uses', href: '/uses', icon: 'tabler:devices-2' },
-]
+// const libraryLinks: { label: string; href: string; icon: string }[] = [
+//   { label: 'Bookmarks', href: '/bookmarks', icon: 'tabler:bookmarks' },
+//   { label: 'Books', href: '/books', icon: 'tabler:book' },
+//   { label: 'Movies', href: '/movies', icon: 'tabler:movie' },
+//   { label: 'TV Shows', href: '/tv-shows', icon: 'tabler:device-tv-old' },
+//   { label: 'Games', href: '/games', icon: 'tabler:device-gamepad-2' },
+//   { label: 'Events', href: '/events', icon: 'tabler:ticket' },
+//   { label: 'Uses', href: '/uses', icon: 'tabler:devices-2' },
+// ]
 
 /** Test if a link is pointing to the current page. */
 const isCurrentPage = (href: string) => {
@@ -32,44 +33,52 @@ const isCurrentPage = (href: string) => {
 }
 ---
 
-<nav
-  class='dashed-border sticky top-0 flex min-h-dvh flex-col gap-4 px-4 pt-16 pb-8 md:px-8 md:pt-32 md:pb-10'
->
-  <a href='/' class='-mt-4 hidden p-4 md:block'>
-    <Image
-      src={avatarImage}
-      alt='Brody Maclean'
-      width={48}
-      height={48}
-      quality={90}
-      densities={[2, 3]}
-      class='h-12 w-12 rounded-full'
-    />
-  </a>
-  <div>
-    <ul class='nav-items'>
-      {
-        navLinks.map(({ label, href, icon }) => (
-          <li>
-            <a
-              aria-current={isCurrentPage(href) ? 'page' : null}
-              class={
-                isCurrentPage(href)
-                  ? 'link after:content-[" "] after:bg-tx-3 text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
-                  : 'link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
-              }
-              href={href}
-            >
-              <Icon size={16} name={icon} class='' />
-              {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+<div class='flex flex-col gap-2 px-4 pt-4 pb-2 leading-tight border-b border-ui-1 text-tx-3'>
+  <div class='grid grid-cols-1 gap-2 pb-4 max-w-600 md:grid-cols-2 md:text-xl'>
+    <div>
+      <div class='flex justify-between gap-1 md:flex-col md:items-start md:gap-1.5'>
+        <p class='text-tx-1'>Brody MacLean</p>
+        <!-- <Button magnetic href='mailto:hello@brody.com' class='text-bg-2 bg-tx-1 hover:bg-tx-2'
+          >Let's chat</Button
+        > -->
+        <Badge class='-mt-1 md:mt-0 md:flex-auto'>
+          <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
+        </Badge>
+      </div>
+    </div>
+    <div>
+      A designer and leader with 15+ years shaping digital products and the teams that build them<span
+        class='hidden lg:inline'
+      >
+        — driven by craft, and a servant leadership approach</span
+      >.
+    </div>
   </div>
-  <div>
-    <span class='text-tx-3 mb-2 flex px-4 text-base md:text-sm'>Library</span>
+</div>
+<nav class='sticky top-0 z-10 w-full px-4 py-4 font-medium bg-bg-1 text-tx-3'>
+  <ul class='flex m-auto nav-items max-w-600'>
+    {
+      navLinks.map(({ label, href }) => (
+        <li>
+          <a
+            aria-current={isCurrentPage(href) ? 'page' : null}
+            class={
+              isCurrentPage(href)
+                ? 'link text-tx-1 bg-bg-2 inline-flex h-8 items-center gap-3 rounded-lg px-2'
+                : 'link hover:text-tx-1 inline-flex h-8 items-center gap-3 rounded-lg px-2'
+            }
+            href={href}
+          >
+            {/* <Icon size={16} name={icon} class='' /> */}
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+<!-- <div>
+    <span class='flex px-4 mb-2 text-base text-tx-3 md:text-sm'>Library</span>
     <ul class='library-nav'>
       {
         libraryLinks.map(({ href, icon, label }) => (
@@ -78,8 +87,8 @@ const isCurrentPage = (href: string) => {
               aria-current={isCurrentPage(href) ? 'page' : null}
               class={
                 isCurrentPage(href)
-                  ? 'link after:content-[" "] after:bg-tx-3 text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
-                  : 'link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+                  ? 'link after:bg-tx-3 text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+                  : 'link hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
               }
               href={href}
             >
@@ -92,11 +101,11 @@ const isCurrentPage = (href: string) => {
     </ul>
   </div>
   <div>
-    <span class='text-tx-3 mb-2 flex px-4 text-base md:text-sm'>Elsewhere</span>
+    <span class='flex px-4 mb-2 text-base text-tx-3 md:text-sm'>Elsewhere</span>
     <ul>
       <li>
         <a
-          class='link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+          class='link hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
           href='https://linkedin.com/in/brodymaclean'
         >
           <Icon size={16} name='tabler:brand-linkedin' class='' />
@@ -105,7 +114,7 @@ const isCurrentPage = (href: string) => {
       </li>
       <li>
         <a
-          class='link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+          class='link hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
           href='https://instagram.com/brody'
         >
           <Icon size={16} name='tabler:brand-instagram' class='' />
@@ -114,7 +123,7 @@ const isCurrentPage = (href: string) => {
       </li>
       <li>
         <a
-          class='link after:content-[" "] hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
+          class='link hover:after:bg-ui-3 active:after:bg-tx-3 hover:text-tx-0 inline-flex items-center gap-3 py-1.5 pr-5 pl-4 text-lg after:absolute after:left-4 after:block after:h-1 after:w-1 after:rounded-full md:text-sm md:after:left-6'
           href='https://github.com/brody'
         >
           <Icon size={16} name='tabler:brand-github' class='' />
@@ -122,8 +131,7 @@ const isCurrentPage = (href: string) => {
         </a>
       </li>
     </ul>
-  </div>
-</nav>
+  </div> -->
 
 <style>
   .dashed-border::after {

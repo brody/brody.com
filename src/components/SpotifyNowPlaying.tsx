@@ -145,18 +145,18 @@ export default function SpotifyNowPlaying() {
     >
       {/* <div class="overflow-hidden fixed right-3 bottom-6 z-50 p-2 h-24 rounded-xl bg-bg-2 w-70"> */}
       {/* <p class="mb-4 text-sm text-tx-3">{data.isPlaying ? 'Currently listening' : 'Last played'}</p> */}
-      <div class="flex flex-row gap-3 items-end">
+      <div class="flex flex-row items-end gap-3">
         {data.albumImageUrl && (
           <img
             src={data.albumImageUrl}
             alt={`${data.album} album art`}
             width={80}
             height={80}
-            class="object-cover w-20 h-20 rounded-lg"
+            class="h-20 w-20 rounded-lg object-cover"
             loading="eager"
           />
         )}
-        <div class="flex-1 mb-1 min-w-0">
+        <div class="mb-1 min-w-0 flex-1">
           <div class="pb-1 text-[10px] uppercase">
             <div class="text-tx-3 flex items-center gap-1.5">
               <p>
@@ -177,7 +177,7 @@ export default function SpotifyNowPlaying() {
           </div>
           {data.title && (
             // <a href={data.songUrl} target="_blank" rel="noopener noreferrer">
-            <h2 class="text-sm truncate font-heading hover:text-tx-1 text-tx-0">{data.title}</h2>
+            <h2 class="hover:text-tx-1 text-tx-0 truncate text-sm">{data.title}</h2>
             // </a>
           )}
           {data.artist && <p class="text-tx-1 truncate pt-0.5 text-xs">{data.artist}</p>}

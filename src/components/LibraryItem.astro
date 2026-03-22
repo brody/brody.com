@@ -138,7 +138,7 @@ function formatDate(pubDate: Date | string): string {
       <div class='pb-1 text-sm'>
         {
           source === 'movies' && year && (
-            <div class='flex gap-1.5 items-center text-tx-movie'>
+            <div class='text-tx-movie flex items-center gap-1.5'>
               <Icon size={16} name='tabler:movie' class='' />
               <p>{year} movie</p>
             </div>
@@ -146,7 +146,7 @@ function formatDate(pubDate: Date | string): string {
         }
         {
           source === 'tvShows' && year && (
-            <div class='flex gap-1.5 items-center text-tx-tv'>
+            <div class='text-tx-tv flex items-center gap-1.5'>
               <Icon size={16} name='tabler:device-tv-old' class='' />
               <p>{year} TV show</p>
             </div>
@@ -154,7 +154,7 @@ function formatDate(pubDate: Date | string): string {
         }
         {
           source === 'games' && year && (
-            <div class='flex gap-1.5 items-center text-tx-game'>
+            <div class='text-tx-game flex items-center gap-1.5'>
               <Icon size={16} name='tabler:device-gamepad-2' class='' />
               <p>{year} game</p>
             </div>
@@ -162,7 +162,7 @@ function formatDate(pubDate: Date | string): string {
         }
         {
           source === 'books' && year && (
-            <div class='flex gap-1.5 items-center text-tx-book'>
+            <div class='text-tx-book flex items-center gap-1.5'>
               <Icon size={16} name='tabler:book' class='' />
               <p>{year} book</p>
             </div>
@@ -172,16 +172,16 @@ function formatDate(pubDate: Date | string): string {
       {
         title && (
           <a href={url}>
-            <h2 class='text-h3 font-heading hover:text-tx-1 text-tx-0'>{title}</h2>
+            <h2 class='text-h3 hover:text-tx-1 text-tx-0'>{title}</h2>
           </a>
         )
       }
-      {source === 'books' && author && <p class='pt-0.5 text-sm text-tx-1'>{author}</p>}
+      {source === 'books' && author && <p class='text-tx-1 pt-0.5 text-sm'>{author}</p>}
 
       {/* Show markdown content for blog entries */}
       {
         content && source === 'blog' && (
-          <div class='mt-3 mb-4 max-w-none prose prose-base'>
+          <div class='mt-3 mb-4 prose prose-base max-w-none'>
             <content.Content />
           </div>
         )

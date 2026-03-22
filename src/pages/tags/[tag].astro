@@ -85,8 +85,8 @@ const itemsWithContent = await Promise.all(
 ---
 
 <BaseLayout pageTitle={tag}>
-  <h1 class='text-tx-0 text-h1 font-heading mb-3'>#{tag}</h1>
-  <p class='text-tx-2 mb-8'>Content tagged with {tag}</p>
+  <h1 class='mb-3 text-tx-0 text-h1'>#{tag}</h1>
+  <p class='mb-8 text-tx-2'>Content tagged with {tag}</p>
   <ul class='space-y-0'>
     {
       itemsWithContent.map((item, index) => {

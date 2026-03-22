@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Greeting from '../components/Greeting'
+const pageTitle = 'Home Page'
+import { Image } from 'astro:assets'
+import atlassianLogo from '/public/assets/images/Atlassian.svg'
+import { getCollection, render } from 'astro:content'
+import LibraryItem from '../components/LibraryItem.astro'
+import ArticlePost from '../components/ArticlePost.astro'
+import NotePost from '../components/NotePost.astro'
+import BookmarkPost from '../components/BookmarkPost.astro'
+import LazyLoadList from '../components/LazyLoadList'
+import SpotifyNowPlaying from '../components/SpotifyNowPlaying'
+import Button from '../components/ui/Button.astro'
+import Badge from '../components/ui/Badge.astro'
+
+// const allNotes = Object.values(import.meta.glob('./notes/*.md', { eager: true }));
+const allPosts = await Promise.all(
+  (await getCollection('journal')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'journal', renderedContent: { Content } }
+  })
+)
+const allNotes = await Promise.all(
+  (await getCollection('notes')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'notes', renderedContent: { Content } }
+  })
+)
+const allMovies = (await getCollection('movies')).map((item) => ({ ...item, source: 'movies' }))
+const allTvShows = (await getCollection('tvShows')).map((item) => ({ ...item, source: 'tvShows' }))
+const allGames = (await getCollection('games')).map((item) => ({ ...item, source: 'games' }))
+const allBooks = (await getCollection('books')).map((item) => ({
+  ...item,
+  source: 'books',
+  data: {
+    ...item.data,
+    pubDate: item.data.datePublished || item.data.pubDate,
+    imageUrl: item.data.imageUrl || item.data.imageUrl,
+    imageAlt: item.data.title,
+    year: item.data.year,
+    rating: item.data.rating,
+  },
+}))
+const allBookmarks = await Promise.all(
+  (await getCollection('bookmarks')).map(async (item) => {
+    const { Content } = await render(item)
+    return { ...item, source: 'bookmarks', renderedContent: { Content } }
+  })
+)
+const allThings = [
+  ...allPosts,
+  ...allNotes,
+  ...allMovies,
+  ...allTvShows,
+  ...allGames,
+  ...allBooks,
+  ...allBookmarks,
+]
+  .filter((item) => item.data.pubDate) // Filter out items without dates
+  .sort((a, b) => {
+    // Prioritize 'updatedDate' over 'pubDate' if it exists
+    const rawDateA = a.data.updatedDate || a.data.pubDate
+    const rawDateB = b.data.updatedDate || b.data.pubDate
+    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
+    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
+    if (!dateA || !dateB) return 0
+    return dateB.getTime() - dateA.getTime()
+  })
+
+// Only render the first 12 items initially for performance
+const initialItems = allThings.slice(0, 12)
+const totalCount = allThings.length
+---
+
+<BaseLayout>
+  <section class='mb-8'>
+    <h1 class='max-w-xl text-tx-0 text-h1'>
+      G'day, I'm <span class='text-gradient'>Brody MacLean</span>, a multi-disciplinary design
+      leader from Sydney, Australia. :-)
+    </h1>
+    <!-- <p class='mt-4 prose'>
+      Currently, I am Design Lead at
+      <Image
+        src={atlassianLogo}
+        alt='Brody Maclean'
+        height={18}
+        quality={90}
+        densities={[2, 3]}
+        class='not-prose mx-0.75 my-0 -mt-0.5 inline-block h-4.5'
+      /> focusing on design quality & visual integration of our AI Design Kit.
+    </p> -->
+    <div class='flex items-center gap-2 mt-4 md:gap-3'>
+      <Button magnetic href='mailto:hello@brody.com' class='text-bg-2 bg-tx-1 hover:bg-tx-2'
+        >Let's chat</Button
+      >
+      <Badge>
+        <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
+      </Badge>
+    </div>
+  </section>
+
+  <!-- <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} /> -->
+
+  <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
+  <ul>
+    <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
+    <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
+    {
+      initialItems.map((post, index) => {
+        // Use eager loading for first 3 items (above the fold), lazy for the rest
+        const loading = index < 3 ? 'eager' : 'lazy'
+
+        return (
+          <>
+            {post.source === 'notes' && (
+              <NotePost
+                url={`/notes/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                content={'renderedContent' in post ? post.renderedContent : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'journal' && (
+              <ArticlePost
+                url={`/posts/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                content={'renderedContent' in post ? post.renderedContent : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'movies' && (
+              <LibraryItem
+                url={`/movies/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'tvShows' && (
+              <LibraryItem
+                url={`/tv-shows/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'games' && (
+              <LibraryItem
+                url={`/games/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'books' && (
+              <LibraryItem
+                url={`/books/${post.id}/`}
+                title={post.data.title}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                imageAlt={'imageAlt' in post.data ? post.data.imageAlt : undefined}
+                inProgress={'inProgress' in post.data ? post.data.inProgress : undefined}
+                year={'year' in post.data ? post.data.year : undefined}
+                rating={'rating' in post.data ? post.data.rating : undefined}
+                author={'author' in post.data ? post.data.author : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                loading={loading}
+              />
+            )}
+            {post.source === 'bookmarks' && (
+              <BookmarkPost
+                url={`/bookmarks/${post.id}/`}
+                title={post.data.title}
+                sourceTitle={'sourceTitle' in post.data ? post.data.sourceTitle : undefined}
+                pubDate={post.data.updatedDate || post.data.pubDate}
+                source={post.source}
+                loading={loading}
+                sourceUrl={'source' in post.data ? post.data.source : undefined}
+                imageUrl={'imageUrl' in post.data ? post.data.imageUrl : undefined}
+                faviconUrl={'faviconUrl' in post.data ? post.data.faviconUrl : undefined}
+                description={'description' in post.data ? post.data.description : undefined}
+                content={'renderedContent' in post ? post.renderedContent : undefined}
+              />
+            )}
+
+            {/* {post.source === 'notes' ? <p>I am happy to be learning notes!</p> : <p>I am happy to be learning posts</p>} */}
+          </>
+        )
+      })
+    }
+
+    <LazyLoadList client:load initialCount={12} totalCount={totalCount} />
+  </ul>
+  <SpotifyNowPlaying client:only='preact' />
+</BaseLayout>
+
+<style>
+  .text-gradient {
+    background-image: var(--color-tx-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: textclip 1.5s linear infinite;
+
+    @apply bg-left;
+  }
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+</style>

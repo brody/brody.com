@@ -14,12 +14,19 @@ import prospaRedesign from 'public/assets/work/prospa-rebrand/Prospa.png'
 import salt from 'public/assets/work/salt/salt-square.png'
 import prospaTokens from 'public/assets/journal/prospa-tokens/og-square.png'
 import mitti from 'public/assets/work/mitti/square.png'
+import mittiRewards from 'public/assets/work/mitti/rewards.png'
+import venom from 'public/assets/work/jobadder/uikit.png'
+import designJam from 'public/assets/work/jobadder/designjam.png'
+import jobadderNav from 'public/assets/work/jobadder-nav/nav-square.png'
+import deputyWorkshop from 'public/assets/work/deputy/workshop.png'
+import deputyHackathon from 'public/assets/work/deputy/hackathon.png'
+import deputyFigma from 'public/assets/work/deputy/figma.png'
 ---
 
 <BaseLayout>
   <section class='pt-4 system-grid md:pt-8'>
     <div class='col-start-1 col-end-13 pb-12 md:pb-20 lg:col-start-7 lg:pb-30'>
-      <h1 class='max-w-2xl m-0 text-tx-3 text-h1'>
+      <h1 class='max-w-sm m-0 text-tx-3 text-h1 md:max-w-lg lg:max-w-2xl'>
         <span class='text-tx-0'>Brody</span> is a multi-disciplinary <span class='text-tx-0'
           >design</span
         > leader based in
@@ -204,7 +211,7 @@ import mitti from 'public/assets/work/mitti/square.png'
           </div>
           <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
             <video
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
               autoplay
               muted
               loop
@@ -271,7 +278,7 @@ import mitti from 'public/assets/work/mitti/square.png'
             <Image
               src={salt}
               alt='Prospa redesign'
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
               width={390}
               height={390}
               quality={90}
@@ -286,7 +293,7 @@ import mitti from 'public/assets/work/mitti/square.png'
             <Image
               src={prospaRedesign}
               alt='Prospa redesign'
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
               width={390}
               height={390}
               quality={90}
@@ -301,7 +308,7 @@ import mitti from 'public/assets/work/mitti/square.png'
             <Image
               src={prospaTokens}
               alt='Prospa design tokens'
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
               width={390}
               height={390}
               quality={90}
@@ -375,7 +382,7 @@ import mitti from 'public/assets/work/mitti/square.png'
             <h3 class='text-2xl'>
               SafetyCulture Care <span class='ml-1 text-base text-tx-3'>fka Mitti</span>
             </h3>
-            <h4 class='text-base'>Design Lead</h4>
+            <h4 class='text-base'>Principal Product Designer</h4>
           </div>
           <p class='max-w-4xl text-tx-2'>
             Led the 0-to-1 design of SafetyCulture Care's risk mitigation product, establishing the
@@ -391,7 +398,7 @@ import mitti from 'public/assets/work/mitti/square.png'
             <Image
               src={mitti}
               alt='Mitti ui design'
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
               width={390}
               height={390}
               quality={90}
@@ -403,10 +410,18 @@ import mitti from 'public/assets/work/mitti/square.png'
             </div>
           </div>
           <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
-            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <Image
+              src={mittiRewards}
+              alt='Mitti Rewards'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
             <div>
-              <h4 class='text-sm'>Opal tadpole</h4>
-              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+              <h4 class='text-sm'>Rewards</h4>
+              <p class='text-sm text-tx-2'>Growth design</p>
             </div>
           </div>
         </div>
@@ -457,17 +472,48 @@ import mitti from 'public/assets/work/mitti/square.png'
         </div>
         <div class='grid grid-cols-6 gap-4'>
           <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
-            <div class='w-full aspect-square rounded-2xl bg-amber-300'></div>
+            <Image
+              src={deputyWorkshop}
+              alt='Requirement gathering workshop'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
             <div>
-              <h4 class='text-sm'>Opal tadpole</h4>
-              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+              <h4 class='text-sm'>Requirement gathering workshop</h4>
+              <p class='text-sm text-tx-2'>Design systems, strategy, collaboration</p>
             </div>
           </div>
           <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
-            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <Image
+              src={deputyFigma}
+              alt='Figma migration'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
             <div>
-              <h4 class='text-sm'>Opal tadpole</h4>
-              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+              <h4 class='text-sm'>Figma migration and upskilling</h4>
+              <p class='text-sm text-tx-2'>Design tooling</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <Image
+              src={deputyHackathon}
+              alt='Hackathon project'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>Growth hackaton</h4>
+              <p class='text-sm text-tx-2'>Marketing, growth, brand</p>
             </div>
           </div>
         </div>
@@ -519,17 +565,48 @@ import mitti from 'public/assets/work/mitti/square.png'
         </div>
         <div class='grid grid-cols-6 gap-4'>
           <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
-            <div class='w-full aspect-square rounded-2xl bg-amber-300'></div>
+            <Image
+              src={venom}
+              alt='Venom'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
             <div>
-              <h4 class='text-sm'>Opal tadpole</h4>
-              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+              <h4 class='text-sm'>Venom design system</h4>
+              <p class='text-sm text-tx-2'>UI design kit</p>
             </div>
           </div>
           <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
-            <div class='w-full bg-orange-300 aspect-square rounded-2xl'></div>
+            <Image
+              src={jobadderNav}
+              alt='Jobadder Nav Redesign'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
             <div>
-              <h4 class='text-sm'>Opal tadpole</h4>
-              <p class='text-sm text-tx-2'>Brand, campaign, website</p>
+              <h4 class='text-sm'>Nav redesign</h4>
+              <p class='text-sm text-tx-2'>UX, UI design, strategy</p>
+            </div>
+          </div>
+          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+            <Image
+              src={designJam}
+              alt='Design Jam'
+              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              width={390}
+              height={390}
+              quality={90}
+              densities={[2, 3]}
+            />
+            <div>
+              <h4 class='text-sm'>Design jams</h4>
+              <p class='text-sm text-tx-2'>Team bonding, process, critique</p>
             </div>
           </div>
         </div>

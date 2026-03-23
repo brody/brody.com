@@ -27,7 +27,8 @@ export type SiteInfo = {
 const siteInfo: SiteInfo = {
   name: 'Brody MacLean',
   title: 'Brody MacLean',
-  description: 'Design lead & multi-disciplinary designer from Sydney, Australia.',
+  description:
+    'Multi-disciplinary design leader based in Sydney, Australia. With 15+ years of experience in product design, spanning product strategy, design systems, AI features, and design leadership.',
   image: {
     src: '/og/default.jpg',
     alt: 'Brody MacLean',

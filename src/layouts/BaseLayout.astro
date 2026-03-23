@@ -8,11 +8,11 @@ import '../styles/global.css'
 const { ...head } = Astro.props
 ---
 
-<html lang='en' class='bg-bg-1 text-tx-1 antialiased'>
+<html lang='en' class='antialiased bg-bg-1 text-tx-1'>
   <head>
     <BaseHead {...head} />
   </head>
-  <body class='grid place-items-center font-sans tracking-[-0.032em]'>
+  <body class='grid place-items-center font-sans text-lg tracking-[-0.032em] lg:text-xl'>
     <Navigation />
 
     <!-- <div
@@ -27,7 +27,7 @@ const { ...head } = Astro.props
     <!-- Mobile overlay -->
     <div
       id='nav-overlay'
-      class='pointer-events-none fixed inset-0 z-40 bg-black/20 opacity-0 backdrop-blur-xs transition-all duration-800 md:hidden'
+      class='fixed inset-0 z-40 transition-all opacity-0 pointer-events-none bg-black/20 backdrop-blur-xs duration-800 md:hidden'
     >
     </div>
     <!-- </div> -->

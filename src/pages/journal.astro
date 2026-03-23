@@ -17,22 +17,27 @@ const posts = (await getCollection('journal'))
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class='mb-3 text-tx-0 text-h1'>{pageTitle}</h1>
-  <p class='mb-8 text-tx-2'>Personal thoughts, experiences, and reflections from my journey.</p>
-
-  <ul class='space-y-0'>
-    {
-      posts.map((post, index) => (
-        <ArticlePost
-          url={`/posts/${post.id}/`}
-          title={post.data.title}
-          pubDate={post.data.updatedDate || post.data.pubDate}
-          source={post.source}
-          description={post.data.description ?? undefined}
-          ogImage={post.data.ogImage}
-          loading={index < 3 ? 'eager' : 'lazy'}
-        />
-      ))
-    }
-  </ul>
+  <section class='py-16 border-b system-grid border-ui-1 lg:py-28'>
+    <div class='col-span-12 col-start-1 md:col-span-6'>
+      <div class='lg:sticky lg:top-24'>
+        <h1 class='m-0 mb-3 text-tx-0 text-h1 md:max-w-lg lg:max-w-2xl'>{pageTitle}</h1>
+        <p class='text-tx-2'>Personal thoughts, experiences, and reflections from my journey.</p>
+      </div>
+    </div>
+    <ul class='col-start-1 col-end-13 space-y-0 lg:col-start-7'>
+      {
+        posts.map((post, index) => (
+          <ArticlePost
+            url={`/posts/${post.id}/`}
+            title={post.data.title}
+            pubDate={post.data.updatedDate || post.data.pubDate}
+            source={post.source}
+            description={post.data.description ?? undefined}
+            ogImage={post.data.ogImage}
+            loading={index < 3 ? 'eager' : 'lazy'}
+          />
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>

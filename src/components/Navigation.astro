@@ -6,8 +6,8 @@ import Badge from '../components/ui/Badge.astro'
 const navLinks: { label: string; href: string }[] = [
   // { label: 'Home', href: '/' },
   { label: 'About', href: '/' },
-  // { label: 'Journal', href: '/journal/' },
   { label: 'Work', href: '/#work' },
+  // { label: 'Journal', href: '/journal/' },
   // { label: 'Library', href: '/library/' },
   { label: 'Contact', href: '/#contact' },
   // { label: 'Notes', href: '/notes/', icon: 'tabler:note' },
@@ -55,13 +55,14 @@ const isCurrentPage = (href: string) => {
     </div>
   </div>
 </div>
-<nav class='sticky top-0 z-10 w-full px-4 py-4 font-medium bg-bg-1 text-tx-3'>
+<nav class='sticky top-0 z-10 w-full px-4 py-4 text-base font-medium bg-bg-1 text-tx-3'>
   <ul class='flex m-auto nav-items max-w-600'>
     {
       navLinks.map(({ label, href }) => (
         <li>
           <a
             aria-current={isCurrentPage(href) ? 'page' : null}
+            data-nav-href={href}
             class={
               isCurrentPage(href)
                 ? 'link text-tx-1 bg-bg-2 inline-flex h-8 items-center gap-3 rounded-lg px-2'
@@ -77,6 +78,80 @@ const isCurrentPage = (href: string) => {
     }
   </ul>
 </nav>
+
+<script>
+  function initAnchorNav() {
+    // Only run on the homepage
+    if (window.location.pathname !== '/' && window.location.pathname !== import.meta.env.BASE_URL)
+      return
+
+    const allNavLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-href]')
+    const anchorLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-href*="#"]')
+    if (!anchorLinks.length) return
+
+    // Build ordered map of hash -> nav link
+    const hashToLink = new Map<string, HTMLAnchorElement>()
+    anchorLinks.forEach((link) => {
+      const hash = link.getAttribute('data-nav-href')?.split('#')[1]
+      if (hash) hashToLink.set(hash, link)
+    })
+
+    const aboutLink = document.querySelector<HTMLAnchorElement>('[data-nav-href="/"]')
+    const activeClass = ['text-tx-1', 'bg-bg-2']
+    const inactiveClass = ['hover:text-tx-1']
+
+    function setActive(link: HTMLAnchorElement | null) {
+      allNavLinks.forEach((l) => {
+        l.classList.remove(...activeClass)
+        l.classList.add(...inactiveClass)
+        l.removeAttribute('aria-current')
+      })
+      if (link) {
+        link.classList.add(...activeClass)
+        link.classList.remove(...inactiveClass)
+        link.setAttribute('aria-current', 'page')
+      }
+    }
+
+    function updateActive() {
+      const scrollY = window.scrollY
+      const viewportH = window.innerHeight
+      const pageH = document.documentElement.scrollHeight
+
+      // Near bottom of page → Contact active
+      if (scrollY + viewportH >= pageH - 80) {
+        setActive(hashToLink.get('contact') ?? null)
+        return
+      }
+
+      let activeLink: HTMLAnchorElement | null = null
+
+      hashToLink.forEach((link, hash) => {
+        const section = document.getElementById(hash)
+        if (!section) return
+
+        // If the section has a sticky heading, activate when it sticks
+        const heading = section.querySelector<HTMLElement>('h2')
+        if (heading && getComputedStyle(heading).position === 'sticky') {
+          const stickyTop = parseFloat(getComputedStyle(heading).top) || 0
+          if (heading.offsetTop - stickyTop - 24 <= scrollY) activeLink = link
+        } else {
+          // General trigger: section top crosses 45% down the viewport
+          if (section.offsetTop <= scrollY + viewportH * 0.45) activeLink = link
+        }
+      })
+
+      // Fall back to About when above all anchor sections
+      setActive(activeLink ?? aboutLink ?? null)
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true })
+    updateActive()
+  }
+
+  initAnchorNav()
+  document.addEventListener('astro:page-load', initAnchorNav)
+</script>
 <!-- <div>
     <span class='flex px-4 mb-2 text-base text-tx-3 md:text-sm'>Library</span>
     <ul class='library-nav'>

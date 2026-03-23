@@ -14,6 +14,7 @@ const journal = defineCollection({
     imageAlt: z.string().optional(),
     ogImage: z.string().optional(),
     tags: z.array(z.string()),
+    pinned: z.boolean().optional(),
   }),
 })
 const notes = defineCollection({

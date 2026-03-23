@@ -1,43 +1,108 @@
 ---
 import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import ArticlePost from '../components/ArticlePost.astro'
 
 const pageTitle = 'Journal'
-const posts = (await getCollection('journal'))
-  .map((item) => ({ ...item, source: 'journal' }))
+
+function formatDate(raw: Date | string): string {
+  const d = typeof raw === 'string' ? new Date(raw) : raw
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const now = new Date()
+  const year = d.getFullYear()
+  return year !== now.getFullYear()
+    ? `${months[d.getMonth()]} ${d.getDate()}, ${year}`
+    : `${months[d.getMonth()]} ${d.getDate()}`
+}
+
+const allPosts = (await getCollection('journal'))
   .filter((item) => item.data.pubDate)
   .sort((a, b) => {
-    const rawDateA = a.data.updatedDate || a.data.pubDate
-    const rawDateB = b.data.updatedDate || b.data.pubDate
-    const dateA = typeof rawDateA === 'string' ? new Date(rawDateA) : rawDateA
-    const dateB = typeof rawDateB === 'string' ? new Date(rawDateB) : rawDateB
-    return dateB.getTime() - dateA.getTime()
+    const rawA = a.data.updatedDate || a.data.pubDate
+    const rawB = b.data.updatedDate || b.data.pubDate
+    const dA = typeof rawA === 'string' ? new Date(rawA) : rawA
+    const dB = typeof rawB === 'string' ? new Date(rawB) : rawB
+    return dB.getTime() - dA.getTime()
   })
+
+const pinned = allPosts.filter((p) => p.data.pinned)
+const posts = allPosts
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <section class='py-16 border-b system-grid border-ui-1 lg:py-28'>
-    <div class='col-span-12 col-start-1 md:col-span-6'>
-      <div class='lg:sticky lg:top-24'>
-        <h1 class='m-0 mb-3 text-tx-0 text-h1 md:max-w-lg lg:max-w-2xl'>{pageTitle}</h1>
-        <p class='text-tx-2'>Personal thoughts, experiences, and reflections from my journey.</p>
-      </div>
+  <!-- Hero: large text top right -->
+  <section class='pt-4 system-grid md:pt-8'>
+    <div class='col-start-1 col-end-13 pb-12 md:pb-20 lg:col-start-7 lg:pb-20'>
+      <h1 class='m-0 text-tx-3 text-h1 max-w-sm md:max-w-lg lg:max-w-2xl'>
+        <span class='text-tx-0'>Thoughts</span> on design, leadership, and the occasional
+        <span class='text-tx-0'>rabbit hole.</span>
+      </h1>
     </div>
-    <ul class='col-start-1 col-end-13 space-y-0 lg:col-start-7'>
-      {
-        posts.map((post, index) => (
-          <ArticlePost
-            url={`/posts/${post.id}/`}
-            title={post.data.title}
-            pubDate={post.data.updatedDate || post.data.pubDate}
-            source={post.source}
-            description={post.data.description ?? undefined}
-            ogImage={post.data.ogImage}
-            loading={index < 3 ? 'eager' : 'lazy'}
-          />
-        ))
-      }
-    </ul>
+  </section>
+
+  <!-- Featured (pinned) articles -->
+  {
+    pinned.length > 0 && (
+      <section class='grid grid-cols-1 gap-6 pb-16 md:grid-cols-2 lg:pb-20'>
+        {pinned.slice(0, 2).map((post, index) => {
+          const date = post.data.updatedDate || post.data.pubDate
+          return (
+            <a href={`/posts/${post.id}/`} class='group flex flex-col gap-4'>
+              {post.data.ogImage && (
+                <div class='overflow-hidden rounded-xl md:rounded-2xl aspect-4/3'>
+                  <img
+                    src={post.data.ogImage}
+                    alt={post.data.title}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    class='object-cover w-full h-full transition-transform duration-300 group-hover:scale-[1.02]'
+                  />
+                </div>
+              )}
+              <div class='flex flex-col gap-1'>
+                <h2 class='text-xl font-medium lg:text-2xl'>{post.data.title}</h2>
+                <div class='flex items-center gap-2 text-sm text-tx-2'>
+                  {date && <span>{formatDate(date)}</span>}
+                  {post.data.tags?.map((tag) => (
+                    <>
+                      <span>·</span>
+                      <span class='capitalize'>{tag}</span>
+                    </>
+                  ))}
+                </div>
+              </div>
+            </a>
+          )
+        })}
+      </section>
+    )
+  }
+
+  <!-- All posts table -->
+  <section class='border-t border-ui-1'>
+    {
+      posts.map((post) => {
+        const date = post.data.updatedDate || post.data.pubDate
+        const tag = post.data.tags?.[0]
+        return (
+          <a
+            href={`/posts/${post.id}/`}
+            class='group system-grid items-center py-4 border-b border-ui-1 transition-colors hover:text-tx-0'
+          >
+            <span class='col-span-3 text-sm text-tx-2'>
+              {date && formatDate(date)}
+            </span>
+            <span class='col-span-3 text-sm text-tx-2 capitalize'>
+              {tag ?? ''}
+            </span>
+            <span class='col-span-5 text-sm font-medium'>
+              {post.data.title}
+            </span>
+            <span class='col-span-1 flex justify-end text-tx-3 transition-transform group-hover:translate-x-0.5'>
+              <Icon name='tabler:arrow-right' class='w-4 h-4' />
+            </span>
+          </a>
+        )
+      })
+    }
   </section>
 </BaseLayout>

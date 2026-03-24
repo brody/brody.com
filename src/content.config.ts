@@ -12,9 +12,11 @@ const journal = defineCollection({
     description: z.union([z.string(), z.null()]).optional(),
     imageUrl: z.string().optional(),
     imageAlt: z.string().optional(),
+    featuredImage: z.string().optional(),
     ogImage: z.string().optional(),
     tags: z.array(z.string()),
     pinned: z.boolean().optional(),
+    slug: z.string().optional(),
   }),
 })
 const notes = defineCollection({

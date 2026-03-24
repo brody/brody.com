@@ -126,7 +126,7 @@ const items = allThings.slice(offset, offset + limit)
         )}
         {post.source === 'journal' && (
           <ArticlePost
-            url={`/posts/${post.id}/`}
+            url={`/${'slug' in post.data ? post.data.slug : post.id}/`}
             title={post.data.title}
             pubDate={post.data.updatedDate || post.data.pubDate}
             source={post.source}

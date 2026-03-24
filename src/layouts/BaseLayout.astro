@@ -2,7 +2,7 @@
 import BaseHead, { type Props as HeadProps } from '~/components/BaseHead.astro'
 import FAB from '../components/FAB.astro'
 // import Header from '../components/Header.astro'
-// import Footer from '../components/Footer.astro'
+import Footer from '../components/Footer.astro'
 import Navigation from '../components/Navigation.astro'
 import '../styles/global.css'
 const { ...head } = Astro.props
@@ -12,18 +12,18 @@ const { ...head } = Astro.props
   <head>
     <BaseHead {...head} />
   </head>
-  <body class='grid place-items-center font-sans text-lg tracking-[-0.032em] lg:text-xl'>
+  <body class='flex flex-col min-h-dvh font-sans text-lg tracking-[-0.032em] lg:text-xl'>
     <Navigation />
 
     <!-- <div
       class='grid min-h-dvh w-full max-w-fit min-w-full grid-cols-1 md:min-w-auto md:grid-cols-[minmax(0,var(--container-2xl))_minmax(0,var(--container-3xs))]'
     > -->
-    <main class='w-full px-4 pb-12 md:pb-24'>
+    <main class='w-full flex-1 px-4 pb-12 md:pb-24'>
       <!-- <Header class='w-full' /> -->
       <slot />
       <!-- <FAB /> -->
-      <!-- <Footer /> -->
     </main>
+    <Footer />
     <!-- Mobile overlay -->
     <div
       id='nav-overlay'

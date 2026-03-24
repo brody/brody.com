@@ -95,7 +95,7 @@ const itemsWithContent = await Promise.all(
         if (item.source === 'journal') {
           return (
             <ArticlePost
-              url={`/posts/${item.id}/`}
+              url={`/${'slug' in item.data ? item.data.slug : item.id}/`}
               title={item.data.title}
               pubDate={item.data.updatedDate || item.data.pubDate}
               source={item.source}

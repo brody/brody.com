@@ -1,23 +1,15 @@
 ---
 import BaseLayout from './BaseLayout.astro'
-import { Image } from 'astro:assets'
 const { frontmatter } = Astro.props
 
-// Function to format date as relative time or formatted date
 function formatDate(pubDate: Date | string): string {
-  // Convert string to Date if needed
   const dateObj = typeof pubDate === 'string' ? new Date(pubDate) : pubDate
-
-  // Get current time
   const now = new Date()
-
-  // Calculate time difference in milliseconds
   const diffTime = now.getTime() - dateObj.getTime()
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
   const diffHours = Math.floor(diffTime / (1000 * 60 * 60))
   const diffMinutes = Math.floor(diffTime / (1000 * 60))
 
-  // If the date is in the future, just show the formatted date
   if (diffTime < 0) {
     const months = [
       'Jan',
@@ -33,33 +25,12 @@ function formatDate(pubDate: Date | string): string {
       'Nov',
       'Dec',
     ]
-    const month = months[dateObj.getMonth()]
-    const day = dateObj.getDate()
-    return `${month} ${day}`
+    return `${months[dateObj.getMonth()]} ${dateObj.getDate()}`
   }
+  if (diffMinutes < 60 && diffMinutes > 0) return `${diffMinutes}m ago`
+  if (diffHours < 24 && diffHours > 0) return `${diffHours}h ago`
+  if (diffDays <= 7 && diffDays > 0) return `${diffDays}d ago`
 
-  // If less than an hour, show minutes
-  if (diffMinutes < 60 && diffMinutes > 0) {
-    return `${diffMinutes}m ago`
-  }
-
-  // If less than a day, show hours
-  if (diffHours < 24 && diffHours > 0) {
-    return `${diffHours}h ago`
-  }
-
-  // If within the past week, show relative time
-  if (diffDays <= 7 && diffDays > 0) {
-    if (diffDays === 1) return '1d ago'
-    if (diffDays === 2) return '2d ago'
-    if (diffDays === 3) return '3d ago'
-    if (diffDays === 4) return '4d ago'
-    if (diffDays === 5) return '5d ago'
-    if (diffDays === 6) return '6d ago'
-    if (diffDays === 7) return '7d ago'
-  }
-
-  // For older dates, format as "Sep 16"
   const months = [
     'Jan',
     'Feb',
@@ -74,54 +45,46 @@ function formatDate(pubDate: Date | string): string {
     'Nov',
     'Dec',
   ]
-  const month = months[dateObj.getMonth()]
-  const day = dateObj.getDate()
-
-  return `${month} ${day}`
+  return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`
 }
+
+const featureImage = frontmatter.featuredImage || frontmatter.ogImage || frontmatter.image?.url
+const featureImageAlt = frontmatter.imageAlt || frontmatter.image?.alt || frontmatter.title || ''
 ---
 
 <BaseLayout pageTitle={frontmatter.title || 'no title'}>
+  <!-- Title: right half, matching journal/index header style -->
+  <section class='pt-4 system-grid md:pt-8'>
+    <div class='col-start-1 col-end-13 pb-8 lg:col-start-7 lg:pb-12'>
+      {
+        frontmatter.pubDate && (
+          <p class='mb-3 text-sm text-tx-3 lg:text-base'>{formatDate(frontmatter.pubDate)}</p>
+        )
+      }
+      <h1 class='m-0 text-h1 text-tx-0'>{frontmatter.title}</h1>
+    </div>
+  </section>
+
+  <!-- Feature image: 3/4 page width, right-aligned -->
   {
-    frontmatter.pubDate && (
-      <p class='mb-3 text-sm text-tx-3'>Posted {formatDate(frontmatter.pubDate)}</p>
-    )
-  }
-  <h1 class='mb-6 text-tx-0 text-h1'>{frontmatter.title}</h1>
-  {
-    frontmatter.datePublished && !frontmatter.pubDate && (
-      <p>{new Date(frontmatter.datePublished).toLocaleDateString()}</p>
+    featureImage && (
+      <section class='pb-10 system-grid lg:pb-16'>
+        <div class='col-start-1 col-end-13 lg:col-start-4'>
+          <img
+            src={featureImage}
+            alt={featureImageAlt}
+            class='w-full rounded-xl md:rounded-2xl'
+            loading='eager'
+          />
+        </div>
+      </section>
     )
   }
 
-  <!-- {
-    frontmatter.description && (
-      <p>
-        <em>{frontmatter.description}</em>
-      </p>
-    )
-  }
-  {frontmatter.author && <p>Written by: {frontmatter.author}</p>} -->
-
-  {
-    frontmatter.image && (
-      <Image src={frontmatter.image.url} width={300} alt={frontmatter.image.alt} />
-    )
-  }
-
-  <div class='prose prose-slate max-w-none'>
-    <slot />
-  </div>
-  <!-- {
-    frontmatter.tags && (
-      <div class='tags'>
-        {frontmatter.tags.map((tag: string) => (
-          <p class='tag'>
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </p>
-        ))}
-      </div>
-    )
-  } -->
+  <!-- Content: right 50% -->
+  <section class='pb-24 system-grid'>
+    <div class='col-start-1 col-end-13 prose prose-slate max-w-none lg:col-start-7'>
+      <slot />
+    </div>
+  </section>
 </BaseLayout>
-<style></style>

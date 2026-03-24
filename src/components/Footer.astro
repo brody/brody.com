@@ -1,17 +1,26 @@
 ---
-import Social from './Social.astro';
 ---
 
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
-
-<footer>
-  <Social platform='twitter' username='astrodotbuild' />
-  <Social platform='github' username='withastro' />
-  <Social platform='youtube' username='astrodotbuild' />
+<footer id='contact' class='w-full px-4'>
+  <div class='system-grid py-16 lg:py-20'>
+    <div class='col-span-12 col-start-1 md:col-span-6'>
+      <p class='mb-4 text-2xl tracking-tight lg:mb-0 lg:text-[32px]'>
+        Reach out to connect<br />
+        or collaborate<br />
+        <a href='mailto:hello@brody.com' class='text-tx-2 hover:underline'>hello@brody.com</a>
+      </p>
+    </div>
+    <div
+      class='col-span-6 flex flex-col text-xl font-semibold tracking-tight md:col-start-7 lg:col-start-7 lg:text-[28px]'
+    >
+      <a href='https://www.linkedin.com/in/brodymaclean/' class='text-tx-0 hover:underline'>
+        LinkedIn
+      </a>
+      <a href='https://www.instagram.com/brody/' class='text-tx-0 hover:underline'> Instagram </a>
+      <a href='https://www.github.com/brody/' class='text-tx-0 hover:underline'> Github </a>
+      <a href='https://www.twitter.com/brodymaclean/' class='text-tx-0 hover:underline'>
+        Twitter
+      </a>
+    </div>
+  </div>
 </footer>

@@ -2,7 +2,7 @@
 title: Remote working tips
 pubDate: 2021-05-10
 draft: false
-entrySlug: remote-working-tips
+slug: remote-working-tips
 description: A few remote working tips from twenty experts with 100+ years experience working remotely.
 # ogImage:
 # link: https://twitter.com/chris_herd/status/1391021349318111233?ref_src=twsrc%5Etfw

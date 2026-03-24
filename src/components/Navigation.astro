@@ -7,9 +7,9 @@ const navLinks: { label: string; href: string }[] = [
   // { label: 'Home', href: '/' },
   { label: 'About', href: '/' },
   { label: 'Work', href: '/#work' },
-  { label: 'Journal', href: '/journal/' },
   // { label: 'Library', href: '/library/' },
   { label: 'Contact', href: '/#contact' },
+  { label: 'Journal', href: '/journal/' },
   // { label: 'Notes', href: '/notes/', icon: 'tabler:note' },
 ]
 
@@ -29,12 +29,14 @@ const isCurrentPage = (href: string) => {
   let pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
   if (pathname.at(0) !== '/') pathname = '/' + pathname
   if (pathname.at(-1) !== '/') pathname += '/'
+  // Hash links (e.g. /#contact) are only active via scroll script on the index page
+  if (href.includes('#')) return false
   return pathname === href || (href !== '/' && pathname.startsWith(href))
 }
 ---
 
-<div class='flex flex-col gap-2 px-4 pt-4 pb-2 leading-tight border-b border-ui-1 text-tx-3'>
-  <div class='grid grid-cols-1 gap-2 pb-4 max-w-600 md:grid-cols-2 md:text-xl'>
+<div class='flex flex-col gap-2 px-4 pt-4 pb-2 w-full leading-tight border-b border-ui-1 text-tx-3'>
+  <div class='grid grid-cols-1 gap-2 pb-4 max-w-600 m-auto w-full md:grid-cols-2 md:text-xl'>
     <div>
       <div class='flex justify-between gap-1 md:flex-col md:items-start md:gap-1.5'>
         <p class='text-tx-1'>Brody MacLean</p>
@@ -46,7 +48,7 @@ const isCurrentPage = (href: string) => {
         </Badge>
       </div>
     </div>
-    <div>
+    <div class='max-w-5xl'>
       A designer and leader with 15+ years shaping digital products and the teams that build them<span
         class='hidden lg:inline'
       >

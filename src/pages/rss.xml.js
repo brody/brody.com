@@ -12,7 +12,7 @@ export async function GET(context) {
       // Prioritize 'updatedDate' over 'pubDate' if it exists
       pubDate: new Date(post.data.updatedDate || post.data.pubDate),
       description: post.data.description || '',
-      link: `/posts/${post.id}/`,
+      link: `/${post.data.slug || post.id}/`,
       categories: post.data.tags || [],
     })),
     ...bookmarks.map((bookmark) => ({

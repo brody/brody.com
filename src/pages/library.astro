@@ -104,7 +104,7 @@ const totalCount = allThings.length
 
   <!-- <p>This is where I will post about my journey learningkkmk Astro.</p> -->
   <ul>
-    <!-- {allPosts.map((post) => <LibraryItem url={`/posts/${post.id}/`} title={post.data.title} />)} -->
+    <!-- {allPosts.map((post) => <LibraryItem url={`/journal/${post.id}/`} title={post.data.title} />)} -->
     <!-- {allNotes.map((post) => <LibraryItem url={`/notes/${post.id}/`} title={post.data.title} />)} -->
     {
       initialItems.map((post, index) => {
@@ -127,7 +127,7 @@ const totalCount = allThings.length
             )}
             {post.source === 'journal' && (
               <ArticlePost
-                url={`/posts/${post.id}/`}
+                url={`/${(post.data as { slug?: string }).slug || post.id}/`}
                 title={post.data.title}
                 pubDate={post.data.updatedDate || post.data.pubDate}
                 source={post.source}

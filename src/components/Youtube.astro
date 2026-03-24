@@ -2,9 +2,9 @@
 const { id, className } = Astro.props
 ---
 
-<div class='my-6 w-full h-full aspect-video' class:list={className}>
+<div class='w-full my-6 aspect-video' class:list={className}>
   <iframe
-    class='w-full h-full'
+    class='w-full h-full rounded-xl md:rounded-2xl'
     src=`https://www.youtube.com/embed/${id}?rel=0`
     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
     allowfullscreen

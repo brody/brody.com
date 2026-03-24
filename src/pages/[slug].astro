@@ -1,18 +1,18 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content'
-import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro'
+import { getCollection, render } from 'astro:content'
+import MarkdownPostLayout from '../layouts/MarkdownPostLayout.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('journal')
   return posts.map((post) => ({
-    params: { slug: post.id },
+    params: { slug: post.data.slug },
     props: { post },
   }))
 }
 
-// Get slug from params for SSR mode
 const { slug } = Astro.params
-const post = Astro.props.post || (await getEntry('journal', slug as string))
+const posts = await getCollection('journal')
+const post = Astro.props.post || posts.find((p) => p.data.slug === slug)
 
 if (!post) {
   return Astro.redirect('/404')

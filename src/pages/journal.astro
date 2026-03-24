@@ -51,7 +51,7 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
             width={79}
             height={56}
             quality={90}
-            densities={[2, 3]}
+            densities={[1, 2]}
           />
         </span>
       </h1>
@@ -71,10 +71,15 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
             >
               {post.data.ogImage && (
                 <div class='overflow-hidden border border-ui-1 aspect-4/3 rounded-xl md:rounded-2xl'>
-                  <img
+                  <Image
                     src={post.data.ogImage}
-                    alt={post.data.title}
+                    alt={post.data.title ?? ''}
+                    width={800}
+                    height={600}
+                    quality={80}
+                    densities={[1, 2]}
                     loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
                     class='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
                   />
                 </div>

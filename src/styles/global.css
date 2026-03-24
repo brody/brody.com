@@ -467,6 +467,16 @@
     @apply m-auto grid max-w-600 grid-cols-12 gap-2;
   }
 
+  @keyframes word-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .word-in {
+    display: inline-block;
+    animation: word-in 0.5s ease both;
+  }
+
   h1,
   .h1 {
     margin: 1rem 0;

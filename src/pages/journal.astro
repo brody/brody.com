@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import hand from '~/pages/journal/_images/hand.png'
 
 const pageTitle = 'Journal'
 
@@ -33,9 +35,25 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
   <!-- Hero: large text top right -->
   <section class='pt-4 system-grid md:pt-8'>
     <div class='col-start-1 col-end-13 pb-12 md:pb-20 lg:col-start-7 lg:pb-20'>
-      <h1 class='max-w-sm m-0 text-tx-3 text-h1 md:max-w-lg lg:max-w-2xl'>
-        <span class='text-tx-0'>Thoughts</span> on design, leadership, and the occasional
-        <span class='text-tx-0'>rabbit hole.</span>
+      <h1 class='max-w-sm m-0 text-tx-3 text-h1 md:max-w-xl lg:max-w-3xl'>
+        <span class='word-in text-tx-0' style='animation-delay: 0ms'>Thoughts</span>{' '}
+        <span class='word-in' style='animation-delay: 60ms'>on</span>{' '}
+        <span class='word-in' style='animation-delay: 120ms'>design,</span>{' '}
+        <span class='word-in' style='animation-delay: 180ms'>leadership,</span>{' '}
+        <span class='word-in' style='animation-delay: 240ms'>and the</span>{' '}
+        <span class='word-in' style='animation-delay: 300ms'>occasional</span>{' '}
+        <span class='word-in text-tx-0' style='animation-delay: 360ms'>rabbit hole.</span>{' '}
+        <span class='word-in' style='animation-delay: 420ms'>
+          <Image
+            src={hand}
+            alt=''
+            class='-mt-1 inline-block h-[0.85em] w-auto translate-y-[-0.1em]'
+            width={79}
+            height={56}
+            quality={90}
+            densities={[2, 3]}
+          />
+        </span>
       </h1>
     </div>
   </section>
@@ -83,7 +101,7 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
   <!-- All posts table -->
   <section class=''>
     <div class='py-2 border-b system-grid border-ui-1'>
-      <span class='col-span-3 lg:px-3 text-sm text-tx-1 lg:text-base'>Date</span>
+      <span class='col-span-3 text-sm text-tx-1 lg:px-3 lg:text-base'>Date</span>
       <span class='hidden col-span-3 text-sm text-tx-1 md:block lg:text-base'>Tags</span>
       <span class='col-span-9 text-sm text-tx-1 md:col-span-6 lg:text-base'>Title</span>
     </div>
@@ -95,7 +113,7 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
             href={`/${post.data.slug}/`}
             class={`group system-grid border-ui-1 hover:bg-bg-2 items-center border-b py-2 transition-colors hover:text-tx-0${pinnedIds.has(post.id) ? ' md:hidden' : ''}`}
           >
-            <span class='col-span-3 lg:px-3 text-sm text-tx-2 lg:text-base'>
+            <span class='col-span-3 text-sm text-tx-2 lg:px-3 lg:text-base'>
               {date && formatDate(date)}
             </span>
             <span class='hidden col-span-3 text-sm capitalize text-tx-2 md:block lg:text-base'>
@@ -104,7 +122,7 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
             <span class='col-span-8 text-base font-medium md:col-span-5 lg:text-lg'>
               {post.data.title}
             </span>
-            <span class='text-tx-3 col-span-1 flex justify-end lg:px-3 transition-transform group-hover:translate-x-0.5'>
+            <span class='text-tx-3 col-span-1 flex justify-end transition-transform group-hover:translate-x-0.5 lg:px-3'>
               <Icon name='tabler:arrow-right' class='w-4 h-4' />
             </span>
           </a>

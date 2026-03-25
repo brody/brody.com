@@ -24,13 +24,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
 ---
 
 <BaseLayout>
-  <section class='pt-4 system-grid md:pt-8'>
+  <section class='system-grid pt-4 md:pt-8'>
     <div class='col-start-1 col-end-13 pb-12 md:pb-20 lg:col-start-7 lg:pb-30'>
-      <h1 class='max-w-sm m-0 text-tx-3 text-h1 md:max-w-lg lg:max-w-2xl'>
+      <h1 class='text-tx-3 text-h1 m-0 max-w-sm md:max-w-lg lg:max-w-2xl'>
         <span class='word-in text-tx-0' style='animation-delay: 0ms'>Brody</span>{' '}
         <span class='word-in' style='animation-delay: 60ms'>is</span>{' '}
         <span class='word-in' style='animation-delay: 90ms'>a</span>{' '}
-        <span class='word-in' style='animation-delay: 120ms'>multi-</span><span class='word-in' style='animation-delay: 150ms'>disciplinary</span>{' '}
+        <span class='word-in' style='animation-delay: 120ms'>multi-</span>
+        <span class='word-in' style='animation-delay: 150ms'>disciplinary</span>{' '}
         <span class='word-in text-tx-0' style='animation-delay: 180ms'>design</span>{' '}
         <span class='word-in' style='animation-delay: 240ms'>leader</span>{' '}
         <span class='word-in' style='animation-delay: 270ms'>based</span>{' '}
@@ -50,11 +51,11 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
         <span class='word-in' style='animation-delay: 450ms'>Australia.</span>
       </h1>
     </div>
-    <div class='grid col-span-6 col-start-1 grid-rows-2 row-span-2 gap-2 aspect-square'>
+    <div class='col-span-6 col-start-1 row-span-2 grid aspect-square grid-rows-2 gap-2'>
       <Image
         src={hero1}
         alt='SafetyCulture team at Figma event'
-        class='object-cover w-full h-full rounded-xl md:rounded-2xl'
+        class='h-full w-full rounded-xl object-cover md:rounded-2xl'
         width={1200}
         height={600}
         quality={80}
@@ -64,7 +65,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
       <Image
         src={hero2}
         alt='Brody MacLean presenting at the Prospa brand launch'
-        class='object-cover w-full h-full rounded-xl md:rounded-2xl'
+        class='h-full w-full rounded-xl object-cover md:rounded-2xl'
         width={1200}
         height={600}
         quality={80}
@@ -75,7 +76,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
     <Image
       src={hero3}
       alt='Brody MacLean'
-      class='object-cover col-span-6 col-start-7 row-span-2 aspect-square rounded-xl md:rounded-2xl'
+      class='col-span-6 col-start-7 row-span-2 aspect-square rounded-xl object-cover md:rounded-2xl'
       width={1200}
       height={1200}
       quality={80}
@@ -84,7 +85,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
       fetchpriority='high'
     />
   </section>
-  <section class='py-16 border-b system-grid border-ui-1 lg:py-20'>
+  <section class='system-grid border-ui-1 border-b py-16 lg:py-20'>
     <div class='col-span-12 col-start-1 md:col-span-6'>
       <h2 class='mb-4 text-2xl font-medium lg:sticky lg:top-24 lg:mb-0 lg:text-[32px]'>Intro</h2>
     </div>
@@ -107,14 +108,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
       </p>
     </div>
   </section>
-  <section class='py-16 border-b system-grid border-ui-1 lg:py-28' id='work'>
+  <section class='system-grid border-ui-1 border-b py-16 lg:py-28' id='work'>
     <div class='col-span-12 col-start-1 md:col-span-6'>
       <h2 class='mb-4 text-2xl font-medium lg:sticky lg:top-24 lg:mb-0 lg:text-[32px]'>
         Work highlights
       </h2>
     </div>
-    <div class='grid col-start-1 col-end-13 text-lg lg:col-start-7 lg:text-xl'>
-      <div class='flex flex-col gap-12 pb-12 border-b border-ui-1'>
+    <div class='col-start-1 col-end-13 grid text-lg lg:col-start-7 lg:text-xl'>
+      <div class='border-ui-1 flex flex-col gap-12 border-b pb-12'>
         <div class='flex flex-col gap-6'>
           <div class='flex items-center justify-between'>
             <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#1868DB]'>
@@ -132,7 +133,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
                   style='fill:white;fill-opacity:1;'></path>
               </svg>
             </div>
-            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+            <div class='bg-bg-2 text-tx-0 rounded-full px-3 py-2 text-xs font-medium'>
               2024 - 2026
             </div>
           </div>
@@ -140,16 +141,16 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             <h3 class='text-2xl'>Atlassian</h3>
             <h4 class='text-base'>Design Lead</h4>
           </div>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Led the design and integration of AI UI components within the Atlassian Design System,
             bridging AI patterns, brand principles, and front-end implementation to deliver
             accessible, production-ready controls.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Owned the end-to-end component lifecycle — from high-fidelity Figma assets and visual
             specs to UX documentation and cross-team pattern adoption.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Prior to this, I drove the end-to-end delivery for Automation's Business Process
             Automation initiative and a visual refresh that enabled key design OKRs and
             cross-functional business goals. Working closely with engineering, product, and design
@@ -158,9 +159,9 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
           </p>
         </div>
         <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
-          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
             <video
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='aspect-square w-full rounded-2xl object-cover'
               autoplay
               muted
               loop
@@ -171,12 +172,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             </video>
             <div>
               <h4 class='text-sm'>AI Design Kit</h4>
-              <p class='text-sm text-tx-2'>Design system, Figma libraries, docs</p>
+              <p class='text-tx-2 text-sm'>Design system, Figma libraries, docs</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <video
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='aspect-square w-full rounded-2xl object-cover'
               autoplay
               muted
               loop
@@ -187,12 +188,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             </video>
             <div>
               <h4 class='text-sm'>Rovo brand refresh</h4>
-              <p class='text-sm text-tx-2'>Product & UI design</p>
+              <p class='text-tx-2 text-sm'>Product & UI design</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <video
-              class='object-cover w-full aspect-square rounded-2xl'
+              class='aspect-square w-full rounded-2xl object-cover'
               autoplay
               muted
               loop
@@ -203,14 +204,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             </video>
             <div>
               <h4 class='text-sm'>Rovo nudge and chat</h4>
-              <p class='text-sm text-tx-2'>Product & UI design</p>
+              <p class='text-tx-2 text-sm'>Product & UI design</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={marion}
               alt='Automation redesign'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -218,12 +219,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Builder redesign</h4>
-              <p class='text-sm text-tx-2'>Systems and UI design</p>
+              <p class='text-tx-2 text-sm'>Systems and UI design</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <video
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               autoplay
               muted
               loop
@@ -234,12 +235,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             </video>
             <div>
               <h4 class='text-sm'>Business Process Automation</h4>
-              <p class='text-sm text-tx-2'>UX, UI design, strategy</p>
+              <p class='text-tx-2 text-sm'>UX, UI design, strategy</p>
             </div>
           </div>
         </div>
       </div>
-      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+      <div class='border-ui-1 flex flex-col gap-12 border-b py-12'>
         <div class='flex flex-col gap-6'>
           <div class='flex items-center justify-between'>
             <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#1A1A1A]'>
@@ -265,7 +266,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
                 </defs>
               </svg>
             </div>
-            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+            <div class='bg-bg-2 text-tx-0 rounded-full px-3 py-2 text-xs font-medium'>
               2022 - 2024
             </div>
           </div>
@@ -273,12 +274,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             <h3 class='text-2xl'>Prospa</h3>
             <h4 class='text-base'>Design System Lead</h4>
           </div>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Led the design systems team at Prospa, unifying divergent design and code across
             products to significantly reduce design and development debt while driving the
             end-to-end implementation of a company-wide rebrand.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Managed and grew the team through hiring, mentoring, and performance development, and
             partnered with senior leadership to shape a multi-year systems roadmap and future
             product design vision.
@@ -286,11 +287,11 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
         </div>
 
         <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
-          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={salt}
               alt='Prospa redesign'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -298,14 +299,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Salt Design System</h4>
-              <p class='text-sm text-tx-2'>Brand, strategy, UI design</p>
+              <p class='text-tx-2 text-sm'>Brand, strategy, UI design</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={prospaRedesign}
               alt='Prospa redesign'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -313,14 +314,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Prospa redesign</h4>
-              <p class='text-sm text-tx-2'>UI design, brand, systems, strategy</p>
+              <p class='text-tx-2 text-sm'>UI design, brand, systems, strategy</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={prospaTokens}
               alt='Prospa design tokens'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -330,16 +331,16 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
               <h4 class='text-sm'>
                 Developing a scalable design token taxonomy for Prospa's Design System
               </h4>
-              <p class='text-sm text-tx-2'>Coming soon</p>
+              <p class='text-tx-2 text-sm'>Coming soon</p>
             </div>
           </div>
         </div>
       </div>
-      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+      <div class='border-ui-1 flex flex-col gap-12 border-b py-12'>
         <div class='flex flex-col gap-6'>
           <div class='flex items-center justify-between'>
             <div
-              class='flex items-center justify-center w-16 h-16 bg-white border border-ui-1 rounded-xl'
+              class='border-ui-1 flex h-16 w-16 items-center justify-center rounded-xl border bg-white'
             >
               <svg
                 width='44'
@@ -386,31 +387,31 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
                 </defs>
               </svg>
             </div>
-            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+            <div class='bg-bg-2 text-tx-0 rounded-full px-3 py-2 text-xs font-medium'>
               2021 - 2022
             </div>
           </div>
           <div>
             <h3 class='text-2xl'>
-              SafetyCulture Care <span class='ml-1 text-base text-tx-3'>fka Mitti</span>
+              SafetyCulture Care <span class='text-tx-3 ml-1 text-base'>fka Mitti</span>
             </h3>
             <h4 class='text-base'>Principal Product Designer</h4>
           </div>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Led the 0-to-1 design of SafetyCulture Care's risk mitigation product, establishing the
             UI/UX patterns and remote-first design processes that underpinned the MVP launch.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Hired and managed the design team, providing mentorship, performance development, and
             hands-on leadership to build out the practice from the ground up.
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={mitti}
               alt='Mitti ui design'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -418,14 +419,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>MVP</h4>
-              <p class='text-sm text-tx-2'>UX, UI design, brand, strategy</p>
+              <p class='text-tx-2 text-sm'>UX, UI design, brand, strategy</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={mittiRewards}
               alt='Mitti Rewards'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -433,12 +434,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Rewards</h4>
-              <p class='text-sm text-tx-2'>Growth design</p>
+              <p class='text-tx-2 text-sm'>Growth design</p>
             </div>
           </div>
         </div>
       </div>
-      <div class='flex flex-col gap-12 py-12 border-b border-ui-1'>
+      <div class='border-ui-1 flex flex-col gap-12 border-b py-12'>
         <div class='flex flex-col gap-6'>
           <div class='flex items-center justify-between'>
             <div class='flex h-16 w-16 items-center justify-center rounded-xl bg-[#0E0180]'>
@@ -464,7 +465,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
                 </defs>
               </svg>
             </div>
-            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+            <div class='bg-bg-2 text-tx-0 rounded-full px-3 py-2 text-xs font-medium'>
               2019 - 2020
             </div>
           </div>
@@ -472,22 +473,22 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             <h3 class='text-2xl'>Deputy</h3>
             <h4 class='text-base'>Design System Lead</h4>
           </div>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Led the development and growth of Deputy's design system, Copilot, with an initial focus
             on reducing design and technical debt ahead of a rebrand while migrating the design
             library from Sketch to Figma.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Defined and documented emerging design patterns throughout the transition, ensuring
             consistency and minimising friction across the product and design team.
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={deputyWorkshop}
               alt='Requirement gathering workshop'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -495,14 +496,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Requirement gathering workshop</h4>
-              <p class='text-sm text-tx-2'>Design systems, strategy, collaboration</p>
+              <p class='text-tx-2 text-sm'>Design systems, strategy, collaboration</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={deputyFigma}
               alt='Figma migration'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -510,14 +511,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Figma migration and team upskilling</h4>
-              <p class='text-sm text-tx-2'>Design tooling</p>
+              <p class='text-tx-2 text-sm'>Design tooling</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={deputyHackathon}
               alt='Hackathon project'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -525,7 +526,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Growth hackaton</h4>
-              <p class='text-sm text-tx-2'>Marketing, growth, brand</p>
+              <p class='text-tx-2 text-sm'>Marketing, growth, brand</p>
             </div>
           </div>
         </div>
@@ -534,12 +535,12 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
         <div class='flex flex-col gap-6'>
           <div class='flex items-center justify-between'>
             <div
-              class='flex items-center justify-center w-16 h-16 bg-white border border-ui-1 rounded-xl'
+              class='border-ui-1 flex h-16 w-16 items-center justify-center rounded-xl border bg-white'
             >
               <svg
                 width='142'
                 height='123'
-                class='w-10 -mr-1'
+                class='-mr-1 w-10'
                 viewBox='0 0 142 123'
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'
@@ -556,7 +557,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
                 ></path>
               </svg>
             </div>
-            <div class='px-3 py-2 text-xs font-medium rounded-full bg-bg-2 text-tx-0'>
+            <div class='bg-bg-2 text-tx-0 rounded-full px-3 py-2 text-xs font-medium'>
               2018 - 2019
             </div>
           </div>
@@ -564,23 +565,23 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             <h3 class='text-2xl'>Jobadder</h3>
             <h4 class='text-base'>Head of Design</h4>
           </div>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Led and mentored a team of five designers across product and marketing, working closely
             with the CEO and Head of Product to shape the roadmap, formalise design processes, and
             establish Venom — JobAdder's design system.
           </p>
-          <p class='max-w-4xl text-tx-2'>
+          <p class='text-tx-2 max-w-4xl'>
             Spearheaded a full UX and UI redesign across multiple product lines, introducing
             consistency through a Sketch component library and laying the foundation for a unified
             design practice.
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='flex flex-col col-span-3 col-start-1 gap-2 md:col-span-2'>
+          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={venom}
               alt='Venom'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -588,14 +589,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Venom design system</h4>
-              <p class='text-sm text-tx-2'>UI design kit</p>
+              <p class='text-tx-2 text-sm'>UI design kit</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={jobadderNav}
               alt='Jobadder Nav Redesign'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -603,14 +604,14 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Nav redesign</h4>
-              <p class='text-sm text-tx-2'>UX, UI design, strategy</p>
+              <p class='text-tx-2 text-sm'>UX, UI design, strategy</p>
             </div>
           </div>
-          <div class='flex flex-col col-span-3 gap-2 md:col-span-2'>
+          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
             <Image
               src={designJam}
               alt='Design Jam'
-              class='object-cover w-full border border-ui-1 aspect-square rounded-2xl'
+              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
               width={390}
               height={390}
               quality={90}
@@ -618,7 +619,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
             />
             <div>
               <h4 class='text-sm'>Design jams</h4>
-              <p class='text-sm text-tx-2'>Team bonding, process, critique</p>
+              <p class='text-tx-2 text-sm'>Team bonding, process, critique</p>
             </div>
           </div>
         </div>
@@ -626,7 +627,7 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
     </div>
   </section>
 
-<!-- <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
+  <!-- <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
   h1 {
     color: purple;
     font-size: 4rem;

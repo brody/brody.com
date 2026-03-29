@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: ImageMetadata
+  alt?: string
+  video?: { webm: string; mp4: string }
+  href?: string
+  external?: boolean
+}
+
+const { title, description, image, alt, video, href, external } = Astro.props
+const isLink = !!href
+
+const mediaClass = 'aspect-square w-full rounded-2xl  object-cover border border-ui-1'
+const mediaHoverClass = `${mediaClass} transition-transform duration-300 group-hover:scale-[1.02]`
+---
+
+{
+  isLink ? (
+    <a
+      href={href}
+      class='group flex flex-col gap-2'
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      <div class='hover:border-ui-1 relative overflow-hidden rounded-2xl border border-white transition-colors'>
+        {image && (
+          <Image
+            src={image}
+            alt={alt ?? ''}
+            class={mediaHoverClass}
+            width={390}
+            height={390}
+            quality={90}
+            densities={[2, 3]}
+          />
+        )}
+        {video && (
+          <video class={mediaHoverClass} autoplay muted loop playsinline>
+            <source src={video.webm} type='video/webm' />
+            <source src={video.mp4} type='video/mp4' />
+          </video>
+        )}
+        <div class='bg-tx-3 border-ui-1 group-hover:bg-tx-1 absolute top-2 right-2 rounded-xl border p-1.5 transition-colors'>
+          <Icon name='tabler:arrow-up-right' class='text-bg-1 h-4 w-4' />
+        </div>
+      </div>
+      <div>
+        <h4 class='text-sm'>{title}</h4>
+        <p class='text-tx-2 text-sm'>{description}</p>
+      </div>
+    </a>
+  ) : (
+    <div class='flex flex-col gap-2'>
+      {image && (
+        <Image
+          src={image}
+          alt={alt ?? ''}
+          class={mediaClass}
+          width={390}
+          height={390}
+          quality={90}
+          densities={[2, 3]}
+        />
+      )}
+      {video && (
+        <video class={mediaClass} autoplay muted loop playsinline>
+          <source src={video.webm} type='video/webm' />
+          <source src={video.mp4} type='video/mp4' />
+        </video>
+      )}
+      <div>
+        <h4 class='text-sm'>{title}</h4>
+        <p class='text-tx-2 text-sm'>{description}</p>
+      </div>
+    </div>
+  )
+}

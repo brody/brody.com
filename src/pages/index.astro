@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 // import MarkdownPostLayout from '../layouts/MarkdownPostLayout.astro'
 const pageTitle = 'About Me'
-import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
+import WorkTile from '~/components/WorkTile.astro'
 import brandLaunch from '/public/assets/images/brand.jpg'
 import sydney from '~/pages/about/_images/sydney.png'
 import hero1 from '~/pages/about/_images/hero1.png'
@@ -159,84 +159,50 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
           </p>
         </div>
         <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
-          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
-            <video
-              class='aspect-square w-full rounded-2xl object-cover'
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              <source src='/assets/work/rovo/rovo2-square.webm' type='video/webm' />
-              <source src='/assets/work/rovo/rovo2-square.mp4' type='video/mp4' />
-            </video>
-            <div>
-              <h4 class='text-sm'>AI Design Kit</h4>
-              <p class='text-tx-2 text-sm'>Design system, Figma libraries, docs</p>
-            </div>
-          </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <video
-              class='aspect-square w-full rounded-2xl object-cover'
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              <source src='/assets/work/rovo/rebrand.webm' type='video/webm' />
-              <source src='/assets/work/rovo/rebrand.mp4' type='video/mp4' />
-            </video>
-            <div>
-              <h4 class='text-sm'>Rovo brand refresh</h4>
-              <p class='text-tx-2 text-sm'>Product & UI design</p>
-            </div>
-          </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <video
-              class='aspect-square w-full rounded-2xl object-cover'
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              <source src='/assets/work/rovo/chat.webm' type='video/webm' />
-              <source src='/assets/work/rovo/chat.mp4' type='video/mp4' />
-            </video>
-            <div>
-              <h4 class='text-sm'>Rovo nudge and chat</h4>
-              <p class='text-tx-2 text-sm'>Product & UI design</p>
-            </div>
-          </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={marion}
-              alt='Automation redesign'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+          <div class='col-span-3 col-start-1 md:col-span-2'>
+            <WorkTile
+              video={{
+                webm: '/assets/work/rovo/rovo2-square.webm',
+                mp4: '/assets/work/rovo/rovo2-square.mp4',
+              }}
+              title='AI Design Kit'
+              description='Design system, Figma libraries, docs'
             />
-            <div>
-              <h4 class='text-sm'>Builder redesign</h4>
-              <p class='text-tx-2 text-sm'>Systems and UI design</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <video
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              <source src='/assets/work/automation/redesign.webm' type='video/webm' />
-              <source src='/assets/work/automation/redesign.mp4' type='video/mp4' />
-            </video>
-            <div>
-              <h4 class='text-sm'>Business Process Automation</h4>
-              <p class='text-tx-2 text-sm'>UX, UI design, strategy</p>
-            </div>
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              video={{
+                webm: '/assets/work/rovo/rebrand.webm',
+                mp4: '/assets/work/rovo/rebrand.mp4',
+              }}
+              title='Rovo brand refresh'
+              description='Product & UI design'
+            />
+          </div>
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              video={{ webm: '/assets/work/rovo/chat.webm', mp4: '/assets/work/rovo/chat.mp4' }}
+              title='Rovo nudge and chat'
+              description='Product & UI design'
+            />
+          </div>
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={marion}
+              alt='Automation redesign'
+              title='Builder redesign'
+              description='Systems and UI design'
+            />
+          </div>
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              video={{
+                webm: '/assets/work/automation/redesign.webm',
+                mp4: '/assets/work/automation/redesign.mp4',
+              }}
+              title='Business Process Automation'
+              description='UX, UI design, strategy'
+            />
           </div>
         </div>
       </div>
@@ -287,52 +253,31 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
         </div>
 
         <div class='grid grid-cols-6 gap-x-4 gap-y-6'>
-          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={salt}
+          <div class='col-span-3 col-start-1 md:col-span-2'>
+            <WorkTile
+              image={salt}
               alt='Prospa redesign'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Salt Design System'
+              description='Brand, strategy, UI design'
+              href='/work/salt'
             />
-            <div>
-              <h4 class='text-sm'>Salt Design System</h4>
-              <p class='text-tx-2 text-sm'>Brand, strategy, UI design</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={prospaRedesign}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={prospaRedesign}
               alt='Prospa redesign'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Prospa redesign'
+              description='UI design, brand, systems, strategy'
             />
-            <div>
-              <h4 class='text-sm'>Prospa redesign</h4>
-              <p class='text-tx-2 text-sm'>UI design, brand, systems, strategy</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={prospaTokens}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={prospaTokens}
               alt='Prospa design tokens'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title="Developing a scalable design token taxonomy for Prospa's Design System"
+              description='Design systems, UI design, strategy'
+              href='/prospa-tokens'
             />
-            <div>
-              <h4 class='text-sm'>
-                Developing a scalable design token taxonomy for Prospa's Design System
-              </h4>
-              <p class='text-tx-2 text-sm'>Coming soon</p>
-            </div>
           </div>
         </div>
       </div>
@@ -407,35 +352,21 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={mitti}
+          <div class='col-span-3 col-start-1 md:col-span-2'>
+            <WorkTile
+              image={mitti}
               alt='Mitti ui design'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='0-1 product experience'
+              description='UX, UI design, brand, strategy'
             />
-            <div>
-              <h4 class='text-sm'>MVP</h4>
-              <p class='text-tx-2 text-sm'>UX, UI design, brand, strategy</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={mittiRewards}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={mittiRewards}
               alt='Mitti Rewards'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Rewards'
+              description='Growth design'
             />
-            <div>
-              <h4 class='text-sm'>Rewards</h4>
-              <p class='text-tx-2 text-sm'>Growth design</p>
-            </div>
           </div>
         </div>
       </div>
@@ -484,50 +415,29 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={deputyWorkshop}
+          <div class='col-span-3 col-start-1 md:col-span-2'>
+            <WorkTile
+              image={deputyWorkshop}
               alt='Requirement gathering workshop'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Requirement gathering workshop'
+              description='Design systems, strategy, collaboration'
             />
-            <div>
-              <h4 class='text-sm'>Requirement gathering workshop</h4>
-              <p class='text-tx-2 text-sm'>Design systems, strategy, collaboration</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={deputyFigma}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={deputyFigma}
               alt='Figma migration'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Figma migration and team upskilling'
+              description='Design tooling'
             />
-            <div>
-              <h4 class='text-sm'>Figma migration and team upskilling</h4>
-              <p class='text-tx-2 text-sm'>Design tooling</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={deputyHackathon}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={deputyHackathon}
               alt='Hackathon project'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Growth hackaton'
+              description='Marketing, growth, brand'
             />
-            <div>
-              <h4 class='text-sm'>Growth hackaton</h4>
-              <p class='text-tx-2 text-sm'>Marketing, growth, brand</p>
-            </div>
           </div>
         </div>
       </div>
@@ -577,50 +487,31 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
           </p>
         </div>
         <div class='grid grid-cols-6 gap-4'>
-          <div class='col-span-3 col-start-1 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={venom}
+          <div class='col-span-3 col-start-1 md:col-span-2'>
+            <WorkTile
+              image={venom}
               alt='Venom'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Venom design system'
+              description='UI design kit'
+              href='/work/venom'
             />
-            <div>
-              <h4 class='text-sm'>Venom design system</h4>
-              <p class='text-tx-2 text-sm'>UI design kit</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={jobadderNav}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={jobadderNav}
               alt='Jobadder Nav Redesign'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Nav redesign'
+              description='UX, UI design, strategy'
+              href='/work/ja-nav'
             />
-            <div>
-              <h4 class='text-sm'>Nav redesign</h4>
-              <p class='text-tx-2 text-sm'>UX, UI design, strategy</p>
-            </div>
           </div>
-          <div class='col-span-3 flex flex-col gap-2 md:col-span-2'>
-            <Image
-              src={designJam}
+          <div class='col-span-3 md:col-span-2'>
+            <WorkTile
+              image={designJam}
               alt='Design Jam'
-              class='border-ui-1 aspect-square w-full rounded-2xl border object-cover'
-              width={390}
-              height={390}
-              quality={90}
-              densities={[2, 3]}
+              title='Design jams'
+              description='Collaboration, process, critique'
             />
-            <div>
-              <h4 class='text-sm'>Design jams</h4>
-              <p class='text-tx-2 text-sm'>Team bonding, process, critique</p>
-            </div>
           </div>
         </div>
       </div>

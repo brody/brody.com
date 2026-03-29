@@ -44,7 +44,8 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
         <span class='word-in' style='animation-delay: 300ms'>the</span>{' '}
         <span class='word-in' style='animation-delay: 360ms'>occasional</span>{' '}
         <span class='word-in text-tx-0' style='animation-delay: 420ms'>rabbit</span>{' '}
-        <span class='word-in text-tx-0' style='animation-delay: 480ms'> hole.</span>&nbsp;<Image
+        <span class='word-in text-tx-0' style='animation-delay: 480ms'> hole.</span>{' '}
+        <Image
           src={hand}
           alt=''
           class='-mt-1 inline-block h-[0.85em] w-auto translate-y-[-0.1em]'
@@ -56,82 +57,82 @@ const posts = allPosts.filter((p) => p.id !== pinned[0]?.id)
       </h1>
     </div>
   </section>
-</BaseLayout>
 
-<!-- Featured (pinned) articles -->
-{
-  pinned.length > 0 && (
-    <section class='mx-auto grid w-full max-w-600 grid-cols-1 gap-6 pb-16 md:grid-cols-2 lg:pb-20'>
-      {pinned.slice(0, 2).map((post, index) => {
+  <!-- Featured (pinned) articles -->
+  {
+    pinned.length > 0 && (
+      <section class='mx-auto grid w-full max-w-600 grid-cols-1 gap-6 pb-16 md:grid-cols-2 lg:pb-20'>
+        {pinned.slice(0, 2).map((post, index) => {
+          const date = post.data.updatedDate || post.data.pubDate
+          return (
+            <a
+              href={`/${post.data.slug}/`}
+              class={`flex flex-col gap-4 group${index > 0 ? ' hidden md:flex' : ''}`}
+            >
+              {post.data.ogImage && (
+                <div class='border-ui-1 aspect-4/3 overflow-hidden rounded-xl border md:rounded-2xl'>
+                  <Image
+                    src={post.data.ogImage}
+                    alt={post.data.title ?? ''}
+                    width={800}
+                    height={600}
+                    quality={80}
+                    densities={[1, 2]}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
+                    class='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
+                  />
+                </div>
+              )}
+              <div class='flex flex-col gap-1'>
+                <h2 class='text-xl font-medium lg:text-2xl'>{post.data.title}</h2>
+                <div class='text-tx-2 flex items-center gap-2 text-sm lg:text-base'>
+                  {date && <span>{formatDate(date)}</span>}
+                  {post.data.tags?.map((tag) => (
+                    <>
+                      <span>·</span>
+                      <span class='capitalize'>{tag}</span>
+                    </>
+                  ))}
+                </div>
+              </div>
+            </a>
+          )
+        })}
+      </section>
+    )
+  }
+
+  <!-- All posts table -->
+  <section class=''>
+    <div class='system-grid border-ui-1 border-b py-2'>
+      <span class='text-tx-1 col-span-3 text-sm lg:px-3 lg:text-base'>Date</span>
+      <span class='text-tx-1 col-span-3 hidden text-sm md:block lg:text-base'>Tags</span>
+      <span class='text-tx-1 col-span-9 text-sm md:col-span-6 lg:text-base'>Title</span>
+    </div>
+    {
+      posts.map((post) => {
         const date = post.data.updatedDate || post.data.pubDate
         return (
           <a
             href={`/${post.data.slug}/`}
-            class={`flex flex-col gap-4 group${index > 0 ? ' hidden md:flex' : ''}`}
+            class={`group system-grid border-ui-1 hover:bg-bg-2 items-center border-b py-2 transition-colors hover:text-tx-0${pinnedIds.has(post.id) ? ' md:hidden' : ''}`}
           >
-            {post.data.ogImage && (
-              <div class='border-ui-1 aspect-4/3 overflow-hidden rounded-xl border md:rounded-2xl'>
-                <Image
-                  src={post.data.ogImage}
-                  alt={post.data.title ?? ''}
-                  width={800}
-                  height={600}
-                  quality={80}
-                  densities={[1, 2]}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
-                  class='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
-                />
-              </div>
-            )}
-            <div class='flex flex-col gap-1'>
-              <h2 class='text-xl font-medium lg:text-2xl'>{post.data.title}</h2>
-              <div class='text-tx-2 flex items-center gap-2 text-sm lg:text-base'>
-                {date && <span>{formatDate(date)}</span>}
-                {post.data.tags?.map((tag) => (
-                  <>
-                    <span>·</span>
-                    <span class='capitalize'>{tag}</span>
-                  </>
-                ))}
-              </div>
-            </div>
+            <span class='text-tx-2 col-span-3 text-sm lg:px-3 lg:text-base'>
+              {date && formatDate(date)}
+            </span>
+            <span class='text-tx-2 col-span-3 hidden text-sm capitalize md:block lg:text-base'>
+              {post.data.tags?.join(', ') ?? ''}
+            </span>
+            <span class='col-span-8 text-base font-medium md:col-span-5 lg:text-lg'>
+              {post.data.title}
+            </span>
+            <span class='text-tx-3 col-span-1 flex justify-end transition-transform group-hover:translate-x-0.5 lg:px-3'>
+              <Icon name='tabler:arrow-right' class='h-4 w-4' />
+            </span>
           </a>
         )
-      })}
-    </section>
-  )
-}
-
-<!-- All posts table -->
-<section class=''>
-  <div class='system-grid border-ui-1 border-b py-2'>
-    <span class='text-tx-1 col-span-3 text-sm lg:px-3 lg:text-base'>Date</span>
-    <span class='text-tx-1 col-span-3 hidden text-sm md:block lg:text-base'>Tags</span>
-    <span class='text-tx-1 col-span-9 text-sm md:col-span-6 lg:text-base'>Title</span>
-  </div>
-  {
-    posts.map((post) => {
-      const date = post.data.updatedDate || post.data.pubDate
-      return (
-        <a
-          href={`/${post.data.slug}/`}
-          class={`group system-grid border-ui-1 hover:bg-bg-2 items-center border-b py-2 transition-colors hover:text-tx-0${pinnedIds.has(post.id) ? ' md:hidden' : ''}`}
-        >
-          <span class='text-tx-2 col-span-3 text-sm lg:px-3 lg:text-base'>
-            {date && formatDate(date)}
-          </span>
-          <span class='text-tx-2 col-span-3 hidden text-sm capitalize md:block lg:text-base'>
-            {post.data.tags?.join(', ') ?? ''}
-          </span>
-          <span class='col-span-8 text-base font-medium md:col-span-5 lg:text-lg'>
-            {post.data.title}
-          </span>
-          <span class='text-tx-3 col-span-1 flex justify-end transition-transform group-hover:translate-x-0.5 lg:px-3'>
-            <Icon name='tabler:arrow-right' class='h-4 w-4' />
-          </span>
-        </a>
-      )
-    })
-  }
-</section>
+      })
+    }
+  </section>
+</BaseLayout>

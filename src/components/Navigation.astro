@@ -35,17 +35,27 @@ const isCurrentPage = (href: string) => {
 }
 ---
 
-<div class='flex flex-col gap-2 px-4 pt-4 pb-2 w-full leading-tight border-b border-ui-1 text-tx-3'>
-  <div class='grid grid-cols-1 gap-2 pb-4 max-w-600 m-auto w-full md:grid-cols-2 md:text-xl'>
+<div class='border-ui-1 text-tx-3 flex w-full flex-col gap-2 border-b px-4 pt-4 pb-2 leading-tight'>
+  <div class='m-auto grid w-full max-w-600 grid-cols-1 gap-2 pb-4 md:grid-cols-2 md:text-xl'>
     <div>
-      <div class='flex justify-between gap-1 md:flex-col md:items-start md:gap-1.5'>
+      <div class='flex justify-between gap-1 md:flex-col md:items-start md:gap-0.5'>
         <p class='text-tx-1'>Brody MacLean</p>
         <!-- <Button magnetic href='mailto:hello@brody.com' class='text-bg-2 bg-tx-1 hover:bg-tx-2'
           >Let's chat</Button
         > -->
-        <Badge class='-mt-1 md:mt-0 md:flex-auto'>
+        <!-- <Badge class='-mt-1 md:mt-0 md:flex-auto'>
           <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
-        </Badge>
+        </Badge> -->
+        <p>
+          Local time — {
+            new Date().toLocaleTimeString('en-GB', {
+              hour: '2-digit',
+              minute: '2-digit',
+              timeZone: 'Australia/Sydney',
+              hour12: false,
+            })
+          } Sydney, Australia
+        </p>
       </div>
     </div>
     <div class='max-w-5xl'>
@@ -57,8 +67,8 @@ const isCurrentPage = (href: string) => {
     </div>
   </div>
 </div>
-<nav class='sticky top-0 z-10 w-full px-4 py-4 text-base font-medium bg-bg-1 text-tx-3'>
-  <ul class='flex m-auto nav-items max-w-600'>
+<nav class='bg-bg-1 text-tx-3 sticky top-0 z-10 w-full px-4 py-4 text-base font-medium'>
+  <ul class='nav-items m-auto flex max-w-600'>
     {
       navLinks.map(({ label, href }) => (
         <li>

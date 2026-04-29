@@ -47,7 +47,7 @@ const isCurrentPage = (href: string) => {
           <span> Available <span class='max-sm:hidden'>for my next role</span> from July '26</span>
         </Badge> -->
         <p>
-          Local time — {
+          <span class='hidden md:inline'>Local time — </span>{
             new Date().toLocaleTimeString('en-GB', {
               hour: '2-digit',
               minute: '2-digit',

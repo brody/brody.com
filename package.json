@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/download-favicons.js && astro build",
-    "prebuild": "node scripts/download-favicons.js",
+    "predev": "node scripts/generate-placeholders.js",
+    "build": "node scripts/download-favicons.js && node scripts/generate-placeholders.js && astro build",
+    "prebuild": "node scripts/download-favicons.js && node scripts/generate-placeholders.js",
     "download-favicons": "node scripts/download-favicons.js",
+    "generate-placeholders": "node scripts/generate-placeholders.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -23,6 +25,7 @@
     "astro-icon": "^1.1.5",
     "astro-tunnel": "^0.1.9",
     "preact": "^10.28.0",
+    "sharp": "^0.34.5",
     "smartypants": "^0.2.2",
     "tailwindcss": "^4.1.17"
   },

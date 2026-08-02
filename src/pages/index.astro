@@ -1,8 +1,11 @@
 ---
+export const prerender = true
+
 import BaseLayout from '../layouts/BaseLayout.astro'
 // import MarkdownPostLayout from '../layouts/MarkdownPostLayout.astro'
 const pageTitle = 'About Me'
 import { Image } from 'astro:assets'
+import heroPlaceholders from '~/pages/about/_images/placeholders.json'
 import WorkTile from '~/components/WorkTile.astro'
 import brandLaunch from '/public/assets/images/brand.jpg'
 import sydney from '~/pages/about/_images/sydney.png'
@@ -21,6 +24,10 @@ import jobadderNav from 'public/assets/work/jobadder-nav/nav-square.png'
 import deputyWorkshop from 'public/assets/work/deputy/workshop.png'
 import deputyHackathon from 'public/assets/work/deputy/hackathon.png'
 import deputyFigma from 'public/assets/work/deputy/figma.png'
+
+const hero1Placeholder = heroPlaceholders['hero1.png']
+const hero2Placeholder = heroPlaceholders['hero2.png']
+const hero3Placeholder = heroPlaceholders['hero3.png']
 ---
 
 <BaseLayout>
@@ -52,38 +59,56 @@ import deputyFigma from 'public/assets/work/deputy/figma.png'
       </h1>
     </div>
     <div class='col-span-6 col-start-1 row-span-2 grid aspect-square grid-rows-2 gap-2'>
+      <div
+        class='h-full w-full overflow-hidden rounded-xl bg-cover bg-center md:rounded-2xl'
+        style={`background-image:url(${hero1Placeholder})`}
+      >
+        <Image
+          src={hero1}
+          alt='SafetyCulture team at Figma event'
+          class='h-full w-full object-cover'
+          width={1200}
+          height={600}
+          quality={80}
+          format='webp'
+          densities={[1, 2]}
+          loading='eager'
+        />
+      </div>
+      <div
+        class='h-full w-full overflow-hidden rounded-xl bg-cover bg-center md:rounded-2xl'
+        style={`background-image:url(${hero2Placeholder})`}
+      >
+        <Image
+          src={hero2}
+          alt='Brody MacLean presenting at the Prospa brand launch'
+          class='h-full w-full object-cover'
+          width={1200}
+          height={600}
+          quality={80}
+          format='webp'
+          densities={[1, 2]}
+          loading='eager'
+        />
+      </div>
+    </div>
+    <div
+      class='col-span-6 col-start-7 row-span-2 aspect-square overflow-hidden rounded-xl bg-cover bg-center md:rounded-2xl'
+      style={`background-image:url(${hero3Placeholder})`}
+    >
       <Image
-        src={hero1}
-        alt='SafetyCulture team at Figma event'
-        class='h-full w-full rounded-xl object-cover md:rounded-2xl'
+        src={hero3}
+        alt='Brody MacLean'
+        class='h-full w-full object-cover'
         width={1200}
-        height={600}
+        height={1200}
         quality={80}
+        format='webp'
         densities={[1, 2]}
         loading='eager'
-      />
-      <Image
-        src={hero2}
-        alt='Brody MacLean presenting at the Prospa brand launch'
-        class='h-full w-full rounded-xl object-cover md:rounded-2xl'
-        width={1200}
-        height={600}
-        quality={80}
-        densities={[1, 2]}
-        loading='eager'
+        fetchpriority='high'
       />
     </div>
-    <Image
-      src={hero3}
-      alt='Brody MacLean'
-      class='col-span-6 col-start-7 row-span-2 aspect-square rounded-xl object-cover md:rounded-2xl'
-      width={1200}
-      height={1200}
-      quality={80}
-      densities={[1, 2]}
-      loading='eager'
-      fetchpriority='high'
-    />
   </section>
   <section class='system-grid border-ui-1 border-b py-16 lg:py-20'>
     <div class='col-span-12 col-start-1 md:col-span-6'>

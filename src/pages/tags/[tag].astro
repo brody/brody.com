@@ -6,6 +6,53 @@ import ArticlePost from '../../components/ArticlePost.astro'
 import BookmarkPost from '../../components/BookmarkPost.astro'
 import NotePost from '../../components/NotePost.astro'
 
+async function getItemsForTag(tag: string) {
+  // Get all collections with tags
+  const allPosts = await getCollection('journal')
+  const allBookmarks = await getCollection('bookmarks')
+  const allNotes = await getCollection('notes')
+  const allBooks = await getCollection('books')
+
+  const filteredPosts = allPosts
+    .filter((post) => post.data.tags?.includes(tag))
+    .map((item) => ({ ...item, source: 'journal' }))
+  const filteredBookmarks = allBookmarks
+    .filter((bookmark) => bookmark.data.tags?.includes(tag))
+    .map((item) => ({ ...item, source: 'bookmarks' }))
+  const filteredNotes = allNotes
+    .filter((note) => note.data.tags?.includes(tag))
+    .map((item) => ({ ...item, source: 'notes' }))
+  const filteredBooks = allBooks
+    .filter((book) => book.data.tags?.includes(tag))
+    .map((item) => ({
+      ...item,
+      source: 'books',
+      data: {
+        ...item.data,
+        pubDate: item.data.datePublished || item.data.pubDate,
+      },
+    }))
+
+  return [...filteredPosts, ...filteredBookmarks, ...filteredNotes, ...filteredBooks]
+    .filter((item) => item.data.pubDate) // Filter out items without dates
+    .sort((a, b) => {
+      // Prioritize 'updatedDate' over 'pubDate' if it exists
+      const rawDateA = a.data.updatedDate || a.data.pubDate
+      const rawDateB = b.data.updatedDate || b.data.pubDate
+      const dateA = rawDateA
+        ? typeof rawDateA === 'string'
+          ? new Date(rawDateA)
+          : rawDateA
+        : new Date(0)
+      const dateB = rawDateB
+        ? typeof rawDateB === 'string'
+          ? new Date(rawDateB)
+          : rawDateB
+        : new Date(0)
+      return dateB.getTime() - dateA.getTime()
+    })
+}
+
 export async function getStaticPaths() {
   // Get all collections with tags
   const allPosts = await getCollection('journal')
@@ -22,55 +69,11 @@ export async function getStaticPaths() {
   ]
   const uniqueTags = [...new Set(allTags)]
 
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts
-      .filter((post) => post.data.tags?.includes(tag))
-      .map((item) => ({ ...item, source: 'journal' }))
-    const filteredBookmarks = allBookmarks
-      .filter((bookmark) => bookmark.data.tags?.includes(tag))
-      .map((item) => ({ ...item, source: 'bookmarks' }))
-    const filteredNotes = allNotes
-      .filter((note) => note.data.tags?.includes(tag))
-      .map((item) => ({ ...item, source: 'notes' }))
-    const filteredBooks = allBooks
-      .filter((book) => book.data.tags?.includes(tag))
-      .map((item) => ({
-        ...item,
-        source: 'books',
-        data: {
-          ...item.data,
-          pubDate: item.data.datePublished || item.data.pubDate,
-        },
-      }))
-
-    const allItems = [...filteredPosts, ...filteredBookmarks, ...filteredNotes, ...filteredBooks]
-      .filter((item) => item.data.pubDate) // Filter out items without dates
-      .sort((a, b) => {
-        // Prioritize 'updatedDate' over 'pubDate' if it exists
-        const rawDateA = a.data.updatedDate || a.data.pubDate
-        const rawDateB = b.data.updatedDate || b.data.pubDate
-        const dateA = rawDateA
-          ? typeof rawDateA === 'string'
-            ? new Date(rawDateA)
-            : rawDateA
-          : new Date(0)
-        const dateB = rawDateB
-          ? typeof rawDateB === 'string'
-            ? new Date(rawDateB)
-            : rawDateB
-          : new Date(0)
-        return dateB.getTime() - dateA.getTime()
-      })
-
-    return {
-      params: { tag },
-      props: { items: allItems },
-    }
-  })
+  return uniqueTags.map((tag) => ({ params: { tag } }))
 }
 
 const { tag } = Astro.params
-const { items } = Astro.props
+const items = await getItemsForTag(tag as string)
 
 // Render content for posts, bookmarks, and notes
 const itemsWithContent = await Promise.all(

@@ -1,8 +1,13 @@
 {
+  "hey.paris": {
+    "originalUrl": "https://hey.paris/favicon.ico",
+    "localPath": "/favicons/hey.paris.ico",
+    "sourceUrl": "https://hey.paris/posts/appleid/"
+  },
   "bbc.com": {
-    "originalUrl": "https://static.files.bbci.co.uk/bbcdotcom/web/20251010-110820-1cf8d3aa45-web-2.31.3-2/favicon-32x32.png",
+    "originalUrl": "https://static.files.bbci.co.uk/bbcdotcom/web/20260220-084609-e0c5de56b9-web-2.40.1-3/favicon-32x32.png",
     "localPath": "/favicons/bbc.com.png",
-    "sourceUrl": "https://www.bbc.com/future/article/20251008-truth-terminal-the-ai-bot-that-became-a-real-life-millionaire"
+    "sourceUrl": "https://www.bbc.com/news/articles/c62dlvdq3e3o"
   },
   "joshuacrowley.com": {
     "originalUrl": "/stickers/helmet.png",
@@ -59,35 +64,85 @@
     "localPath": "/favicons/bigthink.com.png",
     "sourceUrl": "https://bigthink.com/smart-skills/how-to-escape-the-dopamine-crash-loop-and-rewire-your-curiosity/"
   },
+  "tonsky.me": {
+    "originalUrl": "/i/favicon.png",
+    "localPath": "/favicons/tonsky.me.png",
+    "sourceUrl": "https://tonsky.me/blog/tahoe-icons/"
+  },
+  "unsung.aresluna.org": {
+    "originalUrl": "https://unsung.aresluna.org/_unsung/favicon.png",
+    "localPath": "/favicons/unsung.aresluna.org.png",
+    "sourceUrl": "https://unsung.aresluna.org/just-a-little-detail-that-wouldnt-sell-anything/"
+  },
   "fortune.com": {
     "originalUrl": "/icons/favicons/favicon.ico",
     "localPath": "/favicons/fortune.com.ico",
     "sourceUrl": "https://fortune.com/2025/10/22/ai-brain-rot-junk-social-media-viral-addicting-content-tech/"
+  },
+  "lessons.design": {
+    "originalUrl": "https://c-p.rmcdn1.net/5d7571a83f6bcf79139dec7f/upload-261c647f-a942-4a3e-a6db-53d59162e4f7_144.png",
+    "localPath": "/favicons/lessons.design.png",
+    "sourceUrl": "https://lessons.design/"
   },
   "experience.odyssey.ml": {
     "originalUrl": "/logo-white.svg",
     "localPath": "/favicons/experience.odyssey.ml.svg",
     "sourceUrl": "https://experience.odyssey.ml/"
   },
+  "github.com": {
+    "originalUrl": "https://github.githubassets.com/favicons/favicon-dark.svg",
+    "localPath": "/favicons/github.com.svg",
+    "sourceUrl": "https://github.com/oil-theme"
+  },
+  "rogerwong.me": {
+    "originalUrl": "/favicon.svg",
+    "localPath": "/favicons/rogerwong.me.svg",
+    "sourceUrl": "https://rogerwong.me/2026/02/product-design-is-changing/"
+  },
   "404media.co": {
     "originalUrl": "https://www.404media.co/content/images/size/w256h256/format/png/2023/08/favicon-3.svg",
     "localPath": "/favicons/404media.co.svg",
     "sourceUrl": "https://www.404media.co/reddit-answers-ai-suggests-users-try-heroin/"
+  },
+  "buildingslack.com": {
+    "originalUrl": "https://buildingslack.com/content/images/size/w256h256/2024/02/square.png",
+    "localPath": "/favicons/buildingslack.com.png",
+    "sourceUrl": "https://buildingslack.com/rethinking-slack/"
   },
   "figma.com": {
     "originalUrl": "https://static.figma.com/app/icon/1/icon-192.png",
     "localPath": "/favicons/figma.com.png",
     "sourceUrl": "https://www.figma.com/blog/schema-2025-design-systems-recap/"
   },
+  "ian.so": {
+    "originalUrl": "/favicon.ico",
+    "localPath": "/favicons/ian.so.ico",
+    "sourceUrl": "https://www.ian.so/writing/k-shaped-future-software-engineering"
+  },
   "writing.nikunjk.com": {
     "originalUrl": "https://substackcdn.com/image/fetch/$s_!tAKj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79b1a390-5c05-4cd0-ae74-f86153c30367%2Ffavicon-16x16.png",
     "localPath": "/favicons/writing.nikunjk.com.png",
     "sourceUrl": "https://writing.nikunjk.com/p/the-quiet-ones"
   },
+  "yannglt.com": {
+    "originalUrl": "https://framerusercontent.com/images/np5oa1cAkdOxMgNGCvcXnnr4Jno.png",
+    "localPath": "/favicons/yannglt.com.png",
+    "sourceUrl": "https://yannglt.com/writing/the-rosetta-stone-of-design-engineering"
+  },
   "shapeof.ai": {
     "originalUrl": "https://cdn.prod.website-files.com/65db6dd21591364dfcb8ade9/65dfd71acc18c754f7ea0200_fav32.png",
     "localPath": "/favicons/shapeof.ai.png",
     "sourceUrl": "https://www.shapeof.ai/"
+  },
+  "world.hey.com": {
+    "originalUrl": "/jason/avatar-9f11ce77d31e68e834c564594ee0bc32a005ee8d",
+    "localPath": "/favicons/world.hey.com.ico",
+    "sourceUrl": "https://world.hey.com/jason/the-big-regression-da7fc60d"
+  },
+  "verifiedinsider.substack.com": {
+    "originalUrl": "https://substackcdn.com/image/fetch/$s_!ghPU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d5a7648-aa0b-4ce6-932c-e766428d1589%2Ffavicon-16x16.png",
+    "localPath": "/favicons/verifiedinsider.substack.com.png",
+    "sourceUrl": "https://verifiedinsider.substack.com/p/the-future-of-product-design"
   },
   "strangestloop.io": {
     "originalUrl": "/favicons/favicon-32x32.png",
@@ -103,6 +158,11 @@
     "originalUrl": "https://eleganthack.com/favicon.ico",
     "localPath": "/favicons/eleganthack.com.ico",
     "sourceUrl": "https://eleganthack.com/ux-is-your-moat-and-youre-ignoring-it/"
+  },
+  "terriblesoftware.org": {
+    "originalUrl": "https://terriblesoftware.org/wp-content/uploads/2024/12/android-chrome-512x512-2.png",
+    "localPath": "/favicons/terriblesoftware.org.png",
+    "sourceUrl": "https://terriblesoftware.org/2026/02/02/why-am-i-doing-the-thinking-for-you/"
   },
   "calv.info": {
     "originalUrl": "https://calv.info/favicon.ico",
